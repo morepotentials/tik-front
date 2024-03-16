@@ -347,12 +347,12 @@ export default {
       { name: "Halle-Saale-Unstrut", orte: [] },
     ];
 
-    const isModalOpen = ref(true);
+    const isModalOpen = ref(false);
     const setModalOverlay = () => {
       isModalOpen.value = !isModalOpen.value;
     };
 
-    const aktuelleRegion = ref("Altmark");
+    const aktuelleRegion = ref("");
     const setRegion = (region) => {
       aktuelleRegion.value = region;
     };
