@@ -347,12 +347,12 @@ export default {
       { name: "Halle-Saale-Unstrut", orte: [] },
     ];
 
-    const isModalOpen = ref(false);
+    const isModalOpen = ref(true);
     const setModalOverlay = () => {
       isModalOpen.value = !isModalOpen.value;
     };
 
-    const aktuelleRegion = ref("");
+    const aktuelleRegion = ref("Altmark");
     const setRegion = (region) => {
       aktuelleRegion.value = region;
     };
@@ -379,6 +379,7 @@ export default {
 <style lang="css">
 .t-modal-overlay {
   overflow-y: auto;
+  scrollbar-color: #191919;
 }
 
 .t-modal-overlay-container {
@@ -429,7 +430,7 @@ export default {
 }
 
 .t-modal-close-icon {
-  background: rgb(232, 232, 23);
+  background: #C7FF57;
   border-radius: 50%;
   color: rgba(0, 0, 0, 0.56);
   display: -webkit-box;
