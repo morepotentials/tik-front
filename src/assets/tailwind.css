@@ -1,0 +1,77 @@
+@tailwind base;
+
+@tailwind components;
+
+@tailwind utilities;
+
+@layer base {
+  @font-face {
+    font-family: "Larsseit";
+    font-weight: 700;
+    font-style: normal;
+    src: url(/src/assets/fonts/Larsseit-Bold.otf) format("opentype");
+  }
+
+  @font-face {
+    font-family: "Larsseit";
+    font-weight: 800;
+    font-style: normal;
+    src: url(/src/assets/fonts/Larsseit-ExtraBold.otf) format("opentype");
+  }
+
+  @font-face {
+    font-family: "Larsseit";
+    font-weight: 800;
+    font-style: italic;
+    src: url(/src/assets/fonts/Larsseit-ExtraBoldItalic.otf) format("opentype");
+  }
+
+  @font-face {
+    font-family: "Larsseit";
+    font-weight: 400;
+    font-style: italic;
+    src: url(/src/assets/fonts/Larsseit-Italic.otf) format("opentype");
+  }
+
+  @font-face {
+    font-family: "Larsseit";
+    font-weight: 300;
+    font-style: normal;
+    src: url(/src/assets/fonts/Larsseit-Light.otf) format("opentype");
+  }
+
+  @font-face {
+    font-family: "Larsseit";
+    font-weight: 300;
+    font-style: italic;
+    src: url(/src/assets/fonts/Larsseit-LightItalic.otf) format("opentype");
+  }
+
+  @font-face {
+    font-family: "Larsseit";
+    font-weight: 500;
+    font-style: normal;
+    src: url(/src/assets/fonts/Larsseit-Medium.otf) format("opentype");
+  }
+
+  @font-face {
+    font-family: "Larsseit";
+    font-weight: 500;
+    font-style: italic;
+    src: url(/src/assets/fonts/Larsseit-MediumItalic.otf) format("opentype");
+  }
+
+  @font-face {
+    font-family: "Larsseit";
+    font-weight: 100;
+    font-style: normal;
+    src: url(/src/assets/fonts/Larsseit-Thin.otf) format("opentype");
+  }
+
+  @font-face {
+    font-family: "Larsseit";
+    font-weight: 100;
+    font-style: italic;
+    src: url(/src/assets/fonts/Larsseit-ThinItalic.otf) format("opentype");
+  }
+}
