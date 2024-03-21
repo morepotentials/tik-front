@@ -7,8 +7,8 @@ module.exports = {
         larsseit: ["Larsseit", "sans-serif"],
       },
       colors: {
-        "t-grey": "#191919",
-        "t-green": "#C7FF57",
+        "t-grey": "#343434",
+        "t-green": "#cbda51",
       },
     },
   },

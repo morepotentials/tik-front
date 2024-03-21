@@ -1,23 +1,63 @@
 <template>
-  <div class="p-4 md:p-10">
-    <div class="m-auto">
-      <div class="text-t-green md:pl-4">Sonntag, 21.04.2024: 10:00-17:00</div>
-      <div class="text-t-green md:pl-4 mb-10">
-        5 Regionen: Das offizielle Programm zum 14. Tag der Industriekultur
+  <div class="container h-screen flex my-auto mx-auto px-4 relative">
+    <div
+      class="basis-1/2 flex justify-center flex-col inline-block items-center"
+    >
+      <div class="max-w-[300px]">
+        <div>
+          <div class="mb-8 skew-x-[-10deg] bg-white inline-block h-[27px]">
+            <div class="skew-x-[10deg]">
+              <span
+                class="text-t-green px-2 text-2xl italic text-t-grey font-bold"
+              >
+                SONNTAG 21,04,2024
+              </span>
+            </div>
+          </div>
+        </div>
+        <h1 class="text-t-green text-5xl italic font-bold">
+          14. TAG DER <br />
+          INDUSTRTIE- <br />
+          KULTUR <br />
+          <span class="text-white"
+            >SACHSEN- <br />
+            ANHALT</span
+          >
+        </h1>
+        <hr class="h-[1px] w-44 bg-t-green my-3 border-0 my-8" />
+        <div class="text-white">
+          <p class="mb-8">
+            Der 14. Tag der Industriekultur wird am Sonntag, dem 21.04.2024
+            stattfinden.
+          </p>
+          <p>
+            Auch im nächsten Jahr wird das Veranstal- tungsprogramm wie immer
+            breit gefächert sein. Um zu zeigen, was Sie voraussichtlich er-
+            warten wird, bleibt das 2023-er Programm wei-terhin beispielhaft
+            eingestellt. Das Programm 2024 wird Ende Februar 2024
+            bekanntgemacht.
+          </p>
+        </div>
       </div>
-      <div
-        v-for="(region, i) in tourismusRegionen"
-        :key="region.name + i"
-        class="text-3xl md:p-4 md:text-6xl font-thin text-white cursor-pointer hover:text-t-green"
-        @click="
-          setModalOverlay();
-          setRegion(region.name);
-        "
-      >
-        {{ region.name }}
+    </div>
+    <div class="basis-1/2 flex justify-start items-center">
+      <div class="max-w-[575px]">
+        <img src="../assets/TIK_logo.png" />
+      </div>
+    </div>
+    <div class="w-[calc(100%-2rem)] absolute bottom-4 flex justify-center">
+      <div class="w-10">
+        <DownArrowIcon></DownArrowIcon>
       </div>
     </div>
   </div>
+
+  <div
+    class="container my-auto mx-auto h-screen flex items-center justify-center"
+  >
+    <TikMap @some-event="setRegion"></TikMap>
+  </div>
+
   <div
     :class="[isModalOpen ? 'z-[1] block' : 'z-[-1] hidden']"
     class="fixed bottom-0 left-0 right-0 top-0 bg-t-grey t-modal-overlay"
@@ -56,7 +96,7 @@
         </div>
         <button
           class="h-11 w-11 mt-4 mr-4 cursor-pointer flex self-end t-modal-close-button"
-          @click="setModalOverlay"
+          @click="closeModalOverlay"
         >
           <span class="t-modal-close-icon">
             <svg
@@ -77,8 +117,11 @@
 
 <script>
 import { ref } from "vue";
+import TikMap from "@/components/TikMap.vue";
+import DownArrowIcon from "@/components/DownArrowIcon.vue";
 export default {
   name: "TourismusRegionen",
+  components: { TikMap, DownArrowIcon },
 
   setup() {
     const tourismusRegionen = [
@@ -348,13 +391,16 @@ export default {
     ];
 
     const isModalOpen = ref(false);
-    const setModalOverlay = () => {
-      isModalOpen.value = !isModalOpen.value;
+    const closeModalOverlay = () => {
+      isModalOpen.value = false;
+      document.body.style.overflow = "visible";
     };
 
     const aktuelleRegion = ref("");
     const setRegion = (region) => {
       aktuelleRegion.value = region;
+      isModalOpen.value = true;
+      document.body.style.overflow = "hidden";
     };
 
     const getOrte = () => {
@@ -367,7 +413,7 @@ export default {
     return {
       tourismusRegionen,
       isModalOpen,
-      setModalOverlay,
+      closeModalOverlay,
       aktuelleRegion,
       setRegion,
       getOrte,
@@ -377,9 +423,25 @@ export default {
 </script>
 
 <style lang="css">
-.t-modal-overlay {
-  overflow-y: auto;
-  scrollbar-color: #191919;
+/* .content-prev-enter-active,
+.content-prev-leave-active,
+.content-next-enter-active,
+.content-next-leave-active {
+  transition: 1.5s cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+.content-next-enter-from,
+.content-prev-leave-to {
+  transform: translateY(100%);
+  opacity: 0;
+}
+.content-next-leave-to,
+.content-prev-enter-from {
+  transform: translateY(-100%);
+  opacity: 0;
+} */
+
+.t-altmark {
+  filter: drop-shadow(3px 3px 2px rgba(0, 0, 0, 0.7));
 }
 
 .t-modal-overlay-container {
@@ -397,6 +459,8 @@ export default {
   flex-direction: column;
   flex-grow: 1;
   width: 100%;
+  overflow-y: auto;
+  scrollbar-color: #191919;
 }
 
 .t-modal-content-container {
@@ -430,7 +494,7 @@ export default {
 }
 
 .t-modal-close-icon {
-  background: #C7FF57;
+  background: #cbda51;
   border-radius: 50%;
   color: rgba(0, 0, 0, 0.56);
   display: -webkit-box;
