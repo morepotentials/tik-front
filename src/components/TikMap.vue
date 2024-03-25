@@ -1,5 +1,5 @@
 <template>
-  <div class="max-w-[800px] grow">
+  <div class="max-w-[700px] grow p-4">
     <svg
       width="100%"
       version="1.1"
@@ -7,7 +7,7 @@
       xmlns:xlink="http://www.w3.org/1999/xlink"
       x="0px"
       y="0px"
-      viewBox="0 0 841.89 1190.55"
+      viewBox="136 190 618 789.33"
       style="enable-background: new 0 0 841.89 1190.55"
       xml:space="preserve"
     >
@@ -15,7 +15,7 @@
       <g
         id="Altmark"
         @click="$emit('someEvent', 'Altmark')"
-        class="cursor-pointer"
+        class="cursor-pointer tik_map_region"
       >
         <path
           class="tik_map_st1"
@@ -61,7 +61,7 @@
       <g
         id="Magdeburg-Elbe-Börde-Heide"
         @click="$emit('someEvent', 'Magdeburg-Elbe-Börde-Heide')"
-        class="cursor-pointer"
+        class="cursor-pointer tik_map_region"
       >
         <path
           class="tik_map_st2"
@@ -116,27 +116,23 @@
 		l-2.86-2l-0.86-3.72c0,0-3.15-0.29-4.01,0c-0.86,0.29-2.86,2.86-2.86,2.86l-7.16-0.29l-8.02-1.15l-4.58,1.43l-12.03,0.29l-4.3-3.72
 		l-4.58-3.44h-2.86l-2.86-7.16l-2.58-1.72l0.29-6.59L251.66,402.5l-4.3,0.57l-4.01,2.86l-4.58-0.29"
         />
-        <text transform="matrix(1 0 0 1 327.7924 526.1053)">
-          <tspan x="0" y="0" class="tik_map_st7 font-light font-larsseit">
+        <text transform="matrix(1 0 0 1 327.7924 526.1053)" class="tik_map_st7">
+          <tspan x="0" y="0" class="font-light font-larsseit">
             MAGDEBURG -
           </tspan>
-          <tspan
-            x="1.08"
-            y="18.94"
-            class="tik_map_st7 font-light font-larsseit"
-          >
+          <tspan x="1.08" y="18.94" class="font-light font-larsseit">
             ELBE - BÖRDE -
           </tspan>
-          <tspan
-            x="32.46"
-            y="37.88"
-            class="tik_map_st7 font-light font-larsseit"
-          >
+          <tspan x="32.46" y="37.88" class="font-light font-larsseit">
             HEIDE
           </tspan>
         </text>
       </g>
-      <g id="Harz" @click="$emit('someEvent', 'Harz')" class="cursor-pointer">
+      <g
+        id="Harz"
+        @click="$emit('someEvent', 'Harz')"
+        class="cursor-pointer tik_map_region"
+      >
         <path
           class="tik_map_st5"
           d="M234.62,567.37l5.73,2.29h4.01l2.86,3.72l4.58,0.29l2,1.43l4.58-0.86l2.58,4.58l3.15,1.43l-0.29,4.87
@@ -176,7 +172,7 @@
       <g
         id="Anhalt-Dessau-Wittenberg"
         @click="$emit('someEvent', 'Anhalt-Dessau-Wittenberg')"
-        class="cursor-pointer"
+        class="cursor-pointer tik_map_region"
       >
         <path
           class="tik_map_st6"
@@ -216,15 +212,11 @@
 		c0,0-2.29,1.49-2.63,1.37s-4.12-1.37-4.23-1.72c-0.11-0.34-3.77-3.09-3.77-3.09l-6.63-5.83l-4.46-0.69c0,0-5.37-5.49-5.72-5.83
 		s-3.43-5.03-3.43-5.03l-0.46-3.2l-2.63-1.6c0,0-2.86-1.6-3.32-2.06C534.9,540.98,531.43,540.16,531.43,540.16z"
         />
-        <text transform="matrix(1 0 0 1 503.9672 646.6009)">
-          <tspan x="0" y="0" class="tik_map_st7 font-light font-larsseit">
+        <text transform="matrix(1 0 0 1 503.9672 646.6009)" class="tik_map_st7">
+          <tspan x="0" y="0" class="font-light font-larsseit">
             ANHALT - DESSAU -
           </tspan>
-          <tspan
-            x="22.93"
-            y="18.94"
-            class="tik_map_st7 font-light font-larsseit"
-          >
+          <tspan x="22.93" y="18.94" class="font-light font-larsseit">
             WITTENBERG
           </tspan>
         </text>
@@ -232,7 +224,7 @@
       <g
         id="Halle-Saale-Unstrut"
         @click="$emit('someEvent', 'Halle-Saale-Unstrut')"
-        class="cursor-pointer"
+        class="cursor-pointer tik_map_region"
       >
         <path
           class="tik_map_st1"
@@ -270,22 +262,12 @@
 		l2.36-0.86l0.64-4.3l1.5-2.15l3.22-0.21l0.43-1.5v-2.79l-1.93-1.72l-0.14-0.72l0.57-5.44l2.29-1.43l0.29-2.29l4.01-0.29l4.3,3.15
 		c0,0,2.29-2,3.15-2.29c0.86-0.29,3.15-0.57,3.15-0.57l-1.15-3.72l4.3,0.29l3.44,2.58l1.43-8.59l0.63-1.27L445.31,702.31z"
         />
-        <text transform="matrix(1 0 0 1 425.3148 831.6536)">
-          <tspan x="0" y="0" class="tik_map_st7 font-light font-larsseit">
-            HALLE -
-          </tspan>
-          <tspan
-            x="-0.4"
-            y="18.94"
-            class="tik_map_st7 font-light font-larsseit"
-          >
+        <text transform="matrix(1 0 0 1 425.3148 831.6536)" class="tik_map_st7">
+          <tspan x="0" y="0" class="font-light font-larsseit">HALLE -</tspan>
+          <tspan x="-0.4" y="18.94" class="font-light font-larsseit">
             SAALE -
           </tspan>
-          <tspan
-            x="-7.32"
-            y="37.88"
-            class="tik_map_st7 font-light font-larsseit"
-          >
+          <tspan x="-7.32" y="37.88" class="font-light font-larsseit">
             UNSTRUT
           </tspan>
         </text>
@@ -312,19 +294,28 @@ export default {
 
 <style type="text/css">
 #Altmark:hover > .tik_map_st1 {
-  fill: #c2c547;
+  fill: #f6e82e;
 }
 #Magdeburg-Elbe-Börde-Heide:hover > .tik_map_st3 {
-  fill: #d4d74c;
+  fill: #f6e82e;
 }
 #Harz:hover > .tik_map_st5 {
-  fill: #b0b341;
+  fill: #f6e82e;
 }
 #Anhalt-Dessau-Wittenberg:hover > .tik_map_st6 {
-  fill: #9ea13b;
+  fill: #f6e82e;
 }
 #Halle-Saale-Unstrut:hover > .tik_map_st1 {
-  fill: #c2c547;
+  fill: #f6e82e;
+}
+
+.tik_map_st7 {
+  fill: #fff;
+  font-size: 15.7838px;
+}
+
+.tik_map_region:hover > .tik_map_st7 {
+  fill: #343434;
 }
 
 .tik_map_st0 {
@@ -360,13 +351,5 @@ export default {
   stroke: #fff;
   stroke-width: 0.45;
   stroke-miterlimit: 10;
-}
-.tik_map_st7 {
-  fill: #fff;
-  font-size: 15.7838px;
-}
-
-.text_altmark:hover tik_map_st1 {
-  fill: #fff;
 }
 </style>

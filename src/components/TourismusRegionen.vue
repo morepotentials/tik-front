@@ -30,29 +30,31 @@
             Der 14. Tag der Industriekultur wird am Sonntag, dem 21.04.2024
             stattfinden.
           </p>
-          <p>
-            Auch im nächsten Jahr wird das Veranstal- tungsprogramm wie immer
-            breit gefächert sein. Um zu zeigen, was Sie voraussichtlich er-
-            warten wird, bleibt das 2023-er Programm wei-terhin beispielhaft
-            eingestellt. Das Programm 2024 wird Ende Februar 2024
-            bekanntgemacht.
-          </p>
+        </div>
+        <div class="flex w-[176px]">
+          <div
+            class="w-full text-center p-5 text-white bg-t-grey border border-solid border-t-green hover:bg-t-green hover:text-t-grey cursor-pointer"
+            @click="scrollToProgramm"
+          >
+            ZUM PROGRAMM
+          </div>
         </div>
       </div>
     </div>
     <div class="basis-1/2 flex justify-start items-center">
-      <div class="max-w-[575px]">
-        <img src="../assets/TIK_logo.png" />
+      <div class="max-w-[575px] relative z-[-1] ml-[-60px] xl:ml-0">
+        <img src="../assets/Tik_logo_v2.png" />
       </div>
     </div>
     <div class="w-[calc(100%-2rem)] absolute bottom-4 flex justify-center">
-      <div class="w-10">
-        <DownArrowIcon></DownArrowIcon>
+      <div class="w-10 cursor-pointer">
+        <DownArrowIcon @click="scrollToProgramm"></DownArrowIcon>
       </div>
     </div>
   </div>
 
   <div
+    ref="programm"
     class="container my-auto mx-auto h-screen flex items-center justify-center"
   >
     <TikMap @some-event="setRegion"></TikMap>
@@ -66,7 +68,9 @@
       <div class="t-modal-overlay">
         <div class="t-modal-content-container text-white max-w-full p-4">
           <div>
-            <div class="py-16">{{ aktuelleRegion }}</div>
+            <div class="py-16 text-t-green text-4xl italic font-bold">
+              {{ aktuelleRegion }}
+            </div>
             <div v-for="(ort, i) in getOrte()" :key="ort + i" class="pb-10">
               <hr class="h-[1px] w-24 bg-t-green my-3 border-0" />
               <span class="text-white text-2xl italic font-bold"
@@ -410,6 +414,13 @@ export default {
         ).orte;
     };
 
+    const programm = ref(null); // assigned to some element in the template
+
+    const scrollToProgramm = () => {
+      console.log("programm", programm);
+      programm.value.scrollIntoView({ behavior: "smooth" });
+    };
+
     return {
       tourismusRegionen,
       isModalOpen,
@@ -417,29 +428,14 @@ export default {
       aktuelleRegion,
       setRegion,
       getOrte,
+      scrollToProgramm,
+      programm,
     };
   },
 };
 </script>
 
 <style lang="css">
-/* .content-prev-enter-active,
-.content-prev-leave-active,
-.content-next-enter-active,
-.content-next-leave-active {
-  transition: 1.5s cubic-bezier(0.215, 0.61, 0.355, 1);
-}
-.content-next-enter-from,
-.content-prev-leave-to {
-  transform: translateY(100%);
-  opacity: 0;
-}
-.content-next-leave-to,
-.content-prev-enter-from {
-  transform: translateY(-100%);
-  opacity: 0;
-} */
-
 .t-altmark {
   filter: drop-shadow(3px 3px 2px rgba(0, 0, 0, 0.7));
 }
@@ -494,7 +490,7 @@ export default {
 }
 
 .t-modal-close-icon {
-  background: #cbda51;
+  background: #f6e82e;
   border-radius: 50%;
   color: rgba(0, 0, 0, 0.56);
   display: -webkit-box;

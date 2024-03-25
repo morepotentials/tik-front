@@ -6,7 +6,7 @@
     xmlns:xlink="http://www.w3.org/1999/xlink"
     x="0px"
     y="0px"
-    viewBox="0 0 841.89 595.28"
+    viewBox="149.84 19.61 521.44 554.4"
     style="enable-background: new 0 0 841.89 595.28"
     xml:space="preserve"
   >

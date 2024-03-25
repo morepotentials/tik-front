@@ -1,6 +1,6 @@
 <template>
   <svg
-    fill="#cbda51"
+    fill="#F6E82E"
     width="100%"
     version="1.1"
     id="Layer_1"

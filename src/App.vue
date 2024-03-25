@@ -1,6 +1,8 @@
 <template>
   <div class="relative">
-    <TikLogoN class="fixed h-[150px]"></TikLogoN>
+    <div class="fixed z-10 flex flex-row">
+      <TikLogoN class="h-[150px] hidden md:block"></TikLogoN>
+    </div>
     <TourismusRegionen />
   </div>
 </template>

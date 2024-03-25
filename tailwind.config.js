@@ -8,7 +8,7 @@ module.exports = {
       },
       colors: {
         "t-grey": "#343434",
-        "t-green": "#cbda51",
+        "t-green": "#F6E82E",
       },
     },
   },
