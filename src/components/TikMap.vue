@@ -14,8 +14,9 @@
       <g id="Karte" class="tik_map_st0"></g>
       <g
         id="Altmark"
-        @click="$emit('someEvent', 'Altmark')"
+        @click="emitRegion('Altmark')"
         class="cursor-pointer tik_map_region"
+        :class="[selectedRegion == 'Altmark' ? 'selectedRegion' : '']"
       >
         <path
           class="tik_map_st1"
@@ -60,7 +61,12 @@
       </g>
       <g
         id="Magdeburg-Elbe-Börde-Heide"
-        @click="$emit('someEvent', 'Magdeburg-Elbe-Börde-Heide')"
+        @click="emitRegion('Magdeburg-Elbe-Börde-Heide')"
+        :class="[
+          selectedRegion == 'Magdeburg-Elbe-Börde-Heide'
+            ? 'selectedRegion'
+            : '',
+        ]"
         class="cursor-pointer tik_map_region"
       >
         <path
@@ -130,7 +136,8 @@
       </g>
       <g
         id="Harz"
-        @click="$emit('someEvent', 'Harz')"
+        @click="emitRegion('Harz')"
+        :class="[selectedRegion == 'Harz' ? 'selectedRegion' : '']"
         class="cursor-pointer tik_map_region"
       >
         <path
@@ -171,7 +178,10 @@
       </g>
       <g
         id="Anhalt-Dessau-Wittenberg"
-        @click="$emit('someEvent', 'Anhalt-Dessau-Wittenberg')"
+        @click="emitRegion('Anhalt-Dessau-Wittenberg')"
+        :class="[
+          selectedRegion == 'Anhalt-Dessau-Wittenberg' ? 'selectedRegion' : '',
+        ]"
         class="cursor-pointer tik_map_region"
       >
         <path
@@ -223,7 +233,10 @@
       </g>
       <g
         id="Halle-Saale-Unstrut"
-        @click="$emit('someEvent', 'Halle-Saale-Unstrut')"
+        @click="emitRegion('Halle-Saale-Unstrut')"
+        :class="[
+          selectedRegion == 'Halle-Saale-Unstrut' ? 'selectedRegion' : '',
+        ]"
         class="cursor-pointer tik_map_region"
       >
         <path
@@ -277,15 +290,18 @@
 </template>
 
 <script>
+import { ref } from "vue";
 export default {
   name: "TikMap",
 
-  setup() {
-    ["mysignal"];
+  setup(props, { emit }) {
+    const selectedRegion = ref();
     const emitRegion = (region) => {
-      this.$emit("mysignal", region);
+      selectedRegion.value = region;
+      emit("someEvent", region);
     };
     return {
+      selectedRegion,
       emitRegion,
     };
   },
@@ -293,20 +309,18 @@ export default {
 </script>
 
 <style type="text/css">
-#Altmark:hover > .tik_map_st1 {
+.selectedRegion > path {
   fill: #f6e82e;
+  stroke: #343434;
 }
-#Magdeburg-Elbe-Börde-Heide:hover > .tik_map_st3 {
-  fill: #f6e82e;
+
+.selectedRegion > text {
+  fill: #343434;
 }
-#Harz:hover > .tik_map_st5 {
+
+.tik_map_region:hover > path {
   fill: #f6e82e;
-}
-#Anhalt-Dessau-Wittenberg:hover > .tik_map_st6 {
-  fill: #f6e82e;
-}
-#Halle-Saale-Unstrut:hover > .tik_map_st1 {
-  fill: #f6e82e;
+  stroke: #343434;
 }
 
 .tik_map_st7 {

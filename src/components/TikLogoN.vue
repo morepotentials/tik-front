@@ -151,14 +151,14 @@
 <style type="text/css">
 .tik_logo_st0 {
   fill: none;
-  stroke: #d9dc37;
+  stroke: #f6e82e;
   stroke-width: 1.4913;
   stroke-linecap: round;
   stroke-linejoin: round;
   stroke-miterlimit: 10;
 }
 .tik_logo_st1 {
-  fill: #d9dc37;
+  fill: #f6e82e;
 }
 .tik_logo_st2 {
   fill: #ffffff;
