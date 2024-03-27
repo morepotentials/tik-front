@@ -57,7 +57,7 @@
     <div
       class="container my-auto mx-auto h-screen items-center justify-center flex"
     >
-      <TikMap @some-event="setRegion"></TikMap>
+      <TikMap @some-event="setRegion" :is-modal-open="isModalOpen"></TikMap>
     </div>
     <div
       ref="locations"

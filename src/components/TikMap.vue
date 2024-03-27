@@ -290,12 +290,23 @@
 </template>
 
 <script>
-import { ref } from "vue";
+import { ref, watch } from "vue";
 export default {
   name: "TikMap",
+  props: ["isModalOpen"],
 
   setup(props, { emit }) {
     const selectedRegion = ref();
+
+    watch(
+      () => props.isModalOpen,
+      (newValue) => {
+        if (newValue === false) {
+          selectedRegion.value = "";
+        }
+      }
+    );
+
     const emitRegion = (region) => {
       selectedRegion.value = region;
       emit("someEvent", region);
