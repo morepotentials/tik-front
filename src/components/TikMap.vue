@@ -11,7 +11,6 @@
       style="enable-background: new 0 0 841.89 1190.55"
       xml:space="preserve"
     >
-      <g id="Karte" class="tik_map_st0"></g>
       <g
         id="Altmark"
         @click="emitRegion('Altmark')"
@@ -54,7 +53,7 @@
         />
         <text
           transform="matrix(1 0 0 1 327.5727 343.0052)"
-          class="tik_map_st7 font-light font-larsseit"
+          class="tik_map_region_text font-light font-larsseit"
         >
           ALTMARK
         </text>
@@ -69,19 +68,6 @@
         ]"
         class="cursor-pointer tik_map_region"
       >
-        <path
-          class="tik_map_st2"
-          d="M234.62,567.37l5.73,2.29h4.01l2.86,3.72l4.58,0.29l2,1.43l4.58-0.86l2.58,4.58l3.15,1.43l-0.29,4.87
-		l2.86,1.43l1.72,2.29l10.02-0.29l1.43,2l-0.86,9.45l4.01,0.86l3.15,0.86l-2,5.15l-3.72,4.01c0,0,2.58,0.29,2.58,1.15
-		s1.43,5.15,1.43,5.15l4.3-1.43l3.15-1.72l3.15,2.29c0,0,2,3.72,2,4.58c0,0.86,2,3.44,2,3.44l4.87-0.29l2,1.43l3.72-2l0.86-3.72
-		l3.15,0.57c0,0,0.86,2.86,1.72,3.15s4.87-0.29,4.87-0.29l1.43,5.15l-1.72,4.87l1.43,5.73l-0.86,5.44l-4.01,2.58l-2,3.15l-4.01,0.29
-		l-2.29-1.72l-3.44,0.57l-0.29,5.15l-2.58,3.44l2.29,2l3.15,1.43l0.29,4.87l1.15,3.44l4.3,2l2.29,4.3c0,0,2,0.29,2.86,0.57
-		c0.86,0.29,5.15-5.73,5.15-5.73l3.72-2c0,0,3.15,1.72,4.3,1.72c1.15,0,4.3,0,4.3,0l0.86,3.44l2.86,0.29v4.58l-1.43,4.58l2,4.3
-		l2.86-0.57c0,0,0.86,2.58,1.72,2.86c0.86,0.29,4.01,0.29,4.01,0.29l3.15-2l4.01,0.86l5.15,0.57l2.86,2l-0.29,2.86l2.29,3.15
-		l-1.43,2.58l5.44-0.57l1.15,0.57l7.73-1.72l1.15-2.86l6.87,0.57l0.57,3.72l-1.15,4.01l-1.43,1.72l2.29,1.72l2.29,2.86l2.86,1.43
-		c0,0,4.01-0.29,4.87-0.29s4.87-0.29,4.87-0.29l3.44,1.15l3.15,3.72l3.44,1.72l1.72,2.58l4.3,0.86l0.57-5.44l2.29-1.43l0.29-2.29
-		l4.01-0.29l4.3,3.15c0,0,2.29-2,3.15-2.29c0.86-0.29,3.15-0.57,3.15-0.57l-1.15-3.72l4.3,0.29l3.44,2.58l1.43-8.59"
-        />
         <path
           class="tik_map_st3"
           d="M251.66,402.5l-4.3,0.57l-4.01,2.86l-4.58-0.29l-8.42,0.53l-4.53,2.88l-0.41,7.42l-1.85,3.71l3.71,1.85
@@ -122,7 +108,10 @@
 		l-2.86-2l-0.86-3.72c0,0-3.15-0.29-4.01,0c-0.86,0.29-2.86,2.86-2.86,2.86l-7.16-0.29l-8.02-1.15l-4.58,1.43l-12.03,0.29l-4.3-3.72
 		l-4.58-3.44h-2.86l-2.86-7.16l-2.58-1.72l0.29-6.59L251.66,402.5l-4.3,0.57l-4.01,2.86l-4.58-0.29"
         />
-        <text transform="matrix(1 0 0 1 327.7924 526.1053)" class="tik_map_st7">
+        <text
+          transform="matrix(1 0 0 1 327.7924 526.1053)"
+          class="tik_map_region_text"
+        >
           <tspan x="0" y="0" class="font-light font-larsseit">
             MAGDEBURG -
           </tspan>
@@ -171,7 +160,7 @@
         />
         <text
           transform="matrix(1 0 0 1 244.9086 697.4378)"
-          class="tik_map_st7 font-light font-larsseit"
+          class="tik_map_region_text font-light font-larsseit"
         >
           HARZ
         </text>
@@ -222,7 +211,10 @@
 		c0,0-2.29,1.49-2.63,1.37s-4.12-1.37-4.23-1.72c-0.11-0.34-3.77-3.09-3.77-3.09l-6.63-5.83l-4.46-0.69c0,0-5.37-5.49-5.72-5.83
 		s-3.43-5.03-3.43-5.03l-0.46-3.2l-2.63-1.6c0,0-2.86-1.6-3.32-2.06C534.9,540.98,531.43,540.16,531.43,540.16z"
         />
-        <text transform="matrix(1 0 0 1 503.9672 646.6009)" class="tik_map_st7">
+        <text
+          transform="matrix(1 0 0 1 503.9672 646.6009)"
+          class="tik_map_region_text"
+        >
           <tspan x="0" y="0" class="font-light font-larsseit">
             ANHALT - DESSAU -
           </tspan>
@@ -275,7 +267,10 @@
 		l2.36-0.86l0.64-4.3l1.5-2.15l3.22-0.21l0.43-1.5v-2.79l-1.93-1.72l-0.14-0.72l0.57-5.44l2.29-1.43l0.29-2.29l4.01-0.29l4.3,3.15
 		c0,0,2.29-2,3.15-2.29c0.86-0.29,3.15-0.57,3.15-0.57l-1.15-3.72l4.3,0.29l3.44,2.58l1.43-8.59l0.63-1.27L445.31,702.31z"
         />
-        <text transform="matrix(1 0 0 1 425.3148 831.6536)" class="tik_map_st7">
+        <text
+          transform="matrix(1 0 0 1 425.3148 831.6536)"
+          class="tik_map_region_text"
+        >
           <tspan x="0" y="0" class="font-light font-larsseit">HALLE -</tspan>
           <tspan x="-0.4" y="18.94" class="font-light font-larsseit">
             SAALE -
@@ -334,18 +329,15 @@ export default {
   stroke: #343434;
 }
 
-.tik_map_st7 {
+.tik_map_region_text {
   fill: #fff;
   font-size: 15.7838px;
 }
 
-.tik_map_region:hover > .tik_map_st7 {
+.tik_map_region:hover > .tik_map_region_text {
   fill: #343434;
 }
 
-.tik_map_st0 {
-  display: none;
-}
 .tik_map_st1 {
   fill: #343434;
   stroke: #fff;
@@ -353,12 +345,6 @@ export default {
   stroke-miterlimit: 10;
 }
 
-.tik_map_st2 {
-  fill: none;
-  stroke: #000000;
-  stroke-width: 0.7366;
-  stroke-miterlimit: 10;
-}
 .tik_map_st3 {
   fill: #343434;
   stroke: #fff;

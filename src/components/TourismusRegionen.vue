@@ -61,7 +61,7 @@
     </div>
     <div
       ref="locations"
-      class="h-screen bg-t-grey relative overflow-y-scroll outline outline-1 outline-white"
+      class="h-screen bg-t-grey relative overflow-y-scroll"
       :class="[isModalOpen ? 'w-8/12 change' : 'w-0 outline-0']"
     >
       <button
