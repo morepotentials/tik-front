@@ -1,9 +1,9 @@
 <template>
   <div class="container h-screen flex my-auto mx-auto px-4 relative">
     <div
-      class="basis-1/2 flex justify-center flex-col inline-block items-center"
+      class="basis-full sm:basis-1/2 flex justify-center flex-col inline-block items-center"
     >
-      <div class="max-w-[300px]">
+      <div class="max-w-[300px] text-center sm:text-left">
         <div>
           <div class="mb-8 skew-x-[-10deg] bg-white inline-block h-[27px]">
             <div class="skew-x-[10deg]">
@@ -17,23 +17,25 @@
         </div>
         <h1 class="text-t-green text-5xl italic font-bold">
           14. TAG DER <br />
-          INDUSTRTIE- <br />
+          INDUSTRIE- <br />
           KULTUR <br />
           <span class="text-white"
             >SACHSEN- <br />
             ANHALT</span
           >
         </h1>
-        <hr class="h-[1px] w-44 bg-t-green my-3 border-0 my-8" />
+        <div class="flex justify-center sm:justify-start">
+          <hr class="h-[1px] w-44 bg-t-green my-3 border-0 my-8" />
+        </div>
         <div class="text-white">
           <p class="mb-8">
             Der 14. Tag der Industriekultur wird am Sonntag, dem 21.04.2024
             stattfinden.
           </p>
         </div>
-        <div class="flex w-[176px]">
+        <div class="flex justify-center sm:justify-start">
           <div
-            class="w-full text-center p-5 text-white bg-t-grey border border-solid border-t-green hover:bg-t-green hover:text-t-grey cursor-pointer"
+            class="w-[176px] text-center p-5 text-white bg-t-grey border border-solid border-t-green hover:bg-t-green hover:text-t-grey cursor-pointer"
             @click="scrollToProgramm"
           >
             ZUM PROGRAMM
@@ -41,7 +43,7 @@
         </div>
       </div>
     </div>
-    <div class="basis-1/2 flex justify-start items-center">
+    <div class="hidden sm:basis-1/2 sm:flex justify-start items-center">
       <div class="max-w-[575px] relative z-[-1] ml-[-60px] xl:ml-0">
         <img src="../assets/Tik_logo_v2.png" />
       </div>
@@ -55,17 +57,18 @@
 
   <div ref="programm" class="h-screen flex flex-row">
     <div
+      @wheel="closeModalOverlay"
       class="container my-auto mx-auto h-screen items-center justify-center flex"
     >
       <TikMap @some-event="setRegion" :is-modal-open="isModalOpen"></TikMap>
     </div>
     <div
-      ref="locations"
-      class="h-screen bg-t-grey relative overflow-y-scroll"
+      ref="programmDrawer"
+      class="h-screen bg-t-grey overflow-y-scroll hidden sm:block relative"
       :class="[isModalOpen ? 'w-8/12 change' : 'w-0 outline-0']"
     >
       <button
-        class="h-11 w-11 mt-4 mr-4 cursor-pointer flex self-end t-modal-close-button fix right-2 top-2"
+        class="h-11 w-11 mt-4 mr-4 cursor-pointer self-end t-modal-close-button fix right-4 top-0 hidden sm:flex"
         :class="[isModalOpen ? 'opacity-1' : ' opacity-0']"
         @click="closeModalOverlay"
       >
@@ -109,6 +112,64 @@
             </span>
           </div>
           <hr class="h-[1px] w-24 bg-t-green my-3 border-0" />
+        </div>
+      </div>
+    </div>
+    <div
+      ref="programmModal"
+      :class="[isModalOpen ? 'z-[1] block sm:hidden' : 'z-[-1] hidden']"
+      class="fixed bottom-0 left-0 right-0 top-0 bg-t-grey t-modal-overlay"
+    >
+      <div class="t-modal-overlay-container">
+        <div class="t-modal-overlay">
+          <div class="t-modal-content-container text-white max-w-full p-4">
+            <div>
+              <div class="py-16 text-t-green text-4xl italic font-bold">
+                {{ aktuelleRegion }}
+              </div>
+              <div v-for="(ort, i) in getOrte()" :key="ort + i" class="pb-10">
+                <hr class="h-[1px] w-24 bg-t-green my-3 border-0" />
+                <span class="text-white text-2xl italic font-bold"
+                  >{{ ort.name }},
+                </span>
+                <span class="text-white text-2xl italic font-light">
+                  {{ ort.adresse }}
+                </span>
+                <div class="max-w-[500px]">
+                  <span class="text-t-green italic text-xl font-light">
+                    {{ ort.oeffnungszeit }}
+                  </span>
+                  <span class="text-white italic text-xl font-light">
+                    {{ ort.aktivitaet }}
+                  </span>
+                  <span class="text-t-green italic text-xl">
+                    {{ ort.details }}
+                  </span>
+                  <hr class="h-[1px] w-24 bg-t-green my-3 border-0" />
+                  <span class="italic font-bold text-t-green">
+                    KONTAKT: {{ ort.kontakt }}
+                  </span>
+                </div>
+                <hr class="h-[1px] w-24 bg-t-green my-3 border-0" />
+              </div>
+            </div>
+          </div>
+          <button
+            class="h-11 w-11 mt-4 mr-4 cursor-pointer flex self-end t-modal-close-button"
+            @click="closeModalOverlay"
+          >
+            <span class="t-modal-close-icon">
+              <svg
+                class="h-5 w-5"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 20 20"
+              >
+                <path
+                  d="M12.12,10l4.07-4.06a1.5,1.5,0,1,0-2.11-2.12L10,7.88,5.94,3.81A1.5,1.5,0,1,0,3.82,5.93L7.88,10,3.81,14.06a1.5,1.5,0,0,0,0,2.12,1.51,1.51,0,0,0,2.13,0L10,12.12l4.06,4.07a1.45,1.45,0,0,0,1.06.44,1.5,1.5,0,0,0,1.06-2.56Z"
+                ></path>
+              </svg>
+            </span>
+          </button>
         </div>
       </div>
     </div>
@@ -389,8 +450,8 @@ export default {
       { name: "Anhalt-Dessau-Wittenberg", orte: [] },
       { name: "Halle-Saale-Unstrut", orte: [] },
     ];
-
-    const locations = ref();
+    const programmModal = ref();
+    const programmDrawer = ref();
     const isModalOpen = ref(false);
     const closeModalOverlay = () => {
       isModalOpen.value = false;
@@ -403,7 +464,10 @@ export default {
       document.body.style.overflow = "hidden";
       aktuelleRegion.value = region;
       isModalOpen.value = true;
-      locations.value.scrollTop = 0;
+      console.log(programmDrawer.value);
+      programmDrawer.value.scrollTop = 0;
+      console.log(programmModal.value);
+      programmModal.value.scrollTop = 0;
     };
 
     const getOrte = () => {
@@ -413,7 +477,7 @@ export default {
         ).orte;
     };
 
-    const programm = ref(null); // assigned to some element in the template
+    const programm = ref(null);
 
     const scrollToProgramm = () => {
       programm.value.scrollIntoView({ behavior: "smooth" });
@@ -428,7 +492,8 @@ export default {
       getOrte,
       scrollToProgramm,
       programm,
-      locations,
+      programmDrawer,
+      programmModal,
     };
   },
 };
@@ -439,18 +504,6 @@ export default {
   transition: width 0.5s ease-in-out;
 } */
 
-.t-altmark {
-  filter: drop-shadow(3px 3px 2px rgba(0, 0, 0, 0.7));
-}
-
-.t-modal-overlay-container {
-  display: flex;
-  align-items: center;
-  min-height: 100%;
-  flex-direction: column;
-  overflow: hidden;
-}
-
 .t-modal-overlay {
   position: relative;
   z-index: 1;
@@ -460,6 +513,14 @@ export default {
   width: 100%;
   overflow-y: auto;
   scrollbar-color: #191919;
+}
+
+.t-modal-overlay-container {
+  display: flex;
+  align-items: center;
+  min-height: 100%;
+  flex-direction: column;
+  overflow: hidden;
 }
 
 .t-modal-content-container {
