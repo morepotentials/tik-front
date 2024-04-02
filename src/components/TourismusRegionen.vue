@@ -107,12 +107,13 @@
             </span> -->
             <hr class="h-[1px] w-24 bg-t-green my-3 border-0" />
             <span class="italic font-bold text-t-green"> KONTAKT: </span>
-            <span
-              href=""
-              class="italic font-bold text-t-green cursor-pointer hover:underline"
-            >
-              {{ ort.Webseite }}
-            </span>
+            <a :href="ort.Webseite" target="_blank" rel="noopener noreferrer">
+              <span
+                class="italic font-bold text-t-green cursor-pointer hover:underline"
+              >
+                KONTAKT: {{ ort.Webseite }}
+              </span>
+            </a>
           </div>
           <hr class="h-[1px] w-24 bg-t-green my-3 border-0" />
         </div>
@@ -149,9 +150,17 @@
                     {{ ort.details }}
                   </span> -->
                   <hr class="h-[1px] w-24 bg-t-green my-3 border-0" />
-                  <span class="italic font-bold text-t-green">
-                    KONTAKT: {{ ort.Webseite }}
-                  </span>
+                  <a
+                    :href="ort.Webseite"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <span
+                      class="italic font-bold text-t-green cursor-pointer hover:underline"
+                    >
+                      KONTAKT: {{ ort.Webseite }}
+                    </span>
+                  </a>
                 </div>
                 <hr class="h-[1px] w-24 bg-t-green my-3 border-0" />
               </div>
