@@ -57,7 +57,6 @@
 
   <div ref="programm" class="h-screen flex flex-row">
     <div
-      @wheel="closeModalOverlay"
       class="container my-auto mx-auto h-screen items-center justify-center flex"
     >
       <TikMap @some-event="setRegion" :is-modal-open="isModalOpen"></TikMap>

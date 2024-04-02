@@ -1,5 +1,7 @@
 <template>
-  <div class="max-w-[700px] grow p-4">
+  <div
+    class="max-w-[700px] grow p-4 my-auto flex-col justify-center items-center"
+  >
     <svg
       width="100%"
       version="1.1"
