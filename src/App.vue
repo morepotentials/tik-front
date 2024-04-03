@@ -32,7 +32,7 @@
           rel="noopener noreferrer"
           class="mt-5"
         >
-          <img src="./assets/nik_logo_weiss.png" style="max-height: 50px" />
+          <img src="./assets/nik_logo_weiss.png" style="max-height: 28px" />
         </a>
       </div>
       <!-- <h2 class="text-center text-2xl text-t-green m-auto p-l-4">
