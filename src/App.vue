@@ -11,9 +11,8 @@
           rel="noopener noreferrer"
         >
           <img
-            src="./assets/lsa_logo_weiss.png"
-            style="max-height: 50px"
-            href=""
+            src="./assets/lsa_logo_farbig.png"
+            style="max-height: 50px; background-color: "
           />
         </a>
         <a
