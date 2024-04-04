@@ -239,7 +239,14 @@
       </div>
     </div>
   </div>
-  <div class="pb-6 pl-8"></div>
+  <div class="pb-6 pl-8 text-white">
+    <a href="" class="cursor-pointer hover:text-t-green">
+      <span> Impressum </span>
+    </a>
+    <a href="" class="ml-4 cursor-pointer hover:text-t-green">
+      <span> Datenschutz </span>
+    </a>
+  </div>
 </template>
 
 <script>
@@ -496,8 +503,7 @@ export default {
         Oeffnungszeit: "10-17.00 Uhr",
         AktivitätTIK_2024:
           'Folgende im Gebiet von Sachsen-Anhalt liegende Stationen der historischen\n"Optischen Telegraphenlinie Berlin-Koblenz" sind an diesem Tag geöffnet:\n\nStation Nr. 11 Ziegelsdorf, Telegraphenberg\nvoll funktionsfähiger Signalmast\nOT Ziegelsdorf \nTelegrafenstraße \n39291 Möckern\nFührungen und Besichtigung: 14.00 – 17.00 Uhr\nAnsprechpartner für Rückfragen: Torsten Wambach (Tel.: 01 60 / 8 10 17 07)\n\nStation Nr. 16 Ampfurth, Schlossturm\nSchloss- und Telegraphenturm\nOT Ampfurth \nAlte Schermcker Str. 14 c\n39387 Oschersleben (Bode) \nFührungen und Besichtigung: 14.00 – 17.00 Uhr\nAnsprechpartner für Rückfragen: Achim Röttger (Tel.: 03 94 07 / 57 47)\nStation Nr. 18 Neuwegersleben\n \nStationsgebäude mit funktionsfähiger Telegraphenanlage, \nMuseum zur Geschichte und Technik der optischen Telegraphie \nHornhäuser Straße, Telegrafenberg\t\nOT Neuwegersleben 39396 Am Großen Bruch\n\nFührungen und Besichtigung: 14.00 – 17.00 Uhr\nAnsprechpartner für Rückfragen: Henning Fuchs (Tel.: 0152/01690041)\n\n\nStation Nr. 19 Pabstorf\nSommeringberg\nDauerausstellung im Heimatmuseum Dedeleben \nErnst-Thälmann-Str.64b\nOT Dedeleben\n38836Huy\nFührungen und Besichtigung: 14.00 – 17.00 Uhr\nAnsprechpartner für Rückfragen: Uwe Krebs (Tel.: 03 94 22 / 6 12 18)\n',
-        Webseite:
-          "http://www.telegraphenradweg.de/startseite.html\nhttps://www.optische-telegrafie.de/\nhttps://www.museum-dedeleben.de/",
+        Webseite: "http://www.telegraphenradweg.de/startseite.html",
         TeilnahmeBestätigt: "28.03.2024",
       },
       {
