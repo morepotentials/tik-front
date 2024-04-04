@@ -94,7 +94,7 @@
     </div>
     <div
       ref="programmDrawer"
-      class="h-screen bg-t-grey overflow-y-scroll hidden sm:block relative"
+      class="h-screen bg-t-grey overflow-y-scroll hidden sm:block relative t-scroll-bar"
       :class="[isModalOpen ? 'w-8/12 change' : 'w-0 outline-0']"
     >
       <button
@@ -239,6 +239,7 @@
       </div>
     </div>
   </div>
+  <div class="pb-6 pl-8"></div>
 </template>
 
 <script>
@@ -1718,9 +1719,14 @@ export default {
 </script>
 
 <style lang="css">
-/* .change {
-  transition: width 0.5s ease-in-out;
-} */
+.t-scroll-bar::-webkit-scrollbar {
+  width: 2px;
+  background-color: #343434;
+}
+.t-scroll-bar::-webkit-scrollbar-thumb {
+  background-color: #9b9b9b;
+}
+
 .t-modal-overlay {
   position: relative;
   z-index: 1;
