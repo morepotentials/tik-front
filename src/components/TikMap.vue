@@ -1,29 +1,9 @@
 <template>
   <div
-    class="max-w-[700px] grow p-4 mt-auto sm:my-auto flex-col justify-center items-center"
+    class="max-w-[700px] grow p-4 my-auto flex-col justify-center items-center"
   >
-    <div
-      v-if="!isModalOpen"
-      class="absolute top-0 right-0 pl-4 pr-4 md:pr-0 md:ml-0 text-center md:text-left md:max-w-[350px] mt-4 sm:mt-8 md:mt-14"
-    >
-      <h2 class="text-t-green text-3xl lg:text-5xl italic font-bold">
-        Das regionale Programm <br />
-        <span class="text-white">70 kuratierte Standorte</span>
-      </h2>
-      <p class="inline text-white max-w-[250px] mt-4 w-full">
-        Nähere Informationen zu einzelnen Standorten der Industriekultur
-        Sachsen-Anhalts finden Sie auf
-        <a
-          href="https://industrietourismus.de/"
-          class="cursor-pointer text-t-green hover:underline"
-          target="_blank"
-          rel="noopener noreferrer"
-          >industrietourismus.de</a
-        >.
-      </p>
-    </div>
     <svg
-      width="100%"
+      width="auto"
       version="1.1"
       xmlns="http://www.w3.org/2000/svg"
       xmlns:xlink="http://www.w3.org/1999/xlink"
