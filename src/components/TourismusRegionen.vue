@@ -60,8 +60,10 @@
         </div>
         <div class="text-white">
           <p class="mb-8">
-            Der 14. Tag der Industriekultur wird am Sonntag, dem 21.04.2024
-            stattfinden.
+            Zum Aktionstag ist das industriekulturelle Erbe Sachsen-Anhalts
+            landesweit erlebbar. Kommen und staunen Sie wie vielfältig und
+            lebendig sich Orte, Personen und Ereignisse am der Industriekultur
+            (TIK) präsentieren und verbinden.
           </p>
         </div>
         <div class="flex justify-center sm:justify-start">
@@ -88,14 +90,14 @@
 
   <div ref="programm" class="h-screen flex flex-row">
     <div
-      class="container my-auto mx-auto h-screen items-center justify-center flex"
+      class="container my-auto mx-auto h-screen items-center justify-center flex relative"
     >
       <TikMap @some-event="setRegion" :is-modal-open="isModalOpen"></TikMap>
     </div>
     <div
       ref="programmDrawer"
       class="h-screen bg-t-grey overflow-y-scroll hidden sm:block relative t-scroll-bar"
-      :class="[isModalOpen ? 'w-8/12 change' : 'w-0 outline-0']"
+      :class="[isModalOpen ? 'w-full change' : 'w-0 outline-0']"
     >
       <button
         class="h-11 w-11 mt-4 mr-4 cursor-pointer self-end t-modal-close-button fix right-4 top-0 hidden sm:flex"
@@ -125,14 +127,15 @@
         >
           <hr class="h-[1px] w-24 bg-t-green my-3 border-0" />
           <span class="text-white text-2xl italic font-bold"
-            >{{ ort.Institution }},
+            >{{ ort.Institution }} <br />
           </span>
           <span class="text-white text-2xl italic font-light">
             {{ ort.AktionsortStraße }}, {{ ort.PLZ }}, {{ ort.Ortsname }}
           </span>
-          <div class="max-w-[500px]">
+          <div class="max-w-[800px]">
             <span class="text-t-green italic text-xl font-light">
-              Öffnungszeiten: {{ ort.Oeffnungszeit }} <br />
+              Öffnungszeiten: {{ ort.Oeffnungszeit }}
+              <br />
               <br />
             </span>
             <span
@@ -140,9 +143,23 @@
             >
               {{ ort.AktivitätTIK_2024 }}
             </span>
-            <!-- <span class="text-t-green italic text-xl">
-              {{ ort.details }}
-            </span> -->
+            <div v-if="ort.Infos !== ''">
+              <span class="italic font-bold text-t-green">
+                <br />
+                Infos zum Standort: <br />
+              </span>
+              <a
+                :href="createLink(ort.Infos)"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <span
+                  class="italic text-white font-bold cursor-pointer hover:underline"
+                >
+                  {{ ort.Infos }}
+                </span>
+              </a>
+            </div>
             <div v-if="ort.Webseite !== ''">
               <hr class="h-[1px] w-24 bg-t-green my-3 border-0" />
               <span class="italic font-bold text-t-green"> KONTAKT: </span>
@@ -166,7 +183,7 @@
     <div
       ref="programmModal"
       :class="[isModalOpen ? 'z-[1] block sm:hidden' : 'z-[-1] hidden']"
-      class="fixed bottom-0 left-0 right-0 top-0 bg-t-grey t-modal-overlay"
+      class="fixed bottom-0 left-0 right-0 top-0 bg-t-grey t-modal-overlay t-scroll-bar"
     >
       <div class="t-modal-overlay-container">
         <div class="t-modal-overlay">
@@ -182,15 +199,17 @@
               >
                 <hr class="h-[1px] w-24 bg-t-green my-3 border-0" />
                 <span class="text-white text-2xl italic font-bold"
-                  >{{ ort.Institution }},
+                  >{{ ort.Institution }} <br />
                 </span>
                 <span class="text-white text-2xl italic font-light">
                   {{ ort.AktionsortStraße }},
                   {{ ort.PLZ.replace(/['"]+/g, "") }}, {{ ort.Ortsname }}
                 </span>
-                <div class="max-w-[500px]">
+                <div class="max-w-[800px]">
                   <p class="text-t-green italic text-xl font-light">
-                    Öffnungszeiten: {{ ort.Oeffnungszeit }} &nbsp;
+                    Öffnungszeiten: {{ ort.Oeffnungszeit }}
+                    <br />
+                    <br />
                   </p>
 
                   <span
@@ -198,9 +217,23 @@
                   >
                     {{ ort.AktivitätTIK_2024 }}
                   </span>
-                  <!-- <span class="text-t-green italic text-xl">
-                    {{ ort.details }}
-                  </span> -->
+                  <div v-if="ort.Infos !== ''">
+                    <span class="italic font-bold text-t-green">
+                      <br />
+                      Infos zum Standort: <br />
+                    </span>
+                    <a
+                      :href="createLink(ort.Infos)"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <span
+                        class="italic font-bold cursor-pointer hover:underline"
+                      >
+                        {{ ort.Infos }}
+                      </span>
+                    </a>
+                  </div>
                   <hr class="h-[1px] w-24 bg-t-green my-3 border-0" />
                   <span class="italic font-bold text-t-green"> KONTAKT: </span>
                   <a
@@ -268,6 +301,7 @@ export default {
         Oeffnungszeit: "",
         AktivitätTIK_2024: "",
         Webseite: "",
+        Infos: "",
         TeilnahmeBestätigt: "",
       },
       {
@@ -278,8 +312,9 @@ export default {
         AktionsortStraße: "Lindenstrasse 18",
         Oeffnungszeit: "10-15.00 Uhr",
         AktivitätTIK_2024:
-          "Das Agraneum ist an diesem Tag  geöffnet, und es werden bedarfsweise  Sonderführungen durch die Sammlung angeboten.",
+          "Das Agraneum ist an diesem Tag  geöffnet, \nund es werden bedarfsweise  Sonderführungen durch die Sammlung angeboten.",
         Webseite: "https://agraneum.de/",
+        Infos: "",
         TeilnahmeBestätigt: "04.04.2024",
       },
       {
@@ -293,6 +328,7 @@ export default {
         AktivitätTIK_2024:
           "Alter Hopfendarreturm Salzwedel\nInformation & Protest gegen den Abriss und Gespräche für dessen Erhalt und Umnutzung",
         Webseite: "Vereinsbüro Altperverstraße 26/28",
+        Infos: "",
         TeilnahmeBestätigt: "07.03.2024",
       },
       {
@@ -304,6 +340,7 @@ export default {
         Oeffnungszeit: "",
         AktivitätTIK_2024: "Keine Möglichkeit – Sicherheitsbedenken",
         Webseite: "",
+        Infos: "",
         TeilnahmeBestätigt: "",
       },
       {
@@ -315,6 +352,7 @@ export default {
         Oeffnungszeit: "",
         AktivitätTIK_2024: "erst 2025",
         Webseite: "",
+        Infos: "",
         TeilnahmeBestätigt: "",
       },
       {
@@ -325,9 +363,10 @@ export default {
         AktionsortStraße: "Molmker Str. 23",
         Oeffnungszeit: "10-17.00 Uhr",
         AktivitätTIK_2024:
-          "TIK im Rahmen des landwirtschaftlichen Aktionstages 2024\nu.a. mit  Schmiedevorführungen und Mühlenbesichtigungen dazu Kindermitmachaktionen & Musik Drehorgelorchester Hitzacker",
+          "TIK im Rahmen des landwirtschaftlichen Aktionstages 2024\nu.a. mit  Schmiedevorführungen und Mühlenbesichtigungen dazu  Kindermitmachaktionen & Musik mit Drehorgelorchester Hitzacker",
         Webseite:
           "https://www.museen-altmarkkreis.de/Freilichtmuseum-Diesdorf.html",
+        Infos: "",
         TeilnahmeBestätigt: "02.04.2024",
       },
       {
@@ -338,9 +377,10 @@ export default {
         AktionsortStraße: "Bahnhofsvorplatz",
         Oeffnungszeit: "10-17.00 Uhr",
         AktivitätTIK_2024:
-          "Präsentation einer 150 Jahre alten in Tangerhütte gegossenen Laterne auf dem Bahnhofsvorplatz\nStadtspaziergang zur Industriekultur in Tangerhütte um 10.30 Uhr und 14.00 Uhr von der Gußlaterne Bahnhofsvorplatz über die Alte Gießerei zum  Weltausstellungspavillion im Schloßpark ",
+          "Präsentation einer 150 Jahre alten in Tangerhütte gegossenen Laterne auf dem Bahnhofsvorplatz\n\nStadtspaziergang zur Industriekultur in Tangerhütte um 10.30 Uhr und 14.00 Uhr von der Gußlaterne Bahnhofsvorplatz über die Alte Gießerei zum  Weltausstellungspavillion im Schloßpark ",
         Webseite:
           "https://www.industriekultur-tangerhuette.de/industriekultur.htm",
+        Infos: "",
         TeilnahmeBestätigt: "31.03.2023",
       },
       {
@@ -352,7 +392,8 @@ export default {
         Oeffnungszeit: "10-17.00 Uhr",
         AktivitätTIK_2024:
           "Bürgerprojekt zur Reaktivierung\nSonderführung & Vortrag um 15.00 Uhr mit geselligem Austausch bei Kaffee und Kuchen",
-        Webseite: "https://www.altes-schoepfwerk-vehlgast.info/",
+        Webseite: "https://www.altes-schoepfwerk-vehlgast.info/\n\n",
+        Infos: "https://industrietourismus.de/altes-schoepfwerk-vehlgast/",
         TeilnahmeBestätigt: "27.02.2024",
       },
       {
@@ -364,6 +405,7 @@ export default {
         Oeffnungszeit: "",
         AktivitätTIK_2024: 'Traditionsverein "Erdöl-Erdgas" e.V.',
         Webseite: "erst 2025",
+        Infos: "",
         TeilnahmeBestätigt: "",
       },
       {
@@ -374,8 +416,9 @@ export default {
         AktionsortStraße: "Bahnhofstraße 34",
         Oeffnungszeit: "10-17.00 Uhr",
         AktivitätTIK_2024:
-          "Informationen zum Bürgerprojekt\nLicht- und Leseinstallation in Kooperation mit lokaler Buchhandlung",
+          "Informationen zum Bürgerprojekt\nLicht- und Leseinstallation in Kooperation\nmit lokaler Buchhandlung",
         Webseite: "https://tunnelhaeuschen-stendal.de/",
+        Infos: "",
         TeilnahmeBestätigt: "07.03.2024",
       },
       {
@@ -387,6 +430,7 @@ export default {
         Oeffnungszeit: "",
         AktivitätTIK_2024: "",
         Webseite: "",
+        Infos: "",
         TeilnahmeBestätigt: "",
       },
       {
@@ -398,6 +442,7 @@ export default {
         Oeffnungszeit: "",
         AktivitätTIK_2024: "",
         Webseite: "",
+        Infos: "",
         TeilnahmeBestätigt: "",
       },
       {
@@ -409,6 +454,7 @@ export default {
         Oeffnungszeit: "",
         AktivitätTIK_2024: "",
         Webseite: "",
+        Infos: "",
         TeilnahmeBestätigt: "",
       },
       {
@@ -420,6 +466,7 @@ export default {
         Oeffnungszeit: "",
         AktivitätTIK_2024: "",
         Webseite: "www.eisenbahnclub-asl.de",
+        Infos: "",
         TeilnahmeBestätigt: "",
       },
       {
@@ -431,7 +478,8 @@ export default {
         Oeffnungszeit: "10-16.00 Uhr",
         AktivitätTIK_2024:
           'Museumsöffnung unter dem Motto:\n"Die Wunder der Fernmeldetechnik, über Telegraphie und Telephonie zum Rundfunk"',
-        Webseite: "http://www.fernmeldemuseum-bottmersdorf.de/home.htm",
+        Webseite: "http://www.fernmeldemuseum-bottmersdorf.de/home.htm\n\n",
+        Infos: "https://industrietourismus.de/fernmeldemuseum-bottmersdorf/",
         TeilnahmeBestätigt: "12.02.2024",
       },
       {
@@ -442,8 +490,9 @@ export default {
         AktionsortStraße: "Gröninger Straße 2",
         Oeffnungszeit: "14-17.00 Uhr",
         AktivitätTIK_2024:
-          "14.30 / 15.30/ 16.30 Uhr\nSonderführung durch das Göninger Badehauses\nStadtgang zum  Salbker Wasserturm mit Modell zur Entwicklungsmaßnahme RAW-Gelände",
+          "14.30 / 15.30/ 16.30 Uhr\n- Sonderführung durch das Göninger Badehaus\n- Stadtgang zum  Salbker Wasserturm mit Modell zur Entwicklungsmaßnahme \nRAW-Gelände",
         Webseite: "https://www.groeningerbad.de/",
+        Infos: "",
         TeilnahmeBestätigt: "13.03.2024",
       },
       {
@@ -455,7 +504,8 @@ export default {
         Oeffnungszeit: "",
         AktivitätTIK_2024:
           "Lesung Herbert Beesten & Gundula Ihlefeldt \nFörderverein der Schriftsteller e.V. ",
-        Webseite: "www.heimatverein-burg.com",
+        Webseite: "www.heimatverein-burg.com\n\n",
+        Infos: "https://industrietourismus.de/historische-gerberei-burg/",
         TeilnahmeBestätigt: "",
       },
       {
@@ -466,8 +516,10 @@ export default {
         AktionsortStraße: "Ernst-Thälmann-Strasse 5a",
         Oeffnungszeit: "10-17.00 Uhr",
         AktivitätTIK_2024:
-          'Aktionstag mit Eröffnung neuer Ausstellungen, Sonderführungen und Familienfest\nEröffnung der neuen Ausstellung "Zündmaschinen"\nEröffnung der Nebenausstellung "Städtebauliche Beeinflussungen durch die Industrielle Revolution und Transformationen in der Region und Schönebeck"\nEröffnung der Nebenausstellung im Außenbereich "Die Wechselwirkungen der industriellen Entwicklung mit der Entwicklung des Schienenverkehrs in der Region"\niMUSEt-Schiebepuzzles für Kids im Einsatz',
-        Webseite: "https://imuset.de/",
+          'Aktionstag mit Eröffnung neuer Ausstellungen, Sonderführungen und Familienfest\n- Eröffnung der neuen Ausstellung "Zündmaschinen"\n\n- Eröffnung der Nebenausstellung "Städtebauliche Beeinflussungen durch die Industrielle Revolution und Transformationen in der Region und Schönebeck"\n\n- Eröffnung der Nebenausstellung im Außenbereich "Die Wechselwirkungen der industriellen Entwicklung mit der Entwicklung des Schienenverkehrs in der Region"\n\n- iMUSEt-Schiebepuzzles für Kids im Einsatz',
+        Webseite: "https://imuset.de/\n\n",
+        Infos:
+          "https://industrietourismus.de/industrie-und-kunstmuseum-imuset/",
         TeilnahmeBestätigt: "12.02.2024",
       },
       {
@@ -478,8 +530,9 @@ export default {
         AktionsortStraße: "Kalimandscharo, Teichstraße 1",
         Oeffnungszeit: "10-16.00 Uhr",
         AktivitätTIK_2024:
-          'Bergmannsverein Zielitz e.V. "Scholle von Calvörde" Bergtouren\n10.30 Uhr und 14.00 Uhr mit den Kameraden Matthias Schlesiger und Manfred Witzel\nTreffpunkt: ab Infopoint Halde 2 ca. 2 h über eine  Gesamtstrecke von ca. 6,5 km davon ca. 3 km Anmarsch auf das 120 m Haldenplateau mit einem imposanten Blick auf  das Kaliwerk, die umliegenden Ortschaften, das Wasserstraßenkreuz u.v.m. mit festem Schuhwerk\nEintritt gegen Spende',
+          'Bergmannsverein Zielitz e.V. \n"Scholle von Calvörde" Bergtouren\n\n10.30 Uhr und 14.00 Uhr mit den Kameraden Matthias Schlesiger und Manfred Witzel\n\nTreffpunkt: Infopoint Halde II ca. 2 h über eine Gesamtstrecke von ca. 6,5 km davon ca. 3 km Anmarsch auf das 120 m Haldenplateau mit einem imposanten Blick auf  das Kaliwerk, die umliegenden Ortschaften, das Wasserstraßen-kreuz u.v.m. \n\nBitte mit festem Schuhwerk!\n\nEintritt gegen Spende',
         Webseite: "https://www.kalimandscharo.com/de/home/",
+        Infos: "",
         TeilnahmeBestätigt: "07.03.2024",
       },
       {
@@ -490,8 +543,9 @@ export default {
         AktionsortStraße: "Badepark 1",
         Oeffnungszeit: "14-17.00 Uhr",
         AktivitätTIK_2024:
-          "ab 14.00 Uhr Kunsthofführung auf Anmeldung, QR-Code Rundgang\nBei diesem Rundgang erklimmen Sie die Höhen des Gradierwerkes, gehen in den Soleturm, steigen hinab in die Tiefe zur verborgenen Viktoriaquelle und bestaunen die kleinste produzierende Pfannensaline Deutschlands, inklusive Schausieden.\nSie begeben sich auf eine spannende Erlebnisreise in die Welt der Salz-, Salinen- Industrie- und Kurgeschichte und erfahren auf unterhaltsame Art und Weise, von einem ausgebildeten Fremdenführer, viel über die Region und die Menschen im Wandel der Zeit. \nIm Anschluss an die Führung haben Sie die Möglichkeit allein den Soleturm bis in die 6. Etage zu erkunden und können sich im Schausiedehaus die fortlaufend gezeigten Infofilme zum Gradierwerk, dem Schausieden und dem Soleturm ansehen.\n\nPreis pro Person: 7,00 € Erw.,  5,00 €  Kinder (6-12 Jahre)\nTreffpunkt: Tourist-Info „Am Soleturm“ (Rotes Haus)\nDauer: 1 Stunde\nUm telefonische Anmeldung wird gebeten: 03928 705555\nab 14.30 Uhr bis 17.00 Uhr\nQR- Code Rundgang + Info Filme\n\nBegeben Sie sich allein auf eine spannende Entdeckungsreise in die Salz- und Kurgeschichte unserer Stadt. Im Roten Haus, im Soleturm und im Schausiedehaus finden Sie Infotafeln, dort kann per Handy der QR-Code gescannt und viele spannende Informationen abgerufen werden. Sie können sich dort Videos ansehen, Audiodateien hören  oder in pdf-Dateien lesen und Bilder ansehen.\nIm Schausiedehaus werden fortlaufend kurze Infofilme zum Gradierwerk, dem Schausieden und dem Soleturm gezeigt.\nPreis pro Person: 4,00 € Erw.,  2,00 €  Kinder (6-12 Jahre)\nTreffpunkt: Tourist-Info „Am Soleturm“ (Rotes Haus)\nDauer: individuell\n",
-        Webseite: "www.solepark.de",
+          "ab 14.00 Uhr Kunsthofführung auf Anmeldung, \n\nBei diesem Rundgang erklimmen Sie die Höhen des Gradierwerkes, gehen in den Soleturm, steigen hinab in die Tiefe zur verborgenen Viktoriaquelle und bestaunen die kleinste produzierende Pfannensaline Deutschlands, inklusive Schausieden.\n\nSie begeben sich auf eine spannende Erlebnisreise in die Welt der Salz-, Salinen- Industrie- und Kurgeschichte und erfahren auf unterhaltsame Art und Weise, von einem ausgebildeten Fremdenführer, viel über die Region und die Menschen im Wandel der Zeit.\n\nIm Anschluss an die Führung haben Sie die Möglichkeit allein den Soleturm bis in die sechste Etage zu erkunden und können sich im Schausiedehaus die fortlaufend gezeigten Infofilme zum Gradierwerk, dem Schausieden und dem Soleturm ansehen.\n\nPreis pro Person:\n7,00 € Erw.,  5,00 €  Kinder (6-12 Jahre)\n\nTreffpunkt:\nTourist-Info „Am Soleturm“ (Rotes Haus)\n\nDauer: ca. 1 Stunde\n\nUm telefonische Anmeldung wird gebeten: 03928 705555\n\nab 14.30 Uhr bis 17.00 Uhr\nQR- Code Rundgang + Info Filme\n\nBegeben Sie sich allein auf eine spannende Entdeckungsreise in die Salz- und Kurgeschichte unserer Stadt. \n\nIm Roten Haus, im Soleturm und im Schausiedehaus finden Sie Infotafeln, dort kann per Handy der QR-Code gescannt und viele spannende Informationen abgerufen werden. \n\nSie können sich dort Videos ansehen, Audiodateien hören  oder in pdf-Dateien lesen und Bilder ansehen.\n\nIm Schausiedehaus werden fortlaufend kurze Infofilme zum Gradierwerk, dem Schausieden und dem Soleturm gezeigt.\n\nPreis pro Person:\n4,00 € Erw.,  2,00 €  Kinder (6-12 Jahre)\n\nTreffpunkt:\nTourist-Info „Am Soleturm“ (Rotes Haus)\n\nDauer: individuell\n",
+        Webseite: "www.solepark.de\n\n\n\n",
+        Infos: "https://industrietourismus.de/kunsthof-bad-salzelmen/",
         TeilnahmeBestätigt: "13.03.2024",
       },
       {
@@ -502,8 +556,10 @@ export default {
         AktionsortStraße: "",
         Oeffnungszeit: "10-17.00 Uhr",
         AktivitätTIK_2024:
-          'Folgende im Gebiet von Sachsen-Anhalt liegende Stationen der historischen\n"Optischen Telegraphenlinie Berlin-Koblenz" sind an diesem Tag geöffnet:\n\nStation Nr. 11 Ziegelsdorf, Telegraphenberg\nvoll funktionsfähiger Signalmast\nOT Ziegelsdorf \nTelegrafenstraße \n39291 Möckern\nFührungen und Besichtigung: 14.00 – 17.00 Uhr\nAnsprechpartner für Rückfragen: Torsten Wambach (Tel.: 01 60 / 8 10 17 07)\n\nStation Nr. 16 Ampfurth, Schlossturm\nSchloss- und Telegraphenturm\nOT Ampfurth \nAlte Schermcker Str. 14 c\n39387 Oschersleben (Bode) \nFührungen und Besichtigung: 14.00 – 17.00 Uhr\nAnsprechpartner für Rückfragen: Achim Röttger (Tel.: 03 94 07 / 57 47)\nStation Nr. 18 Neuwegersleben\n \nStationsgebäude mit funktionsfähiger Telegraphenanlage, \nMuseum zur Geschichte und Technik der optischen Telegraphie \nHornhäuser Straße, Telegrafenberg\t\nOT Neuwegersleben 39396 Am Großen Bruch\n\nFührungen und Besichtigung: 14.00 – 17.00 Uhr\nAnsprechpartner für Rückfragen: Henning Fuchs (Tel.: 0152/01690041)\n\n\nStation Nr. 19 Pabstorf\nSommeringberg\nDauerausstellung im Heimatmuseum Dedeleben \nErnst-Thälmann-Str.64b\nOT Dedeleben\n38836Huy\nFührungen und Besichtigung: 14.00 – 17.00 Uhr\nAnsprechpartner für Rückfragen: Uwe Krebs (Tel.: 03 94 22 / 6 12 18)\n',
-        Webseite: "http://www.telegraphenradweg.de/startseite.html",
+          'Folgende im Gebiet von Sachsen-Anhalt liegende Stationen der historischen\n"Optischen Telegraphenlinie Berlin-Koblenz" sind an diesem Tag geöffnet:\n\nStation Nr. 11 - Ziegelsdorf, Telegraphenberg\nvoll funktionsfähiger Signalmast\nOT Ziegelsdorf \nTelegrafenstraße \n39291 Möckern\nFührungen und Besichtigung: 14.00 – 17.00 Uhr\nAnsprechpartner für Rückfragen: Torsten Wambach (Tel.: 01 60 / 8 10 17 07)\n\nStation Nr. 16 - Ampfurth, Schlossturm\nSchloss- und Telegraphenturm\nOT Ampfurth \nAlte Schermcker Str. 14 c\n39387 Oschersleben (Bode) \nFührungen und Besichtigung: 14.00 – 17.00 Uhr\nAnsprechpartner für Rückfragen: Achim Röttger (Tel.: 03 94 07 / 57 47)\n\nStation Nr. 18 - Neuwegersleben\nStationsgebäude mit funktionsfähiger Telegraphenanlage, \nMuseum zur Geschichte und Technik der optischen Telegraphie \nHornhäuser Straße, Telegrafenberg\t\nOT Neuwegersleben 39396 Am Großen Bruch\n\nFührungen und Besichtigung:\n14.00 – 17.00 Uhr\nAnsprechpartner für Rückfragen:\nHenning Fuchs Tel.: 0152/01690041\n\nStation Nr. 19 - Pabstorf\nSommeringberg\nDauerausstellung im Heimatmuseum Dedeleben \nErnst-Thälmann-Str.64b\nOT Dedeleben\n38836 Huy\n\nFührungen und Besichtigung:\n14.00 – 17.00 Uhr\n\nAnsprechpartner für Rückfragen:\nUwe Krebs Tel.: 03 94 22 /6 12 18\n',
+        Webseite:
+          "http://www.telegraphenradweg.de/startseite.html\n\nhttps://www.optische-telegrafie.de/\n\nhttps://www.museum-dedeleben.de/",
+        Infos: "https://industrietourismus.de/optische-telegraphenlinie/",
         TeilnahmeBestätigt: "28.03.2024",
       },
       {
@@ -515,6 +571,7 @@ export default {
         Oeffnungszeit: "10-17.00 Uhr",
         AktivitätTIK_2024: "frei zugänglich",
         Webseite: "",
+        Infos: "https://industrietourismus.de/pretziener-wehr/",
         TeilnahmeBestätigt: "02.04.2024",
       },
       {
@@ -526,6 +583,7 @@ export default {
         Oeffnungszeit: "",
         AktivitätTIK_2024: "Führungen",
         Webseite: "",
+        Infos: "",
         TeilnahmeBestätigt: "",
       },
       {
@@ -536,8 +594,10 @@ export default {
         AktionsortStraße: "Rothensee Schiffshebewerk",
         Oeffnungszeit: "10-14.00 Uhr",
         AktivitätTIK_2024:
-          'jeweils um 10, 11 und 12 werden Sonderführungen durch die Urania Magdeburg e.V. kostenfrei angeboten.\nTreffpunkt ist der Parkplatz vor der "Gasstätte zum Anker". ',
-        Webseite: "https://www.magdeburg-tourist.de/",
+          'jeweils um 10.00 / 11.00 / und 12.00 Uhr werden Sonderführungen zur Technikgeschichte durch die Urania Magdeburg e.V. kostenfrei angeboten.\n\nTreffpunkt ist der Parkplatz vor der "Gaststätte zum Anker". ',
+        Webseite: "https://www.magdeburg-tourist.de/\n\n",
+        Infos:
+          "https://industrietourismus.de/schiffshebewerk-magdeburg-rothensee/",
         TeilnahmeBestätigt: "13.02.2024",
       },
       {
@@ -548,21 +608,23 @@ export default {
         AktionsortStraße: "Dodendorfer Straße 65",
         Oeffnungszeit: "10-17.00 Uhr",
         AktivitätTIK_2024:
-          "Ankerpunkt Region Magdeburg\nvon 10-17 Uhr geöffnet (Eintritt regulär 4 €, ermäßigt 2 €, Kinder und Jugendliche frei)\n- von 10-14.00 Uhr bietet der Förderverein ein Kinderprogramm an\n- 10-15 Uhr Schaubetrieb in der historischen Druckerei mit Mitmachaktionen für die ganze Familie\n- um 15.00 Uhr spricht der Direktor Dr. Hajo Neumann über die Geschichte und Neukonzeption des Museums\n- zu wechselnden Uhrzeiten werden Kurzführungen, Depotführungen und Vorführungen des historischen Portalkranes angeboten\n- Der Förderverein stellt ein Projekt zur Objektvisualisierung mittels VR vor.\n- gegen Spende werden Getränke & kleine Snacks angeboten",
-        Webseite: "https://www.magdeburg.de//technikmuseum",
+          "Ankerpunkt Region Magdeburg\n\nvon 10-17 Uhr geöffnet\nEintritt: regulär 4 €, ermäßigt 2 €, \nKinder und Jugendliche frei\n\n- von 10-14.00 Uhr \nbietet der Förderverein ein Kinderprogramm an\n\n- von 10-15 Uhr \nSchaubetrieb in der historischen Druckerei mit Mitmachaktionen für die ganze Familie\n\n- um 15.00 Uhr \nspricht der Direktor Dr. Hajo Neumann über die Geschichte und Neukonzeption des Museums\n\n- zu wechselnden Uhrzeiten werden Kurzführungen, Depotführungen und Vorführungen des historischen Portalkranes angeboten\n\n- Der Förderverein stellt ein Projekt zur Objektvisualisierung mittels VR vor.\n\n- gegen Spende werden Getränke & kleine Snacks angeboten",
+        Webseite: "https://www.magdeburg.de//technikmuseum\n\n",
+        Infos: "https://industrietourismus.de/technikmuseum-magdeburg/",
         TeilnahmeBestätigt: "12.02.2024",
       },
       {
         Region: "Magdeburg-Elbe-Börde-Heide",
-        Institution: "Waschmittelwerk Genthin",
+        Institution: "Waschmittelmuseum Genthin, Altes Badehaus",
         PLZ: "39307",
         Ortsname: "Genthin",
-        AktionsortStraße: "Altes Badehaus Henkelstraße 8",
-        Oeffnungszeit: "10-17.00 Uhr",
+        AktionsortStraße: "Altes Badehaus Ziegeleistraße 56",
+        Oeffnungszeit: "14-17.00 Uhr",
         AktivitätTIK_2024:
-          "Erzählcafé der Genthiner Waschfrauen mit dem Netzwerk Frauenorte um 14.30 Uhr",
+          "15:00 Uhr Erzählcafé \nmit Genthiner Waschfrauen \n\nDie Koordinatorin der FrauenOrte Sachsen-Anhalt wird mit den Zeitzeuginnen über ihre Arbeitsbiografien sprechen und warum sie seit\nJahren ehrenamtlich den Fortbestand dieses einzigartigen Waschmittelmuseums Deutschlands absichern.\n\nWichtiger Hinweis: \nDer Zugang zum Museumsgelände ist sowohl von der Ziegeleistraße als auch direkt vom Genthiner Stadtzentrum über die Fußgängerbrücke ins Gewerbegebiet am Elbe-Havel-Kanal möglich. \n\nDer Eintritt ist frei, um Spende für den Erhalt wird gebeten. \n\nKontakt:\nAnke Triller \n(Koordinatorin der FrauenOrte Sachsen-Anhalt) \ninfo@frauenorte.net",
         Webseite:
           "https://henkel-pensionaere.de/mediathek/aktuelles/1619-das-henkel-waschmittel-museum-in-genthin",
+        Infos: "",
         TeilnahmeBestätigt: "23.02.2024",
       },
       {
@@ -573,8 +635,9 @@ export default {
         AktionsortStraße: "Alt Salbke 110 c",
         Oeffnungszeit: "14-17.00 Uhr",
         AktivitätTIK_2024:
-          "14.30 / 15.30/ 16.30 Uhr\nSonderführung durch das Göninger Badehauses\nStadtgang zum  Salbker Wasserturm mit Modell zur Entwicklungsmaßnahme RAW-Gelände",
+          "14.30 / 15.30/ 16.30 Uhr\n- Sonderführung zum Projekt Salbker Wasserturm mit Modell zur Entwicklungsmaßnahme RAW-Gelände \n\n- Stadtgang zum benachbarten Göninger Badehaus ",
         Webseite: "http://www.turmpark.de/turmpark",
+        Infos: "",
         TeilnahmeBestätigt: "13.03.2024",
       },
       {
@@ -585,8 +648,9 @@ export default {
         AktionsortStraße: "Elbe-Silo B, Werner-Heisenberg-Straße 19-25",
         Oeffnungszeit: "10-13.00 Uhr",
         AktivitätTIK_2024:
-          "10-13.00 Uhr Baustellenführungen durch die Reichseinheitsspiecher und deren Umnutzung mit Bauleiter Herrn Paulus und Architekt Uwe Thal ",
+          '10-13.00 Uhr \nBaustellenführungen durch die "Reichseinheitsspiecher" und deren Umnutzung mit Bauleiter Herrn Paulus & Architekt Uwe Thal ',
         Webseite: "https://www.architekturbüro-thal.de/",
+        Infos: "",
         TeilnahmeBestätigt: "28.02.2024",
       },
       {
@@ -597,8 +661,9 @@ export default {
         AktionsortStraße: "Jacob-Bührer-Strasse 2",
         Oeffnungszeit: "14-17.00 Uhr",
         AktivitätTIK_2024:
-          "Sonderführungen\nFeldbahnfahrten\nKreativarbeiten in der Keramikwerkstatt für die ganze Familie\nSelbstversuch Handstrichziegel\n",
-        Webseite: "https://www.ziegelei-hundisburg.de/",
+          "- Sonderführungen\n- Feldbahnfahrten\n- Kreativarbeiten in der Keramikwerkstatt für die ganze Familie\n- Selbstversuch Handstrichziegel herzustellen",
+        Webseite: "https://www.ziegelei-hundisburg.de/\n\n",
+        Infos: "https://industrietourismus.de/ziegelei-hundisburg/",
         TeilnahmeBestätigt: "07.02.2024",
       },
       {
@@ -610,6 +675,7 @@ export default {
         Oeffnungszeit: "",
         AktivitätTIK_2024: "Kontakt steht aus",
         Webseite: "www.museumsziegelei.de",
+        Infos: "",
         TeilnahmeBestätigt: "",
       },
       {
@@ -621,6 +687,7 @@ export default {
         Oeffnungszeit: "",
         AktivitätTIK_2024: "",
         Webseite: "",
+        Infos: "",
         TeilnahmeBestätigt: "",
       },
       {
@@ -632,6 +699,7 @@ export default {
         Oeffnungszeit: "",
         AktivitätTIK_2024: "",
         Webseite: "",
+        Infos: "",
         TeilnahmeBestätigt: "",
       },
       {
@@ -643,6 +711,7 @@ export default {
         Oeffnungszeit: "",
         AktivitätTIK_2024: "",
         Webseite: "",
+        Infos: "",
         TeilnahmeBestätigt: "",
       },
       {
@@ -654,6 +723,7 @@ export default {
         Oeffnungszeit: "",
         AktivitätTIK_2024: "",
         Webseite: "info@wernigerode-tourismus.de",
+        Infos: "",
         TeilnahmeBestätigt: "",
       },
       {
@@ -665,6 +735,7 @@ export default {
         Oeffnungszeit: "",
         AktivitätTIK_2024: "erst 2025",
         Webseite: "",
+        Infos: "",
         TeilnahmeBestätigt: "",
       },
       {
@@ -677,6 +748,7 @@ export default {
         Oeffnungszeit: "",
         AktivitätTIK_2024: "erst 2025",
         Webseite: "",
+        Infos: "",
         TeilnahmeBestätigt: "",
       },
       {
@@ -688,6 +760,7 @@ export default {
         Oeffnungszeit: "",
         AktivitätTIK_2024: "erst 2025",
         Webseite: "",
+        Infos: "",
         TeilnahmeBestätigt: "",
       },
       {
@@ -699,6 +772,7 @@ export default {
         Oeffnungszeit: "",
         AktivitätTIK_2024: "?",
         Webseite: "www.harzgerode-tourismus.de",
+        Infos: "",
         TeilnahmeBestätigt: "",
       },
       {
@@ -710,6 +784,7 @@ export default {
         Oeffnungszeit: "",
         AktivitätTIK_2024: "Eisenguß Ofentüren Ausstellung in der Gußhalle ",
         Webseite: "https://www.heimatverein-ilsenburg.de/eisen-museum/",
+        Infos: "",
         TeilnahmeBestätigt: "",
       },
       {
@@ -717,11 +792,12 @@ export default {
         Institution: "Eisernes Band - Bahnhof Gerbstedt",
         PLZ: "06347",
         Ortsname: "Gerbstedt",
-        AktionsortStraße: "Bahnhofsstraße 20",
+        AktionsortStraße: "Bahnhofsstraße 21",
         Oeffnungszeit: "10-17.00 Uhr",
         AktivitätTIK_2024:
-          "Erstmals ist das Eiserne Band aus beiden Richtungen als historische industrielle Verbindung erlebbar. \n10:00 bis 12:00 Uhr geführte Radtour durch Halle (Saale) auf der Hafenbahntrasse zwischen dem ehem. Thüringer Bahnhof und dem ehem. Sophienhafen, dabei wird insbesondere auf die ehemaligen Gleisanschlüsse, ca. 30 an der Zahl, Bezug genommen\n\n10:00 bis 16:00 Uhr Vorstellung des künftigen Netzwerkes Am Eisernen Band im Bahnhof Drei Annen Hohne der Harzer Schmalspurbahnen \n10:00 bis 17:00 Uhr Bahnhof Gerbstedt - Öffnung der Interims-Ausstellung zur Geschichte der Halle-Hettstedter Eisenbahn auf dem Güterboden\n\n\nSternfahrt mit zwei historischen Bussen der Marke Saurer von Halle und Wernigerode nach Harzgerode und zurück mit Unterwegs-Programm\n\nHalle-Beesenstedt-Gerbstedt-Hettstedt-Harzgerode-Halle \n9:30 Uhr Abfahrt am Busbahnhof des Hbf. Halle (Saale)\nBesichtigung des historischen Straßenbahndepots in Halle, Seebener Straße\nFührung am ehemaligen Wasserturm der Halle-Hettstedter Eisenbahn in Beesenstedt\nImbiss im Bahnhof Gerbstedt mit Besichtigung der Ausstellung zur HHE\nFahrt mit der Mansfelder Bergwerksbahn vom Bf Siersleben bis Bf Kupferkammerhütte in Hettstedt und Besichtigung der neuen Ausstellung im Lokschuppen, Fahrzeugausstellung auf dem Freigelände\nBesichtigung der Ausstellung Harz-Kugeleum zu Bergbau und Regionalgeschichte im Schloss Harzgerode\nRückankunft am Busbahnhof des Hbf. Halle (Saale) gegen 19:00 Uhr\nDer Preis pro Teilnehmer mit Busfahrt und Eintrittsgeldern in die Museen einschließlich Kaffee und Kuchen in Harzgerode beträgt 65 Euro für Erwachsene und 39 Euro für Kinder (bis 14 Jahre). \nDen Mittagsimbiss im Bahnhof Gerbstedt trägt jeder Teilnehmer bitte selbst.\n\nWernigerode-Todtenrode-Strassberg-Harzgerode-Wernigerode\n9:45 Uhr Abfahrt am Hbf. Wernigerode\nBesichtigung des Luftfahrtmuseums in Wernigerode\nMittagessen im Restaurant „Zum alten Forsthaus“ in Todtenrode\nÜber- und unter-Tage-Führung durch das Besucher-Bergwerk Grube Glasebach in Straßberg,\nBefahrung eines Teils des Glasebacher Stollens mit der Grubenbahn\nBesichtigung der Ausstellung Harz-Kugeleum zu Bergbau und Regionalgeschichte im Schloss Harzgerode\nRückankunft am Hbf. Wernigerode gegen 19:00 Uhr\nDer Preis pro Teilnehmer mit Busfahrt und Eintrittsgeldern in die Museen einschließlich Kaffee und Kuchen in Harzgerode beträgt 65 Euro für Erwachsene und 39 Euro für Kinder (bis 14 Jahre).\nDas Mittagessen im Forsthaus Todtenrode trägt jeder Teilnehmer bitte selbst.\n\nBitte melden Sie sich bei Interesse für die geführte Fahrradtour auf der Hafenbahn sowie beide Busfahrten bis zum 12. April 2024 unter info@halle-hettstedter-eisenbahn.de an.\n",
+          'Erstmals ist das Eiserne Band aus beiden Richtungen als historische industrielle Verbindung erlebbar!\n\n\n- 10.00 bis 12.00 Uhr \ngeführte Radtour durch Halle (Saale) \nauf der Hafenbahntrasse zwischen dem ehem. Thüringer Bahnhof und dem ehem. Sophien-hafen, dabei wird insbesondere auf die ehem. ca. 30 Gleisanschlüsse Bezug genommen\n\n- 10.00 bis 16.00 Uhr\nVorstellung des künftigen Netzwerkes "Am Eisernen Band" im Bahnhof "Drei Annen Hohne" der Harzer Schmalspurbahnen\n\n- 10.00 bis 17.00 Uhr \nBahnhof Gerbstedt - Öffnung der Interims-Ausstellung zur Geschichte der Halle-Hettstedter Eisenbahn auf dem Güterboden\n\n\nSternfahrt mit zwei historischen Bussen der Marke Saurer von Halle und Wernigerode nach Harzgerode und zurück mit vielfältigem "Unterwegs-Programm".\n\nHalle-Beesenstedt-Gerbstedt-Hettstedt-Harzgerode-Halle\n \n- 9:30 Uhr Abfahrt am Busbahnhof des Hbf. Halle (Saale)\n\n- Besichtigung des historischen Straßenbahn-depots in Halle, Seebener Straße\n\n- Führung am ehemaligen Wasserturm der Halle-Hettstedter Eisenbahn in Beesenstedt\n\n- Imbiss im Bahnhof Gerbstedt mit Besichtigung der Ausstellung zur HHE\n\n- Fahrt mit der Mansfelder Bergwerksbahn vom Bf Siersleben bis Bf Kupferkammerhütte in Hettstedt und Besichtigung der neuen Ausstellung im Lokschuppen sowie der  Fahrzeugausstellung auf dem Freigelände\n\n- Besichtigung der Ausstellung Harz-Kugeleum zu Bergbau und Regionalgeschichte im Schloss Harzgerode\n\nRückankunft am Busbahnhof des Hbf. Halle (Saale) gegen 19:00 Uhr.\n\nDer Preis pro Teilnehmer mit Busfahrt und Eintrittsgeldern in die Museen einschließlich Kaffee & Kuchen in Harzgerode beträgt 65 Euro für Erwachsene und 39 Euro für Kinder (bis 14 Jahre).\n\nDen Mittagsimbiss im Bahnhof Gerbstedt trägt jeder Teilnehmer bitte selbst.\n\n\n\nWernigerode-Todtenrode-Strassberg-Harzgerode-Wernigerode\n- 9:45 Uhr Abfahrt am Hbf. Wernigerode\n\n- Besichtigung des Luftfahrtmuseums in Wernigerode\n\n- Mittagessen im Restaurant „Zum alten Forsthaus“ in Todtenrode\n\n- Über- und unter-Tage-Führung durch das Besucher-Bergwerk "Grube Glasebach" in Straßberg\n \n- Befahrung eines Teils des Glasebacher Stollens mit der Grubenbahn\n\n- Besichtigung der Ausstellung Harz-Kugeleum zu Bergbau und Regionalgeschichte im Schloss Harzgerode\n\nRückankunft am Hbf. Wernigerode gegen\n19:00 Uhr\n\nDer Preis pro Teilnehmer mit Busfahrt und Eintrittsgeldern in die Museen einschließlich Kaffee und Kuchen in Harzgerode beträgt 65 Euro für Erwachsene und 39 Euro für Kinder (bis 14 Jahre).\n\nDas Mittagessen im Forsthaus Todtenrode trägt jeder Teilnehmer bitte selbst.\n\nBitte melden Sie sich bei Interesse für die geführte Fahrradtour auf der Hafenbahn sowie beide Busfahrten via Mail bis zum 12. April 2024 unter info@halle-hettstedter-eisenbahn.de an.',
         Webseite: "https://hhe.de/",
+        Infos: "",
         TeilnahmeBestätigt: "28.03.2024",
       },
       {
@@ -732,8 +808,9 @@ export default {
         AktionsortStraße: "Glasebacher Weg",
         Oeffnungszeit: "10-17.00 Uhr",
         AktivitätTIK_2024:
-          'Zusatzöffnung Schachthalle & Haspelkammer\nMontanverein Sonderöffnung Kuhstollen\nsiehe auch Programm "Am Eisernen Band"',
+          '- Zusatzöffnung Schachthalle & Haspelkammer\n- Montanverein Sonderöffnung Kuhstollen\n\nsiehe auch Programm "Am Eisernen Band" Station der Bustour Wernigerode-Harzgerode',
         Webseite: "https://grubeglasebach.afgharz.eu/",
+        Infos: "",
         TeilnahmeBestätigt: "24.03.2024",
       },
       {
@@ -744,8 +821,9 @@ export default {
         AktionsortStraße: "Lehde 17",
         Oeffnungszeit: "10-17.00 Uhr",
         AktivitätTIK_2024:
-          "Ankerpunkt Mansfelder Land\n- Schachterkundungen unter Tage\n- verschiedene Spiele und Erkundungsangebote für Kinder\n- Präsentation der regionalen Bergbauvereine\n- Filmvorführungen (historische Aufnahmen)\n- Erklimmen des Fördergerüstes bis zur ersten Plattform\n",
-        Webseite: "https://www.roehrigschacht.de/de/",
+          'Ankerpunkt Mansfelder Land\n\n- Schachterkundungen unter Tage\n\n- verschiedene Spiele und Erkundungsangebote für Kinder\n\n- Präsentation der regionalen Bergbauvereine\n\n- Photoausstellung des Projektes Revierpioniere "Wasserkraft die Kunstwerke schafft"\n\n- Filmvorführungen (historische Aufnahmen)\n\n- Erklimmen des historischen Fördergerüstes bis zur ersten Plattform\n\n\n',
+        Webseite: "https://www.roehrigschacht.de/de/\n\n",
+        Infos: "https://industrietourismus.de/roehrigschacht-wettelrode/",
         TeilnahmeBestätigt: "26.03.2024",
       },
       {
@@ -757,6 +835,7 @@ export default {
         Oeffnungszeit: "",
         AktivitätTIK_2024: "2025",
         Webseite: "",
+        Infos: "",
         TeilnahmeBestätigt: "",
       },
       {
@@ -768,6 +847,7 @@ export default {
         Oeffnungszeit: "",
         AktivitätTIK_2024: "",
         Webseite: "www.harzerwerke.de",
+        Infos: "",
         TeilnahmeBestätigt: "",
       },
       {
@@ -778,8 +858,9 @@ export default {
         AktionsortStraße: "Schäferberg 23",
         Oeffnungszeit: "10-17.00 Uhr",
         AktivitätTIK_2024:
-          "Sonderführungen mit Voranmeldung über die Stadtinformation Halberstadt\nTel.  03941 551815",
+          "Sonderführungen mit Voranmeldung \nüber die Stadtinformation Halberstadt\nTel.  03941 551815",
         Webseite: "",
+        Infos: "",
         TeilnahmeBestätigt: "06.03.2024",
       },
       {
@@ -790,20 +871,22 @@ export default {
         AktionsortStraße: "Walther-Rathenau-Straße 1",
         Oeffnungszeit: "10-17.00 Uhr",
         AktivitätTIK_2024:
-          "Ankerpunkt Harz\n11:00 Uhr\nim Dampfmaschinengebäude auf dem Großparkplatz „An der Hütte“ in 06502 Thale\nVortrag von Heiko Golla\nca. 12:15 Uhr Führung an der Dampfmaschine Nr. 7\nDer Vortrag beweist die Bedeutung der Eisenbahn für die Entwicklung des Eisenhüttenwerkes Thale. Heiko Golla, Kenner der Eisenbahngeschichte von Thale, wird die Geschichte des Transports von Rohstoffen und Waren einschließlich der Werksanschlüsse und der Entwicklung des Fuhrparks ab 1862 über einen Zeitraum von 130 Jahren sichtbar machen.\n\nDer Eintritt ist frei. Um eine Spende wird gebeten.\n\n15.00 Uhr Lesung Bettina Fügemann vom Förderverein der Schriftsteller e.V „Finkenmanöver“ Die Geschichte der Autorin Bettina Fügemann erzählt vom Finkenmanöver im Harz, das jedes Jahr zu Pfingsten stattfindet. Durch die Geschichte schwirren Buchfinken, die uns zu Marie führen. Der Vogelfänger Karl liebt Marie, muss jedoch Soldat werden und in die Gräben Frankreichs ziehen.\n",
-        Webseite: "https://hüttenmuseum-thale.de",
+          'Ankerpunkt Harz\n\n11:00 Uhr\nim Dampfmaschinengebäude auf dem Großparkplatz „An der Hütte“ in 06502 Thale\nVortrag von Heiko Golla\n\nDer Vortrag beweist die Bedeutung der Eisenbahn für die Entwicklung des Eisenhüttenwerkes Thale. Heiko Golla, Kenner der Eisenbahngeschichte von Thale, wird die Geschichte des Transports von Rohstoffen und Waren einschließlich der Werksanschlüsse und der Entwicklung des Fuhrparks ab 1862 über einen Zeitraum von 130 Jahren sichtbar machen.\n\nca. 12:15 Uhr\nFührung an der Dampfmaschine Nr. 7\n\n\n15.00 Uhr \nLesung Bettina Fügemann vom Förderverein der Schriftsteller e.V „Finkenmanöver“ \n\nDie Geschichte der Autorin Bettina Fügemann erzählt vom Finkenmanöver im Harz, das jedes Jahr zu Pfingsten stattfindet. Durch die Geschichte schwirren Buchfinken, die uns zu Marie führen. Der Vogelfänger Karl liebt Marie, muss jedoch Soldat werden und in die Gräben Frankreichs ziehen.\n\nIn Koopertaion mit dem Landesliteraturprojekt „Industriekultur und die Rolle der Frauen" des Förderverein der Schriftsteller e.V..\n\nDer Eintritt ist frei. \nUm eine Spende wird gebeten.',
+        Webseite: "https://hüttenmuseum-thale.de\n\n",
+        Infos: "https://industrietourismus.de/huettenmuseum-thale/",
         TeilnahmeBestätigt: "12.03.2024",
       },
       {
         Region: "Harz",
-        Institution: "Luftfahrtmuseum Wernigerode (privat)",
+        Institution: "Luftfahrtmuseum Wernigerode",
         PLZ: "38855",
         Ortsname: "Wernigerode",
         AktionsortStraße: "Gießerweg 1",
-        Oeffnungszeit: "",
+        Oeffnungszeit: "10-18.00 Uhr",
         AktivitätTIK_2024:
-          'siehe Programm " Am Eisernen Band"\nStation der Bustour Wernigerode-Harzgerode',
+          'Sonderführungen zum TIK\n\n- Online-Buchung empfohlen (Quick Check-In)\n- Kostenfreie Audioführung via Smartphone\n- Kostenloses W-LAN im gesamten Museum\n- Hangars sind unbeheizt\n- Die Ausstellung in den Hangars ist barrierefrei, die Transall auf dem Dach ist über eine Treppe zu erreichen.\n- Haustiere müssen leider draußen bleiben.\n\nsiehe Programm " Am Eisernen Band"\nStation der Bustour Wernigerode-Harzgerode',
         Webseite: "https://www.luftfahrtmuseum-wernigerode.de/",
+        Infos: "",
         TeilnahmeBestätigt: "26.03.2024",
       },
       {
@@ -814,8 +897,9 @@ export default {
         AktionsortStraße: "Hauptstraße 15",
         Oeffnungszeit: "10-17.00 Uhr",
         AktivitätTIK_2024:
-          'Sonderfahrten – diverse Aktionen - siehe auch Programm "Am Eisernen Band"\n- Personenzug ab Benndorf 9:40 Uhr, 11:40 Uhr, 13:40 Uhr, 15:40 Uhr\n- Führungen KKH 10:30 Uhr, 12:30 Uhr, 14:30 Uhr sowie auf Bedarf\n- Treffpunkt zur Führung am Uhrenturm Kupferkammerhütte\n- Dauer einer Führung etwa 1 Stunde\n- Führung durchs ehemalige Stellwerk mit Uhrenturm\n- Führung durch den Lokschuppen inkl. neuer Ausstellung\n- Führung über das Freigelände\n- Fahrzeugausstellung historischer Schienenfahrzeuge\n- Souvenirverkauf, kleine Imbissversorgung\n- Temporäre Stempelstelle „Sonderstempel Zirkelschacht und Lok 11 der MBB“\n- Bus-Shuttle zum Mansfeld Museum im Humboldt-Schloss\n- Sonderausstellung Eisenbahnen im Mansfelder Land im Mansfeld-Museum\n- Vorträge im Mansfeld-Museum, Dampfmaschinenführungen auf Bedarf',
-        Webseite: "https://www.mansfelder-bergwerksbahn.de/",
+          'Sonderfahrten – diverse Aktionen - siehe auch Programm "Am Eisernen Band"\n\n- Personenzug ab Benndorf \n9:40 Uhr, 11:40 Uhr, 13:40 Uhr, 15:40 Uhr\n\n- Führungen Kupferkammerhütte \n10:30 Uhr, 12:30 Uhr, 14:30 Uhr / nach Bedarf\n\n- Treffpunkt zur Führung am Uhrenturm Kupferkammerhütte\n\n- Dauer einer Führung etwa 1 Stunde\n\n- Führung durch das ehemalige Stellwerk mit Uhrenturm\n\n- Führung durch den historischen Lokschuppen inkl. neuer Ausstellung\n\n- Führung über das Freigelände\n\n- Fahrzeugausstellung historischer Schienenfahrzeuge\n\n- Souvenirverkauf, kleine Imbissversorgung\n\n- Temporäre Stempelstelle „Sonderstempel Zirkelschacht und Lok 11 der MBB“\n\n- Bus-Shuttle zum Mansfeld Museum im Humboldt-Schloss\n\n- Sonderausstellung Eisenbahnen im Mansfelder Land im Mansfeld-Museum\n\n- Vorträge im Mansfeld-Museum, Dampfmaschinenführungen auf Bedarf',
+        Webseite: "https://www.mansfelder-bergwerksbahn.de/\n",
+        Infos: "\nhttps://industrietourismus.de/mansfelder-bergwerksbahn/",
         TeilnahmeBestätigt: "12.03.2024",
       },
       {
@@ -826,8 +910,9 @@ export default {
         AktionsortStraße: "Schloßstr. 7",
         Oeffnungszeit: "10-17.00 Uhr",
         AktivitätTIK_2024:
-          'Themenführungen Förderverein Shuttle MBB - Die Fahne von Grigorok Gerbstedt\nKooperation zwischen dem Mansfeld-Museum im Humboldt-Schloss und dem Förderverein Mansfeld-Museum e. V.\n \nVon 10-17 Uhr geben die Mitglieder des Fördervereins mit verschiedenen Sonderführungen einen Einblick in die Themenvielfalt des Museums.\nDabei gibt es Wissenswertes über die Zeugnisse der Hüttentechnik oder die Walz- und Drahtziehmaschinen im Freigelände\nBei einem Blick in die Tiefe des Lichtlochs 24 gibt es die Geschichte des Schlüsselstollens und seine heutigen Funktion zu erfahren.\nDer 1:1 Nachbau, der von Carl Friedrich Bückling gebauten Dampfmaschine, die 1785 auf dem König-Friedrich-Schacht in Betrieb ging und damit die Industrialisierung Preußens einleitete, ist in Bewegung zu erleben.\n\nUnsere kleinen Besucher erleben kurze Geschichten beim Gang durch den "Museumsstolln", aus dem sie anschließend selbstständig ausfahren dürfen. Zusätzlich haben wir geplant den Tag mit einem historischen Film im Festsaal des Museums ausklingen zu lassen. \n\nGanz im Sinne der Nachhaltigkeit, richtet die Mansfelder Bergwerksbahn (mit der wir eisern verbunden sind) einen Shuttle von ihrem Aktionsort, der Hettstedter Kupferkammerhütte, zum Parkplatz des Mansfeld-Museums ein, um dem Publikum ein gebündeltes Erlebnis zu bieten sowie kurze Fahrten mit vielen Fahrzeugen zu vermeiden. \n',
-        Webseite: "https://www.mansfeld-museum-hettstedt.de/",
+          'Themenführungen &  Shuttle der MBB \n\nDie Fahne von Grigorok Gerbstedt als \nKooperation zwischen dem Mansfeld-Museum im Humboldt-Schloss und dem Förderverein Mansfeld-Museum e. V.\n \nVon 10-17 Uhr geben die Mitglieder des Fördervereins mit verschiedenen Sonderführungen einen Einblick in die Themenvielfalt des Museums.\n\nDabei gibt es Wissenswertes über die Zeugnisse der Hüttentechnik oder die Walz- und Drahtziehmaschinen im Freigelände.\n\nBei einem Blick in die Tiefe des Lichtlochs 24 gibt es die Geschichte des Schlüsselstollens und seine heutigen Funktion zu erfahren.\n\nDer 1:1 Nachbau, der von Carl Friedrich Bückling gebauten Dampfmaschine, die 1785 auf dem König-Friedrich-Schacht in Betrieb ging und damit die Industrialisierung Preußens einleitete, ist in Bewegung zu erleben.\n\nUnsere kleinen Besucher erleben kurze Geschichten beim Gang durch den "Museumsstolln", aus dem sie anschließend selbstständig ausfahren dürfen. \n\nZusätzlich haben wir geplant den Tag mit einem historischen Film im Festsaal des Museums ausklingen zu lassen. \n\nGanz im Sinne der Nachhaltigkeit, richtet die Mansfelder Bergwerksbahn (mit der wir eisern verbunden sind) einen Shuttle von ihrem Aktionsort, der Hettstedter Kupferkammerhütte, zum Parkplatz des Mansfeld-Museums ein, um dem Publikum ein gebündeltes Erlebnis zu bieten sowie kurze Fahrten mit vielen Fahrzeugen zu vermeiden.',
+        Webseite: "https://www.mansfeld-museum-hettstedt.de/\n\n",
+        Infos: "https://industrietourismus.de/humboldt-schloss-hettstedt/",
         TeilnahmeBestätigt: "12.03.2024",
       },
       {
@@ -838,8 +923,9 @@ export default {
         AktionsortStraße: "Büchenbergstraße 2",
         Oeffnungszeit: "10-17.00 Uhr",
         AktivitätTIK_2024:
-          "Öffnung historische Bergmaschinen und Stollen unter Tage",
+          "Besichtigung und Sonderführungen zu den historischen Bergmaschinen & Stollen unter Tage.",
         Webseite: "https://www.schaubergwerk-elbingerode.de/",
+        Infos: "",
         TeilnahmeBestätigt: "07.02.2024",
       },
       {
@@ -850,8 +936,9 @@ export default {
         AktionsortStraße: "Helbra",
         Oeffnungszeit: "10-17.00 Uhr",
         AktivitätTIK_2024:
-          "Ausstellung von historischen Bergmannsausstattungen",
+          "Ausstellung von historischen Bergmannsausstattungen und Maschinen.",
         Webseite: "https://www.erlebnisweltkupfer.de/",
+        Infos: "",
         TeilnahmeBestätigt: "15.03.2024",
       },
       {
@@ -863,6 +950,7 @@ export default {
         Oeffnungszeit: "",
         AktivitätTIK_2024: "2025",
         Webseite: "",
+        Infos: "",
         TeilnahmeBestätigt: "",
       },
       {
@@ -874,6 +962,7 @@ export default {
         Oeffnungszeit: "",
         AktivitätTIK_2024: "",
         Webseite: "",
+        Infos: "",
         TeilnahmeBestätigt: "",
       },
       {
@@ -885,6 +974,7 @@ export default {
         Oeffnungszeit: "",
         AktivitätTIK_2024: "",
         Webseite: "",
+        Infos: "",
         TeilnahmeBestätigt: "",
       },
       {
@@ -896,6 +986,7 @@ export default {
         Oeffnungszeit: "",
         AktivitätTIK_2024: "",
         Webseite: "",
+        Infos: "",
         TeilnahmeBestätigt: "",
       },
       {
@@ -907,6 +998,7 @@ export default {
         Oeffnungszeit: "",
         AktivitätTIK_2024: "",
         Webseite: "",
+        Infos: "",
         TeilnahmeBestätigt: "",
       },
       {
@@ -917,8 +1009,9 @@ export default {
         AktionsortStraße: "Marktstraße 10",
         Oeffnungszeit: "10-17.00 Uhr",
         AktivitätTIK_2024:
-          "Sonderführungen bei Bedarf - Schmiedefeuer und Schauschmieden / Eintritt 5 €\nDas Schauschmieden ist frei zugänglich.\nAuf dem Hof gibt es Geschichte(n) über das Fahrrad insbesondere auch aus Gräfenhainichen und über Marianne eine Frau mit Geschäftssinn und Weitblick.\nWeitere Besichtigungen der Ausstellungsräume sind nur mit Führung möglich.\nPreis 5,00€ pro für Erwachsene. Wir werden einen kleinen Imbiss mit Getränken aller Art und Würstchen bzw. nachmittags Kuchen bereithalten. ",
+          "- Sonderführungen bei Bedarf \n\n- Schmiedefeuer und Schauschmieden\n\n- Das Schauschmieden ist frei zugänglich.\n\n- Auf dem Hof gibt es Geschichte(n) über das Fahrrad insbesondere auch aus Gräfenhainichen und über Marianne eine Frau mit Geschäftssinn und Weitblick.\n\n- Weitere Besichtigungen der Ausstellungs-räume sind nur mit Führung möglich.\n\nPreis 5,00€ pro für Erwachsene. \n\nWir werden einen kleinen Imbiss mit Getränken aller Art und Würstchen bzw. nachmittags Kuchen bereithalten.",
         Webseite: "https://www.eisen-reinhard.de/",
+        Infos: "",
         TeilnahmeBestätigt: "26.03.2024",
       },
       {
@@ -930,6 +1023,7 @@ export default {
         Oeffnungszeit: "",
         AktivitätTIK_2024: "2025",
         Webseite: "www.gft-plossig.de",
+        Infos: "",
         TeilnahmeBestätigt: "",
       },
       {
@@ -940,9 +1034,10 @@ export default {
         AktionsortStraße: "Lebiener Weg 6",
         Oeffnungszeit: "10-17.00 Uhr",
         AktivitätTIK_2024:
-          "Sonderführungen durch die Landesdarre max. 20 Personen\n10.00 Uhr/12.00 Uhr/ 14.00 Uhr/16.00 Uhr\nUm Voranmeldungen wird gebeten. Tel. +49 35385 31370 ",
+          "Sonderführungen durch die Landesdarre für max. 20 Personen\n10.00 Uhr/12.00 Uhr/ 14.00 Uhr/16.00 Uhr\nUm Voranmeldungen wird gebeten. Tel. +49 35385 31370 ",
         Webseite:
           "https://landeszentrumwald.sachsen-anhalt.de/ueber-uns/landesdarre",
+        Infos: "",
         TeilnahmeBestätigt: "\n14.02.2024",
       },
       {
@@ -956,6 +1051,7 @@ export default {
           "Verbindung zum Welterbe Dessau-Wörlitzer Gartenreich/ Öffnung und Baustellenführung im Bahnhof Wörlitz",
         Webseite:
           "https://www.dvv-dessau.de/verkehr/fahrplan-woerlitzer-eisenbahn/",
+        Infos: "",
         TeilnahmeBestätigt: "28.03.2024",
       },
       {
@@ -966,9 +1062,10 @@ export default {
         AktionsortStraße: "Burgstrasse 8",
         Oeffnungszeit: "10-15.00 Uhr",
         AktivitätTIK_2024:
-          "Sonderführungen durch Manufaktur und historische Werkstatt",
+          "Sonderführungen durch eine der letzten Fahrradmanufakturen inkl. Einblicke in die historische Zweiradwerkstatt.",
         Webseite:
           "https://www.facebook.com/p/Irene-Fahrrad-Haus-100089951304444/",
+        Infos: "",
         TeilnahmeBestätigt: "09.02.2024",
       },
       {
@@ -980,6 +1077,7 @@ export default {
         Oeffnungszeit: "10-17.00 Uhr",
         AktivitätTIK_2024: "Sonderführungen  DDR-Fahrzeuge",
         Webseite: "http://www.fahrzeugmuseum-gloethe.de/",
+        Infos: "",
         TeilnahmeBestätigt: "08.02.2024",
       },
       {
@@ -990,8 +1088,9 @@ export default {
         AktionsortStraße: "Ferropolistraße 1",
         Oeffnungszeit: "10-17.00 Uhr",
         AktivitätTIK_2024:
-          "Ankerpunkt ERIH\nBarfußpfad, Kinderspiel & Action mit Real Life Guys",
-        Webseite: "https://www.ferropolis.de/de/cms/",
+          "Ankerpunkt ERIH\n- Action mit Real Life Guys\n- Barfußpfad & Kinderspiel",
+        Webseite: "https://www.ferropolis.de/de/cms/\n\n",
+        Infos: "https://industrietourismus.de/ferropolis/",
         TeilnahmeBestätigt: "28.03.2024",
       },
       {
@@ -1003,6 +1102,7 @@ export default {
         Oeffnungszeit: "14-16.00 Uhr",
         AktivitätTIK_2024: "Sonderführung zur Elbschifffahrt",
         Webseite: "https://www.aken.de/",
+        Infos: "",
         TeilnahmeBestätigt: "12.02.2024",
       },
       {
@@ -1014,6 +1114,7 @@ export default {
         Oeffnungszeit: "",
         AktivitätTIK_2024: "",
         Webseite: "",
+        Infos: "",
         TeilnahmeBestätigt: "",
       },
       {
@@ -1024,8 +1125,9 @@ export default {
         AktionsortStraße: "Bunsenstraße 4",
         Oeffnungszeit: "10-16.00 Uhr",
         AktivitätTIK_2024:
-          'Jeweils um 10:00, 12:00 und 14:00 Uhr beginnen geführte Rundgänge durch den Bereich Filmherstellung.\nDer Eintritt ist frei, eine Führungsgebühr wird nicht erhoben.\nZusätzlich bietet die Stadt Bitterfeld-Wolfen anlässlich des Stadtjubiläums 800 Jahre Bitterfeld vier Führungen in benachbarten Standorten der Industriekultur an:\n11.30 Uhr  Kulturhaus (45 Minuten)\n13.00 Uhr Kulturhaus (45 Minuten)\n11.30 Uhr Rathaus Wolfen (45 Minuten)\n13.00 Uhr Rathaus Wolfen (45 Minuten)\nDie Teilnehmerzahl ist jeweils auf 25 Personen begrenzt.\nWer möchte, kann so alle drei Orte an einem Tag besuchen.\nUm 14:00 Uhr findet im IFM eine Lesung mit Charlotte Buchholz statt. Sie erzählt über die Generaldirektorin und zwei fiktive Arbeiterinnen aus dem Werk – dokufiktionale Erzählung &  über die Welterfolge von Agfa und ORWO sowie die größte und teuerste Werbekampagne der DDR.\nLandesliteraturprojekt „Industriekultur und die Rolle der Frauen" des Förderverein der Schriftsteller e.V..',
-        Webseite: "https://www.bernsteinundfilm.de/",
+          'Jeweils um 10:00, 12:00 und 14:00 Uhr beginnen geführte Rundgänge durch den Bereich Filmherstellung.\n\nDer Eintritt ist frei, eine Führungsgebühr wird nicht erhoben.\n\nZusätzlich bietet die Stadt Bitterfeld-Wolfen anlässlich des Stadtjubiläums 800 Jahre Bitterfeld vier Führungen in benachbarten Standorten der Industriekultur an:\n\n11.30 Uhr  Kulturhaus (45 Minuten)\n\n13.00 Uhr Kulturhaus (45 Minuten)\n\n11.30 Uhr Rathaus Wolfen (45 Minuten)\n\n13.00 Uhr Rathaus Wolfen (45 Minuten)\n\nDie Teilnehmerzahl ist jeweils auf 25 Personen begrenzt.\n\nWer möchte, kann so alle drei Orte an einem Tag besuchen.\n\n\nUm 14:00 Uhr findet im IFM eine Lesung mit Charlotte Buchholz statt. \nSie erzählt über die Generaldirektorin und zwei fiktive Arbeiterinnen aus dem Werk. Eine dokufiktionale Erzählung &  über die Welterfolge von Agfa und ORWO sowie die größte und teuerste Werbekampagne der DDR.\n\nIn Koopertaion mit dem Landesliteraturprojekt „Industriekultur und die Rolle der Frauen" des Förderverein der Schriftsteller e.V..',
+        Webseite: "https://www.bernsteinundfilm.de/\n\n",
+        Infos: "https://industrietourismus.de/industrie-und-filmmuseum-wolfen/",
         TeilnahmeBestätigt: "15.03.2024",
       },
       {
@@ -1037,6 +1139,7 @@ export default {
         Oeffnungszeit: "",
         AktivitätTIK_2024: "2025",
         Webseite: "www.salzgrafenhaus.de",
+        Infos: "",
         TeilnahmeBestätigt: "",
       },
       {
@@ -1049,6 +1152,7 @@ export default {
         AktivitätTIK_2024: "2025",
         Webseite:
           "https://www.kohle-dampf-licht-seen.de/staedte-sehenswuerdigkeiten-landschaften/werkssiedlung-zschornewitz",
+        Infos: "",
         TeilnahmeBestätigt: "",
       },
       {
@@ -1059,8 +1163,9 @@ export default {
         AktionsortStraße: "Kirchplatz 3",
         Oeffnungszeit: "10-16.00 Uhr ",
         AktivitätTIK_2024:
-          "Im Kreismuseum Bitterfeld stehen die Synthetischen Edelsteine im Mittelpunkt, die seit dem 10. März 2024 in der neuen Sonderausstellung:\n„Gems through the lens – Syn-thetische Edelsteine in neuem Licht“ zu sehen sind.\nUm 11 Uhr und 13 Uhr wird es je eine Sonderführung zur Herstellung der Synthetiksteine und zur Ausstellung mit den beiden Künstlerinnen Justina Sieber & Dominique Nicole Daßler geben.\n\n\n\n",
+          "Im Kreismuseum Bitterfeld stehen die Synthetischen Edelsteine im Mittelpunkt, die seit dem 10. März 2024 in der neuen Sonderausstellung:\n\n„Gems through the lens – Syn-thetische Edelsteine in neuem Licht“ zu sehen sind.\n\nUm 11 Uhr und 13 Uhr wird es je eine Sonderführung zur Herstellung der Synthetiksteine und zur Ausstellung mit den beiden Künstlerinnen Justina Sieber & Dominique Nicole Daßler geben.\n\n\n\n",
         Webseite: "https://www.kreismuseum-bitterfeld.de/",
+        Infos: "",
         TeilnahmeBestätigt: "22.03.2024",
       },
       {
@@ -1072,6 +1177,7 @@ export default {
         Oeffnungszeit: "",
         AktivitätTIK_2024: "erst 2025",
         Webseite: "",
+        Infos: "",
         TeilnahmeBestätigt: "",
       },
       {
@@ -1081,8 +1187,10 @@ export default {
         Ortsname: "Coswig(Anhalt)OT Thießen",
         AktionsortStraße: "Kupferhammer 43",
         Oeffnungszeit: "10-17.00 Uhr",
-        AktivitätTIK_2024: "Besichtigung und Cafèbetrieb",
+        AktivitätTIK_2024:
+          "Besichtigung des historischen Kuperhammers mit der Möglickiet zum Kaffeklatsch im Hofcafè.",
         Webseite: "http://www.kupferhammer-thiessen.de/",
+        Infos: "",
         TeilnahmeBestätigt: "08.02.2024",
       },
       {
@@ -1091,10 +1199,11 @@ export default {
         PLZ: "06844",
         Ortsname: "Dessau-Roßlau",
         AktionsortStraße: "Busbahnhof",
-        Oeffnungszeit: "",
+        Oeffnungszeit: "11-17.00 Uhr",
         AktivitätTIK_2024:
-          "Drei geführte Bustouren mit dem historischen Doppeldeckerbus zu den Stätten der industriellen Entwicklung in Dessau-Roßlau unter dem Motto:\n„Von der Conti-Gas und Fine bis Junkers“\n\n11:00 / 13:00 / 15:00 Uhr\n\nAbfahrt Hauptbahnhof Steig D\nStation 1\nWörlitzer Platz  - Dt. Continental Gas Gesellschaft\nStation 2\nWaggonbau - Weiterentwicklung der DCGG bis zur Dessauer Waggonbaufabrik\nStation 3 \nAm Leipziger Tor - Berlin-Anhaltische Maschinen AG (BAMAG) \nStation 4  \nAn der Fine - Zuckerraffinerie\nStation5\nBrauereistraße - Schultheiß Brauerei\nStation 6\nAm Junkerswerk - Kaloriferwerk Junkalor\nStation 7\nKühnauer Straße - Technikmuseum Hugo Junkers \n\n12:05 / 14:05 / 16:05 Uhr Ankunft Technikmuseum\n\nRückfahrten ab Technikmuseum zum Hauptbahnhof oder auch Bauhausmuseum/Rathaus 14:15 / 16:15 / 17:00 Uhr\n\nFahrpreis:  9,00 Euro normal, ermäßigt 6,00 Euro\n\nAn den Stationen besteht die Möglichkeit weitere Führungen zu unternehmen und mit dem nachfolgenden Bus die Tour fortzusetzen.",
+          "Drei geführte Bustouren mit dem historischen Doppeldeckerbus zu den Stätten der industriellen Entwicklung in Dessau-Roßlau unter dem Motto:\n\n„Von der Conti-Gas und Fine bis Junkers“\n\n11:00 / 13:00 / 15:00 Uhr\n\nAbfahrt Hauptbahnhof Steig D\nStation 1\nWörlitzer Platz  - Deutsche Continental Gas Gesellschaft\n\nStation 2\nWaggonbau - Weiterentwicklung der DCGG bis zur Dessauer Waggonbaufabrik\n\nStation 3 \nAm Leipziger Tor - Berlin-Anhaltische Maschinen AG (BAMAG) \n\nStation 4  \nAn der Fine - Zuckerraffinerie\n\nStation5\nBrauereistraße - Schultheiß Brauerei\n\nStation 6\nAm Junkerswerk - Kaloriferwerk Junkalor\n\nStation 7\nKühnauer Straße - Technikmuseum Hugo Junkers \n\n12:05 / 14:05 / 16:05 Uhr Ankunft Technikmuseum\n\nRückfahrten ab Technikmuseum zum Hauptbahnhof oder auch Bauhausmuseum /Rathaus 14:15 / 16:15 / 17:00 Uhr\n\nFahrpreise:  \n9,00 Euro normal, ermäßigt 6,00 Euro\n\nAn den Stationen besteht die Möglichkeit weitere Sonderführungen zu unternehmen und mit dem nachfolgenden Bus die Tour fortzusetzen.",
         Webseite: "http://www.nahverkehrsfreunde-dessau.de/index.html",
+        Infos: "",
         TeilnahmeBestätigt: "27.02.2024",
       },
       {
@@ -1105,7 +1214,9 @@ export default {
         AktionsortStraße: "Torgauer Strasse 68",
         Oeffnungszeit: "",
         AktivitätTIK_2024: "erst 2025 (kein Personal)",
-        Webseite: "www.annaubrg-porzellan.de",
+        Webseite:
+          "https://annaburg-porzellan.de/\n\nhttps://industrietourismus.de/porzellaneum-annaburg/",
+        Infos: "",
         TeilnahmeBestätigt: "",
       },
       {
@@ -1116,7 +1227,9 @@ export default {
         AktionsortStraße: "Löderburger Strasse 73",
         Oeffnungszeit: "",
         AktivitätTIK_2024: "2025",
-        Webseite: "www.rft-verein-stassfurt.de",
+        Webseite:
+          "www.rft-verein-stassfurt.de\n\nhttps://industrietourismus.de/rundfunk-und-fernsehtechnik-stassfurt/",
+        Infos: "",
         TeilnahmeBestätigt: "",
       },
       {
@@ -1127,8 +1240,9 @@ export default {
         AktionsortStraße: "Clara-Zetkin-Str. 31 ",
         Oeffnungszeit: "10-14.00 Uhr",
         AktivitätTIK_2024:
-          "Sonderführung durch die größte Schifferausstellung des Landes",
+          "Sonderführung durch die größte Schifferausstellung des Landes mit historischen Schiffsmodellen und Ausstattungen.",
         Webseite: "https://maritime-museum.de/museum/ID214.html",
+        Infos: "",
         TeilnahmeBestätigt: "15.03.2024",
       },
       {
@@ -1140,6 +1254,7 @@ export default {
         Oeffnungszeit: "",
         AktivitätTIK_2024: "",
         Webseite: "",
+        Infos: "",
         TeilnahmeBestätigt: "",
       },
       {
@@ -1150,8 +1265,9 @@ export default {
         AktionsortStraße: "Brauereistraße",
         Oeffnungszeit: "10-17.00 Uhr",
         AktivitätTIK_2024:
-          "Sonderöffnung mit Führungen über das Gelände und den historischen Gebäudekomplex\nVorstellung neuer Nutzungen durch die Vertreter von NEWKID & Musikgenossenschaft Dessau e.G.\n„Von der Conti-Gas und Fine bis Junkers“\nStation 5 Brauereistraße - Schultheiß Brauerei der Bustour (Infos siehe dort)",
+          "Sonderöffnung mit Führungen über das Gelände und den historischen Gebäudekomplex\nVorstellung neuer Nutzungen durch die Vertreter von NEWKID & Musikgenossenschaft Dessau e.G.\n\n„Von der Conti-Gas und Fine bis Junkers“\nStation 5\nBrauereistraße - Schultheiß Brauerei der Bustour der Nahverkehrsfreunde Dessau e.V. (Infos siehe dort).",
         Webseite: "https://www.newkid.club/\n",
+        Infos: "",
         TeilnahmeBestätigt: "28.03.2024",
       },
       {
@@ -1163,6 +1279,7 @@ export default {
         Oeffnungszeit: "10-13.00 Uhr",
         AktivitätTIK_2024: "Sonderführung durch den Museums- & Sammlungsleiter",
         Webseite: "www.spinnduesenmuseum.de",
+        Infos: "",
         TeilnahmeBestätigt: "15.03.2024",
       },
       {
@@ -1173,8 +1290,9 @@ export default {
         AktionsortStraße: "Kühnauer Straße 161a",
         Oeffnungszeit: "10-17.00 Uhr",
         AktivitätTIK_2024:
-          "Ankerpunkt ERIH Region Dessau mit  Verbindung zum Welterbe Bauhaus Dessau\n\n20.04.2024 Illumination des Museums mit Abendführungen ab 18.00-22.00 Uhr (Vorabend)\n\n21.04.2024 Vorführung des Windkanals\nVorträge & Sonderführungen zur Technikgeschichte\n\n\n„Von der Conti-Gas und Fine bis Junkers“ Station 7 Kühnauer Straße - Technikmuseum Hugo Junkers der Bustour (Infos siehe dort)",
-        Webseite: "https://technikmuseum-dessau.org/",
+          "Ankerpunkt ERIH Region Dessau mit  Verbindung zum Welterbe Bauhaus Dessau\n\n20.04.2024 Illumination des Museums mit Abendführungen ab 18.00-22.00 Uhr (Vorabend)\n\n21.04.2024 Vorführung des Windkanals\n- Vorträge & Sonderführungen zur Technikgeschichte\n\n\n„Von der Conti-Gas und Fine bis Junkers“ \nStation 7 \nKühnauer Straße - Technikmuseum Hugo Junkers der Bustour der Nahverkehrsfreunde Dessau e.V. (Infos siehe dort).",
+        Webseite: "https://technikmuseum-dessau.org/\n\n",
+        Infos: "https://industrietourismus.de/technikmuseum-hugo-junkers/",
         TeilnahmeBestätigt: "07.03.2024",
       },
       {
@@ -1185,8 +1303,9 @@ export default {
         AktionsortStraße: "An der Großen Halle",
         Oeffnungszeit: "10-17.00 Uhr",
         AktivitätTIK_2024:
-          "- Vorstellung der Maßnahmen zur Ertüchtigung der Großen Halle als Ausstellungs- und Abstellhalle anhand von Plänen und Entwurfszeichnungen\n\n- Sonderführung durch die Große Halle inklusive  Schmiede und Werkstatt\n- Sonderführung durch die Fahrzeugausstellung auf dem Freigelände  mit Vorführung des Eisenbahndrehkranes\n„Von der Conti-Gas und Fine bis Junkers“\nStation 2 Waggonbau - Weiterentwicklung der DCGG bis zur Dessauer Waggonbaufabrik der Bustour (Infos siehe dort)",
+          "- Vorstellung der Maßnahmen zur Ertüchtigung der Großen Halle als Ausstellungs- und Abstellhalle anhand von Plänen und Entwurfszeichnungen\n\n- Sonderführung durch die Große Halle inklusive  Schmiede und Werkstatt\n\n- Sonderführung durch die Fahrzeugausstellung auf dem Freigelände  mit Vorführung des Eisenbahndrehkranes\n\n„Von der Conti-Gas und Fine bis Junkers“\nStation 2 \nWaggonbau - Weiterentwicklung der DCGG bis zur Dessauer Waggonbaufabrik der Bustour (Infos siehe dort)",
         Webseite: "",
+        Infos: "",
         TeilnahmeBestätigt: "28.03.2024",
       },
       {
@@ -1198,18 +1317,21 @@ export default {
         Oeffnungszeit: "",
         AktivitätTIK_2024: "",
         Webseite: "",
+        Infos: "",
         TeilnahmeBestätigt: "",
       },
       {
         Region: "Anhalt-Dessau-Wittenberg",
-        Institution: "WASAG Hauptwerk WB-Reinsdorf",
-        PLZ: "",
-        Ortsname: "",
-        AktionsortStraße: "",
-        Oeffnungszeit: "",
-        AktivitätTIK_2024: "Spezialführung?",
-        Webseite: "",
-        TeilnahmeBestätigt: "",
+        Institution: "WASAG Hauptwerk Reinsdorf e.V.",
+        PLZ: "06886",
+        Ortsname: "Lutherstadt Wittenberg",
+        AktionsortStraße: "Heuweg 13 a",
+        Oeffnungszeit: "10-17.00 Uhr",
+        AktivitätTIK_2024:
+          "- Infozentrum geöffnet\n\n- Sonderführung über das historische Werksgelände ca. 1h zum Sonderpreis 10 €  \n\n- max. 30 Personen \n\nUm Voranmeldung unter \njoachim-zander@freenet.de oder\n +49 172 3421689 wird gebeten.\n\n- Getränke, Kuchen & Wiener werden angeboten ",
+        Webseite: "\n\nhttps://www.wasag-hauptwerk-reinsdorf.de/\n\n",
+        Infos: "https://industrietourismus.de/wasag-haupt-werk-reinsdorf/",
+        TeilnahmeBestätigt: "05.04.2024",
       },
       {
         Region: "Anhalt-Dessau-Wittenberg",
@@ -1220,6 +1342,7 @@ export default {
         Oeffnungszeit: "",
         AktivitätTIK_2024: "2025",
         Webseite: "",
+        Infos: "",
         TeilnahmeBestätigt: "",
       },
       {
@@ -1231,6 +1354,7 @@ export default {
         Oeffnungszeit: "",
         AktivitätTIK_2024: "",
         Webseite: "",
+        Infos: "",
         TeilnahmeBestätigt: "",
       },
       {
@@ -1242,6 +1366,7 @@ export default {
         Oeffnungszeit: "",
         AktivitätTIK_2024: "",
         Webseite: "",
+        Infos: "",
         TeilnahmeBestätigt: "",
       },
       {
@@ -1253,6 +1378,7 @@ export default {
         Oeffnungszeit: "",
         AktivitätTIK_2024: "",
         Webseite: "",
+        Infos: "",
         TeilnahmeBestätigt: "",
       },
       {
@@ -1264,6 +1390,7 @@ export default {
         Oeffnungszeit: "",
         AktivitätTIK_2024: "",
         Webseite: "",
+        Infos: "",
         TeilnahmeBestätigt: "",
       },
       {
@@ -1274,8 +1401,9 @@ export default {
         AktionsortStraße: "Schulstrasse 65",
         Oeffnungszeit: "11-16.00 Uhr",
         AktivitätTIK_2024:
-          "Saisoneröffnung\n- Besichtigung von Ausstellung und Außengelände\n- Sonderführungen durch die Tiefbaustrecke (an diesem Tag kostenlos)\nKosten: pro Person 6 €, ermäßigt 3 €, Kinder unter 7 Jahren frei\nKaffee & Kuchen werden gegen Spende angeboten\n\n",
+          "Saisoneröffnung\n\n- Besichtigung von Ausstellung und Außengelände\n\n- Sonderführungen durch die Tiefbaustrecke (an diesem Tag kostenlos)\n\nKosten:\npro Person 6 €, ermäßigt 3 €, \nKinder unter 7 Jahren frei\n\nKaffee & Kuchen werden gegen Spende angeboten.",
         Webseite: "https://www.recarbo.de/bergbaumuseum-deuben/",
+        Infos: "",
         TeilnahmeBestätigt: "07.02.2024\n14.03.2024",
       },
       {
@@ -1287,6 +1415,7 @@ export default {
         Oeffnungszeit: "",
         AktivitätTIK_2024: "?",
         Webseite: "",
+        Infos: "",
         TeilnahmeBestätigt: "",
       },
       {
@@ -1297,8 +1426,9 @@ export default {
         AktionsortStraße: "Naumburger Strasse 99",
         Oeffnungszeit: "10-17.00 Uhr",
         AktivitätTIK_2024:
-          "Ankerpunkt Revier Zeitz\nab 11:30 Uhr\nkombinierte Führungen - Brikettfabrik Herrmannschacht / Elsterfloßgraben\n11.30-12.30 Brikettfabrik\n12.30-13.30 Elsterfloßgraben\n13.30-14.30 Brikettfabrik\n14.30-15.30 Elsterfloßgraben\n\nEinzelführung: 5 € / kombinierte Führung: 9 €\n\nStartpunkt für alle Führungen: Parkplatz der Brikettfabrik Herrmannschacht\nHeiße & kalte Getränke sind in unserer Revierstube erhältlich. \nAnmeldungen sind nicht erforderlich!",
-        Webseite: "https://www.recarbo.de/brikettfabrik-herrmannschacht/",
+          "Ankerpunkt Revier Zeitz\n\nab 11:30 Uhr\nkombinierte Führungen - Brikettfabrik Herrmannschacht / Elsterfloßgraben\n\n11.30-12.30 Brikettfabrik\n\n12.30-13.30 Elsterfloßgraben\n\n13.30-14.30 Brikettfabrik\n\n14.30-15.30 Elsterfloßgraben\n\nEinzelführung: 5 € / kombinierte Führung: 9 €\n\nStartpunkt für alle Führungen: \nParkplatz der Brikettfabrik Herrmannschacht\n\nHeiße & kalte Getränke sind in unserer Revierstube erhältlich. \n\nAnmeldungen sind nicht erforderlich!",
+        Webseite: "https://www.recarbo.de/brikettfabrik-herrmannschacht/\n\n",
+        Infos: "https://industrietourismus.de/brikettfabrik-herrmannschacht/",
         TeilnahmeBestätigt: "21.02.2024",
       },
       {
@@ -1309,7 +1439,9 @@ export default {
         AktionsortStraße: "Rudolf-Bahro-Straße 11",
         Oeffnungszeit: "10-17.00 Uhr",
         AktivitätTIK_2024: "Besichtigung der Erlebniswelt Chemie",
-        Webseite: "https://www.deutsches-chemie-museum.de/",
+        Webseite: "https://www.deutsches-chemie-museum.de/\n\n/",
+        Infos:
+          "https://industrietourismus.de/deutsches-chemie-museum-merseburg",
         TeilnahmeBestätigt: "28.03.2024",
       },
       {
@@ -1320,8 +1452,9 @@ export default {
         AktionsortStraße: "Kalkstrasse 25",
         Oeffnungszeit: "10-17.00 Uhr",
         AktivitätTIK_2024:
-          "10-16.00 Uhr Sonderführungen durch die Sicherungsbaustelle der Bergstation - \nmit Einblicken in die Beschererfabrik, das Maschinen- und Kesselhaus der Drahtseilbahn anhand von Plänen und Bildern durch den Verein.\nKooperation zwischen dem Verein Historische Drahtseilbahn Zeitz und den Zeitzer Oldtimerfreunde.\nPräsentation der Industriekulturstandorte beim Zeitzer  Oldtimertreffen von 9.00Uhr bis 16.00Uhr durch den Moderator Thomas Vogel.\nUm 14.00Uhr beginnt die geführte Ausfahrt der Oldtimer im Raum Zeitz. Der Zifft e.V  (www.zifft.de) wird während des Sonntags ein Feuerwehrfahrzeug vor der Drahtseilbahn positionieren und auch an der Ausfahrt teilnehmen.\n\nOldtimer, wie LKW und oder Traktoren werden Sonderfahrten zwischen Altstadt,  Drahtseilbahn und Hermannschacht unternehmen.",
+          "10-16.00 Uhr Sonderführungen durch die Sicherungsbaustelle der Bergstation - \nmit Einblicken in die Beschererfabrik, das Maschinen- und Kesselhaus der Drahtseilbahn anhand von Plänen und Bildern durch den Verein.\n\nKooperation zwischen dem Verein Historische Drahtseilbahn Zeitz und den Zeitzer Oldtimerfreunde.\n\nPräsentation der Industriekulturstandorte beim Zeitzer  Oldtimertreffen von 9.00Uhr bis 16.00Uhr durch den Moderator Thomas Vogel.\n\nUm 14.00Uhr beginnt die geführte Ausfahrt der Oldtimer im Raum Zeitz. \n\nDer Zifft e.V  (www.zifft.de) wird während des Sonntags ein Feuerwehrfahrzeug vor der Drahtseilbahn positionieren und auch an der Ausfahrt teilnehmen.\n\nOldtimer, wie LKW und  Traktoren werden Sonderfahrten zwischen Altstadt,  Drahtseilbahn und Hermannschacht unternehmen.",
         Webseite: "https://www.drahtseilbahn-zeitz.de/\nhttps://zifft.de/",
+        Infos: "",
         TeilnahmeBestätigt: "21.03.2024",
       },
       {
@@ -1333,6 +1466,7 @@ export default {
         Oeffnungszeit: "10-17.00 Uhr",
         AktivitätTIK_2024: "erst 2025",
         Webseite: "www.drahtwerkstaetten-weissenfels.de",
+        Infos: "",
         TeilnahmeBestätigt: "13.02.2024",
       },
       {
@@ -1344,6 +1478,7 @@ export default {
         Oeffnungszeit: "10-17.00 Uhr",
         AktivitätTIK_2024: "erst 2025",
         Webseite: "www.stadt-luetzen.de",
+        Infos: "",
         TeilnahmeBestätigt: "",
       },
       {
@@ -1355,6 +1490,7 @@ export default {
         Oeffnungszeit: "10-17.00 Uhr",
         AktivitätTIK_2024: "erst 2025",
         Webseite: "",
+        Infos: "",
         TeilnahmeBestätigt: "",
       },
       {
@@ -1365,8 +1501,9 @@ export default {
         AktionsortStraße: "Am Bahnhof 27",
         Oeffnungszeit: "10-17.00 Uhr",
         AktivitätTIK_2024:
-          "Ausstellung im Bahnhofsgebäude in Verbindung mit dem Angebot der Landesgartenschau 2024 in Bad Dürrenberg.",
-        Webseite: "www.eisenbahnfreunde-koetzschau.com",
+          "Ausstellung im historischen Bahnhofsgebäude in Verbindung mit Angeboten der Landesgartenschau 2024 in Bad Dürrenberg.",
+        Webseite: "www.eisenbahnfreunde-koetzschau.com\n\n",
+        Infos: "https://industrietourismus.de/eisenbahnmuseum-koetzschau/",
         TeilnahmeBestätigt: "14.02.2024",
       },
       {
@@ -1377,8 +1514,9 @@ export default {
         AktionsortStraße: "Schulstraße 12",
         Oeffnungszeit: "10-17.00 Uhr",
         AktivitätTIK_2024:
-          "Verbindungspunkt zur Landesgartenschau Sachsen-Anhalt Bad Dürrenberg 2024/ Herrmannschacht\nab 11:30 Uhr\nkombinierte Führungen - Brikettfabrik Herrmannschacht / Elsterfloßgraben\n11.30-12.30 Brikettfabrik\n12.30-13.30 Elsterfloßgraben\n13.30-14.30 Brikettfabrik\n14.30-15.30 Elsterfloßgraben\n\nEinzelführung: 5 € / kombinierte Führung: 9 €\n\nStartpunkt für alle Führungen:\nParkplatz der Brikettfabrik Herrmannschacht\nHeiße & kalte Getränke sind in unserer Revierstube erhältlich.\nAnmeldungen sind nicht erforderlich!",
-        Webseite: "https://www.elsterflossgraben.com/",
+          "Verbindungspunkt zur Landesgartenschau Sachsen-Anhalt Bad Dürrenberg 2024/ Herrmannschacht\n\nab 11:30 Uhr\nkombinierte Führungen - Brikettfabrik Herrmannschacht / Elsterfloßgraben\n\n11.30-12.30 Brikettfabrik\n\n12.30-13.30 Elsterfloßgraben\n\n13.30-14.30 Brikettfabrik\n\n14.30-15.30 Elsterfloßgraben\n\nEinzelführung: 5 € / kombinierte Führung: 9 €\n\nStartpunkt für alle Führungen:\nParkplatz der Brikettfabrik Herrmannschacht\n\nHeiße & kalte Getränke sind in unserer Revierstube erhältlich.\n\nAnmeldungen sind nicht erforderlich!",
+        Webseite: "https://www.elsterflossgraben.com/\n\n",
+        Infos: "https://industrietourismus.de/der-elsterflossgraben/",
         TeilnahmeBestätigt: "21.03.2024",
       },
       {
@@ -1389,8 +1527,9 @@ export default {
         AktionsortStraße: "Holzplatz 5",
         Oeffnungszeit: "10-17.00 Uhr",
         AktivitätTIK_2024:
-          'Umnutzung des alten Gasometers zum Großplanetarium\nBustour "Am Eisernen Band" Halle-Harzgerode (Info siehe dort)',
+          'Umnutzung des alten Gasometers zum Großplanetarium\n\nBustour "Am Eisernen Band" Halle-Harzgerode (Info siehe dort)',
         Webseite: "https://www.planetarium-halle.de/",
+        Infos: "",
         TeilnahmeBestätigt: "",
       },
       {
@@ -1404,6 +1543,7 @@ export default {
           "Sonderführung im Betriebsmuseum mit Modellaustellung",
         Webseite:
           "https://www.gemeinde-elsteraue.de/de/museen/betriebsmuseum-damals-wars-des-ehemaligen-hydrierwerk-zeitz.html",
+        Infos: "",
         TeilnahmeBestätigt: "07.02.2024",
       },
       {
@@ -1416,6 +1556,7 @@ export default {
         Oeffnungszeit: "10-17.00 Uhr",
         AktivitätTIK_2024: "erst 2025",
         Webseite: "",
+        Infos: "",
         TeilnahmeBestätigt: "",
       },
       {
@@ -1426,9 +1567,10 @@ export default {
         AktionsortStraße: "Altmarkt 2",
         Oeffnungszeit: "10-16.00 Uhr",
         AktivitätTIK_2024:
-          "Ausstellung Historische Stadtentwicklung Hohenmölsen (mit Schwerpunkt Bergbau)\nHaus der Stadtgeschichte, Altmarkt 2, \nGedenkraum für überbaggerte Kirchen im Zeitz-Weißenfelser Braunkohlenrevier\nEvang. Stadtkirche St. Peter, Altmarkt",
+          "Ausstellung Historische Stadtentwicklung Hohenmölsen (mit Schwerpunkt Bergbau)\nHaus der Stadtgeschichte, Altmarkt 2\n\nGedenkraum für überbaggerte Kirchen im Zeitz-Weißenfelser Braunkohlenrevier\nEvang. Stadtkirche St. Peter, Altmarkt",
         Webseite:
           "https://www.stadt-hohenmoelsen.de/de/kulturstiftung-hohenmoelsen.html",
+        Infos: "",
         TeilnahmeBestätigt: "21.02.2024",
       },
       {
@@ -1439,8 +1581,9 @@ export default {
         AktionsortStraße: "Heinrich-von-stephan-Platz 5",
         Oeffnungszeit: "10-17.00 Uhr",
         AktivitätTIK_2024:
-          '14.15 Uhr zusätzliche öffentliche Depotsonderführung (Heinrich-von-Stephan-Platz 5, 06618 Naumburg/ Straßenbahn-Haltestelle "Poststraße") \nEinsatz des TW 17 (Lindner-Triebwagen von 1928) als Linienbahn von 13:49 Uhr bis 17:19 Uhr nach dem normalen Sonntagsfahrplan alle 30 min.\n',
-        Webseite: "https://naumburger-strassenbahn.de/",
+          '14.15 Uhr zusätzliche öffentliche Sonderführung durch das historische Straßenbahndepot (Heinrich-von-Stephan-Platz 5, 06618 Naumburg/ Straßenbahn-Haltestelle "Poststraße")\n \nEinsatz des TW 17 (Lindner-Triebwagen von 1928) als Linienbahn von 13:49 bis 17:19 Uhr nach dem Sonntagsfahrplan alle 30 min.\n',
+        Webseite: "https://naumburger-strassenbahn.de/\n\n",
+        Infos: "https://industrietourismus.de/naumburger-strassenbahn/",
         TeilnahmeBestätigt: "18.03.2024",
       },
       {
@@ -1451,9 +1594,9 @@ export default {
         AktionsortStraße: "Witzlebenweg 7a",
         Oeffnungszeit: "10-17.00 Uhr",
         AktivitätTIK_2024:
-          '"Weißes Gold & Kohlenstaub"\nErkundungen mit Spaziergangsforscher Bertram Weisshaar in Kooperation mit Laga 2024\nBeginn Führung: 13.00 Uhr\nDauer ca. 2 1/2 Stunden\nStartpunkt: An der Kirche St. Bonifatius, Platz der Freiheit, Bad Dürrenberg\n(ca. 700 m von Bahnhof entfernt)\nFührungsentgelt: »Weißes Gold & Kohlenstaub« inklusive Eintritt Borlach-Museum: 7,00 € (ohne Eintritt LaGa)\nBesuch Landesgartenschau (optional): Im Anschluss an die Führung empfiehlt sich ein individueller Besuch der Landesgartenschau Bad Dürrenberg, mit Möglichkeit zur Besichtigung Gradierwerke, Modellsiedeanlage, Kohlebahntunnel, Kalt-Inhalierhalle – und jeder Menge Pflanzen.\n(Nicht Teil der Führung. Eintrittskarte der Landesgartenschau erforderlich.)\n\nBegrenzte Teilnehmerzahl!\nAnmeldung erforderlich per E-Mail an: anmeldung@atelier-latent.de',
-        Webseite:
-          "http://www.atelier-latent.de/\n\nhttps://laga-badduerrenberg.de/",
+          '"Weißes Gold & Kohlenstaub"\n\nErkundungen mit Spaziergangsforscher Bertram Weisshaar in Kooperation mit Laga 2024\n\nBeginn Führung: 13.00 Uhr\n\nDauer ca. 2 1/2 Stunden\n\nStartpunkt: An der Kirche St. Bonifatius, Platz der Freiheit, Bad Dürrenberg\n(ca. 700 m von Bahnhof entfernt)\n\nFührungsentgelt:\n»Weißes Gold & Kohlenstaub« inklusive Eintritt Borlach-Museum: 7,00 € (ohne Eintritt LaGa)\n\nBesuch Landesgartenschau (optional):\nIm Anschluss an die Führung empfiehlt sich ein individueller Besuch der Landesgartenschau Bad Dürrenberg, mit Möglichkeit zur Besichtigung Gradierwerke, Modellsiedeanlage, Kohlebahntunnel, Kalt-Inhalierhalle – und jeder Menge Pflanzen.\n(Nicht Teil der Führung. Eintrittskarte der Landesgartenschau erforderlich.)\n\nBegrenzte Teilnehmerzahl!\n\nAnmeldung erforderlich per E-Mail an: anmeldung@atelier-latent.de',
+        Webseite: "http://www.atelier-latent.de/\n\n",
+        Infos: "https://laga-badduerrenberg.de/",
         TeilnahmeBestätigt: "26.03.2024",
       },
       {
@@ -1464,8 +1607,9 @@ export default {
         AktionsortStraße: "Schleuse 4A ",
         Oeffnungszeit: "10-17.00 Uhr",
         AktivitätTIK_2024:
-          "frei zugängliche Aussichtsplattform mit Schautafeln",
-        Webseite: "http://www.500-indu-rothenburg.de/schlackenhalde.htm",
+          "frei zugängliche Aussichtsplattform mit Schautafeln zur Geschichte der Halde",
+        Webseite: "http://www.500-indu-rothenburg.de/schlackenhalde.htm\n\n",
+        Infos: "https://industrietourismus.de/schlackehalde-rothenburg/",
         TeilnahmeBestätigt: "13.02.2024",
       },
       {
@@ -1476,9 +1620,10 @@ export default {
         AktionsortStraße: "Zeitzer Strasse 4",
         Oeffnungszeit: "10-17.00 Uhr",
         AktivitätTIK_2024:
-          "Sonderführungen durch die Ausstellungen der  fast vollständigen Dokumentation der DDR-Schuhherstellung.\nMit Ergänzungen, besonders auch im Hinblick auf Schuhgestaltung und Design des 21. Jahrhunderts.\nBesonderes Augenmerk wir zum TIK auf die Exponate der technischen Anlagen, Maschinen, Konstruktionszeichnungen und Entwürfe aus der Schuhindustrie gelegt von denen in den vergangenen Jahren konnten  einige Objekte restauriert werden konnten.",
+          "Sonderführungen durch die Ausstellungen der  fast vollständigen Dokumentation der DDR-Schuhherstellung.\n\nMit Ergänzungen, besonders auch im Hinblick auf Schuhgestaltung und Design des 21. Jahrhunderts.\n\nBesonderes Augenmerk wir zum TIK auf die Exponate der technischen Anlagen, Maschinen, Konstruktionszeichnungen und Entwürfe aus der Schuhindustrie gelegt von denen in den vergangenen Jahren konnten  einige Objekte restauriert werden konnten.",
         Webseite:
           "https://weissenfels-erlebnis.de/Entdecken-/Museum-Wei%C3%9Fenfels-im-Schloss-Neu-Augustusburg/",
+        Infos: "",
         TeilnahmeBestätigt: "13.02.2024",
       },
       {
@@ -1489,8 +1634,9 @@ export default {
         AktionsortStraße: "Bahnhofstraße 33",
         Oeffnungszeit: "10-17.00 Uhr",
         AktivitätTIK_2024:
-          "Öffnung zwei Sondervitrienen zur regionalen Industriegeschichte ",
+          "Sonderschau von zwei Vitrienen zur regionalen Industriegeschichte.",
         Webseite: "https://www.spenglermuseum.de/de/",
+        Infos: "",
         TeilnahmeBestätigt: "04.04.2024",
       },
       {
@@ -1502,6 +1648,7 @@ export default {
         Oeffnungszeit: "10-17.00 Uhr",
         AktivitätTIK_2024: "Öffnung? HAVAG?",
         Webseite: "",
+        Infos: "",
         TeilnahmeBestätigt: "",
       },
       {
@@ -1513,6 +1660,7 @@ export default {
         Oeffnungszeit: "10-17.00 Uhr",
         AktivitätTIK_2024: "siehe Programm Eisernes Band",
         Webseite: "www.hsf-eV.de/Vereine",
+        Infos: "",
         TeilnahmeBestätigt: "12.02.2024",
       },
       {
@@ -1523,8 +1671,10 @@ export default {
         AktionsortStraße: "Mansfelder Straße 15",
         Oeffnungszeit: "10-16.00 Uhr",
         AktivitätTIK_2024:
-          '10.00 Uhr bis 12.00 Uhr &\n14.00 Uhr bis 16.00 Uhr\nSonderführung durch die aktuelle Baustellen des Salinemuseums Halle unter dem Motto:\n"Ein museales Großprojekt zwischen Industriegeschichte und gelebter Industriekultur" durch den Aufbaustab Salinemuseum Halle und Erik Neumann\nDer spannende Rundgang durch das bedeutende Industriedenkmal mit den beiden Großsiedehallen Süd und Nord bietet einen exklusiven Einblick in die Arbeit an der zukünftigen Ausstellung und in die geplante Etablierung des Saline-Ensembles als industriekulturellen Leuchtturm Sachsen-Anhalts.\nIm zweiten Teil der Führung wird der Industriegeschichtsexperte Erik Neumann bei einem interessanten Rundgang über die Saline-Insel zeigen, welche Bedeutung der Standort in der Industriegeschichte der Stadt Halle (Saale) einnahm.\nEs wird erfahrbar werden wie die Saline, welche von 1721 bis 1964 Salz produzierte, ihr Umfeld prägte.  \nTreffpunkt: Eingang Uhrenhaus auf dem Salinen-Gelände (Salinemuseum Halle, Mansfelder Straße 52, 06108 Halle (Saale))\n\nBitte beachten Sie, dass die Zahl der Teilnehmenden der beiden Führungen auf 20 Personen je Führung begrenzt ist.\n\nAnmeldungen sind nur unter Telefon: 0345 221-3089/ 3087 bzw. info@salinemuseumhalle.de möglich.\n\nDie Saline ist Teil der Bustour siehe auch Programm "Am Eisernen Band".',
-        Webseite: "https://www.salinemuseum.de/",
+          '10.00 Uhr bis 12.00 Uhr &\n14.00 Uhr bis 16.00 Uhr\n\nSonderführung durch die aktuelle Baustellen des Salinemuseums Halle unter dem Motto:\n\n"Ein museales Großprojekt zwischen Industriegeschichte und gelebter Industriekultur" \ndurch den Aufbaustab Salinemuseum Halle und Erik Neumann\n\nDer spannende Rundgang durch das bedeutende Industriedenkmal mit den beiden Großsiedehallen Süd und Nord bietet einen exklusiven Einblick in die Arbeit an der zukünftigen Ausstellung und in die geplante Etablierung des Saline-Ensembles als industriekulturellen Leuchtturm Sachsen-Anhalts.\n\nIm zweiten Teil der Führung wird der Industriegeschichtsexperte Erik Neumann bei einem Rundgang über die Saline-Insel zeigen, welche Bedeutung der Standort in der Industriegeschichte der Stadt Halle (Saale) einnahm. Es wird erfahrbar werden wie die Saline, welche von 1721 bis 1964 Salz produzierte, ihr Umfeld prägte.  \n\nTreffpunkt:\nEingang Uhrenhaus auf dem Salinen-Gelände Salinemuseum Halle, Mansfelder Straße 52, 06108 Halle (Saale)\n\nBitte beachten Sie, dass die Zahl der Teilnehmenden der beiden Führungen auf 20 Personen je Führung begrenzt ist.\n\nAnmeldungen sind nur unter Telefon: \n0345 221-3089/ 3087 bzw. per Mail an info@salinemuseumhalle.de möglich.',
+        Webseite: "https://www.salinemuseum.de/\n\n",
+        Infos:
+          "https://industrietourismus.de/technisches-halloren-und-salinemuseum/",
         TeilnahmeBestätigt: "12.02.2024",
       },
       {
@@ -1536,6 +1686,7 @@ export default {
         Oeffnungszeit: "10-17.00 Uhr",
         AktivitätTIK_2024: "erst 2025?",
         Webseite: "www.tvb-bergschule-eisleben.com",
+        Infos: "",
         TeilnahmeBestätigt: "",
       },
       {
@@ -1548,6 +1699,7 @@ export default {
         AktivitätTIK_2024: "Sonderführung durch die Magazinräume",
         Webseite:
           "https://museum-moritzburg-zeitz.de/portfolio-item/deutsches-kinderwagenmuseum/",
+        Infos: "",
         TeilnahmeBestätigt: "",
       },
       {
@@ -1558,8 +1710,9 @@ export default {
         AktionsortStraße: "Grubenweg 4",
         Oeffnungszeit: "10-18.00 Uhr",
         AktivitätTIK_2024:
-          "Sonderführungen in der neuen Ausstellung\nkulinarische Versorgung im Geiseltal Café   12  bis 18 Uhr\n",
-        Webseite: "https://www.pfaennerhall-geiseltal.de/",
+          "- Sonderführungen in der neuen Ausstellung\n\n- kulinarische Versorgung im Geiseltal Café \n12-18 Uhr",
+        Webseite: "https://www.pfaennerhall-geiseltal.de/\n\n",
+        Infos: "https://industrietourismus.de/zentralwerkstatt-pfaennerhall/",
         TeilnahmeBestätigt: "07.02.2024",
       },
       {
@@ -1570,8 +1723,9 @@ export default {
         AktionsortStraße: "Zeitzer Strasse 9a",
         Oeffnungszeit: "10-17.00 Uhr",
         AktivitätTIK_2024:
-          "Sammlung von historische Feuerwehren in Verbindung mit dem Oldtimertreffen in Zeitz\n(siehe auch die Angebote zur Drahtseilbahn und im  Hermannschacht Zeitz).",
+          "Sammlung von historische Feuerwehren in Verbindung mit dem Oldtimertreffen in Zeitz\n\n(siehe auch die Angebote zur Drahtseilbahn und im  Hermannschacht Zeitz).",
         Webseite: "https://zifft.de/",
+        Infos: "",
         TeilnahmeBestätigt: "09.02.2024",
       },
       {
@@ -1583,6 +1737,7 @@ export default {
         Oeffnungszeit: "10-17.00 Uhr",
         AktivitätTIK_2024: "erst 2025?",
         Webseite: "www.koesener.de",
+        Infos: "",
         TeilnahmeBestätigt: "",
       },
       {
@@ -1594,6 +1749,7 @@ export default {
         Oeffnungszeit: "10-17.00 Uhr",
         AktivitätTIK_2024: "erst 2025?",
         Webseite: "www.500-indu-rothenburg.de",
+        Infos: "",
         TeilnahmeBestätigt: "",
       },
       {
@@ -1605,6 +1761,7 @@ export default {
         Oeffnungszeit: "10-17.00 Uhr",
         AktivitätTIK_2024: "Standort in Thüringen",
         Webseite: "",
+        Infos: "",
         TeilnahmeBestätigt: "",
       },
       {
@@ -1616,6 +1773,7 @@ export default {
         Oeffnungszeit: "",
         AktivitätTIK_2024: "",
         Webseite: "",
+        Infos: "",
         TeilnahmeBestätigt: "",
       },
       {
@@ -1627,6 +1785,7 @@ export default {
         Oeffnungszeit: "",
         AktivitätTIK_2024: "",
         Webseite: "",
+        Infos: "",
         TeilnahmeBestätigt: "",
       },
       {
@@ -1638,6 +1797,7 @@ export default {
         Oeffnungszeit: "",
         AktivitätTIK_2024: "",
         Webseite: "",
+        Infos: "",
         TeilnahmeBestätigt: "",
       },
       {
@@ -1649,6 +1809,7 @@ export default {
         Oeffnungszeit: "",
         AktivitätTIK_2024: "",
         Webseite: "",
+        Infos: "",
         TeilnahmeBestätigt: "",
       },
       {
@@ -1660,6 +1821,7 @@ export default {
         Oeffnungszeit: "",
         AktivitätTIK_2024: "",
         Webseite: "",
+        Infos: "",
         TeilnahmeBestätigt: "",
       },
     ];
