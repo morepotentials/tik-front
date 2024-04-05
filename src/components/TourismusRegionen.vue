@@ -62,8 +62,8 @@
           <p class="mb-8">
             Zum Aktionstag ist das industriekulturelle Erbe Sachsen-Anhalts
             landesweit erlebbar. Kommen und staunen Sie wie vielfältig und
-            lebendig sich Orte, Personen und Ereignisse am der Industriekultur
-            (TIK) präsentieren und verbinden.
+            lebendig sich Orte, Personen und Ereignisse am Tag der
+            Industriekultur (TIK) präsentieren und verbinden.
           </p>
         </div>
         <div class="flex justify-center sm:justify-start">
