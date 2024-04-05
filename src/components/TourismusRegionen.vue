@@ -46,14 +46,9 @@
             </div>
           </div>
         </div>
-        <h1 class="text-t-green text-5xl italic font-bold">
-          14. TAG DER <br />
-          INDUSTRIE- <br />
-          KULTUR <br />
-          <span class="text-white"
-            >SACHSEN- <br />
-            ANHALT</span
-          >
+        <h1 class="text-t-green text-3xl sm:text-5xl italic font-bold">
+          14. TAG DER INDUSTRIE- KULTUR
+          <span class="text-white">SACHSEN- ANHALT</span>
         </h1>
         <div class="flex justify-center sm:justify-start">
           <hr class="h-[1px] w-44 bg-t-green my-3 border-0 my-8" />
@@ -90,7 +85,7 @@
 
   <div ref="programm" class="h-screen flex flex-row">
     <div
-      class="container my-auto mx-auto h-screen items-center justify-center flex relative"
+      class="container mt-auto sm:my-auto mx-auto h-screen items-center justify-center flex relative"
     >
       <TikMap @some-event="setRegion" :is-modal-open="isModalOpen"></TikMap>
     </div>
