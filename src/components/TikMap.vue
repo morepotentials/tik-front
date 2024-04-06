@@ -1,6 +1,6 @@
 <template>
   <div
-    class="max-w-[700px] grow p-4 my-auto flex-col justify-center items-center"
+    class="max-w-[500px] lg:max-w-[600px] grow p-4 my-auto flex-col justify-center items-center"
   >
     <svg
       width="auto"
