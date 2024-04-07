@@ -5,7 +5,7 @@
         class="hidden md:flex mt-5 ml-5 justify-center flex-col items-center cursor-pointer"
       >
         <a href="https://industriekultur-sachsen-anhalt.de">
-          <TikLogoN class="mb-5 h-[75px] lg:mb-5 h-[150px]"></TikLogoN>
+          <TikLogoN class="mb-5 h-[75px] mb-5 lg:h-[150px]"></TikLogoN>
         </a>
         <a
           href="https://kultur.sachsen-anhalt.de/kultur-entdecken/kulturland-entdecken/industriekultur#"
