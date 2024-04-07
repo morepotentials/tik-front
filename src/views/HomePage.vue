@@ -5,7 +5,7 @@
         class="hidden md:flex mt-5 ml-5 justify-center flex-col items-center cursor-pointer"
       >
         <a href="https://industriekultur-sachsen-anhalt.de">
-          <TikLogoN class="mb-5 h-[150px]"></TikLogoN>
+          <TikLogoN class="mb-5 h-[75px] lg:mb-5 h-[150px]"></TikLogoN>
         </a>
         <a
           href="https://kultur.sachsen-anhalt.de/kultur-entdecken/kulturland-entdecken/industriekultur#"
@@ -14,7 +14,7 @@
         >
           <img
             src="../assets/lsa_logo_farbig.png"
-            style="max-height: 50px; background-color: "
+            class="max-h-[25px] lg:max-h-[50px]"
           />
         </a>
         <a
@@ -24,7 +24,7 @@
         >
           <img
             src="../assets/moderndenken_logo_weiss.png"
-            style="max-height: 50px"
+            class="max-h-[25px] lg:max-h-[50px]"
           />
         </a>
         <a
@@ -33,7 +33,10 @@
           rel="noopener noreferrer"
           class="mt-5"
         >
-          <img src="../assets/nik_logo_weiss.png" style="max-height: 28px" />
+          <img
+            src="../assets/nik_logo_weiss.png"
+            class="max-h-[15px] lg:max-h-[28px]"
+          />
         </a>
       </div>
     </div>
