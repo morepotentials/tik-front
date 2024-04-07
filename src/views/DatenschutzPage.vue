@@ -1,5 +1,5 @@
 <template>
-  <div class="relative">
+  <div class="relative px-16">
     <div class="fixed z-10 p-1 left-4 top-20">
       <router-link to="/"
         ><svg

@@ -1,5 +1,5 @@
 <template>
-  <div class="relative">
+  <div class="relative px-16">
     <div class="fixed z-10 p-1 left-4 top-20">
       <router-link to="/"
         ><svg
@@ -140,61 +140,7 @@
         <br style="font-size: 16px" />
       </p>
       <p>
-        <span style="font-size: 16px"
-          >Diese Website benutzt Google Analytics, einen Webanalysedienst der
-          Google Inc. (&bdquo;Google&ldquo;). Google Analytics verwendet sog.
-          &bdquo;Cookies&ldquo;, Textdateien, die auf Ihrem Computer gespeichert
-          werden und die eine Analyse der Benutzung der Website durch Sie
-          erm&ouml;glichen. Die durch das Cookie erzeugten Informationen
-          &uuml;ber Ihre Benutzung dieser Website werden in der Regel an einen
-          Server von Google in den USA &uuml;bertragen und dort gespeichert. Im
-          Falle der Aktivierung der IP-Anonymisierung auf dieser Website, wird
-          Ihre IP-Adresse von Google jedoch innerhalb von Mitgliedstaaten der
-          Europ&auml;ischen Union oder in anderen Vertragsstaaten des Abkommens
-          &uuml;ber den Europ&auml;ischen Wirtschaftsraum zuvor gek&uuml;rzt.
-          Nur in Ausnahmef&auml;llen wird die volle IP-Adresse an einen Server
-          von Google in den USA &uuml;bertragen und dort gek&uuml;rzt. Im
-          Auftrag des Betreibers dieser Website wird Google diese Informationen
-          benutzen, um Ihre Nutzung der Website auszuwerten, um Reports
-          &uuml;ber die Websiteaktivit&auml;ten zusammenzustellen und um weitere
-          mit der Websitenutzung und der Internetnutzung verbundene
-          Dienstleistungen gegen&uuml;ber dem Websitebetreiber zu erbringen. Die
-          im Rahmen von Google Analytics von Ihrem Browser &uuml;bermittelte
-          IP-Adresse wird nicht mit anderen Daten von Google
-          zusammengef&uuml;hrt. Sie k&ouml;nnen die Speicherung der Cookies
-          durch eine entsprechende Einstellung Ihrer Browser-Software
-          verhindern; wir weisen Sie jedoch darauf hin, dass Sie in diesem Fall
-          gegebenenfalls nicht s&auml;mtliche Funktionen dieser Website
-          vollumf&auml;nglich werden nutzen k&ouml;nnen. Sie k&ouml;nnen
-          dar&uuml;ber hinaus die Erfassung der durch das Cookie erzeugten und
-          auf Ihre Nutzung der Website bezogenen Daten (inkl. Ihrer IP-Adresse)
-          an Google sowie die Verarbeitung dieser Daten durch Google verhindern,
-          indem Sie das unter dem folgenden Link
-          (http://tools.google.com/dlpage/gaoptout?hl=de) verf&uuml;gbare
-          Browser-Plugin herunterladen und installieren.</span
-        >
-      </p>
-      <p>
         <br style="font-size: 16px" />
-      </p>
-      <p>
-        <span style="font-size: 16px"
-          >Sie k&ouml;nnen die Erfassung durch Google Analytics verhindern,
-          indem Sie auf folgenden Link klicken. Es wird ein Opt-Out-Cookie
-          gesetzt, das die zuk&uuml;nftige Erfassung Ihrer Daten beim Besuch
-          dieser Website verhindert:</span
-        >
-      </p>
-      <p>
-        <a
-          href="javascript%3AgaOptout()"
-          style="
-            color: rgb(233, 81, 29);
-
-            font-size: 16px;
-          "
-          >Google Analytics deaktivieren</a
-        >
       </p>
       <p>
         <br style="font-size: 16px" />

@@ -1,42 +1,44 @@
 <template>
   <div class="relative">
     <div
-      class="container h-screen flex my-auto min-h-[800px] mx-auto px-4 relative"
+      class="flex flex-row mb-6 md:hidden absolute w-full flex justify-center pt-5"
+    >
+      <a
+        href="https://kultur.sachsen-anhalt.de/kultur-entdecken/kulturland-entdecken/industriekultur#"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <img
+          src="../assets/lsa_logo_farbig.png"
+          style="max-height: 50px; background-color: "
+        />
+      </a>
+      <a
+        href="https://moderndenken.sachsen-anhalt.de/moderne-denker"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="mx-5"
+      >
+        <img
+          src="../assets/moderndenken_logo_weiss.png"
+          style="max-height: 50px"
+        />
+      </a>
+      <a
+        href="https://www.ferropolis.de/de/cms/_redaktionell/28/Industriekultur.html"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="mt-5"
+      >
+        <img src="../assets/nik_logo_weiss.png" style="max-height: 28px" />
+      </a>
+    </div>
+    <div
+      class="container h-screen flex my-auto min-h-[700px] mx-auto px-4 relative"
     >
       <div
         class="basis-full sm:basis-1/2 flex justify-center flex-col inline-block items-center"
       >
-        <div class="flex flex-row mb-6 md:hidden">
-          <a
-            href="https://kultur.sachsen-anhalt.de/kultur-entdecken/kulturland-entdecken/industriekultur#"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <img
-              src="../assets/lsa_logo_farbig.png"
-              style="max-height: 50px; background-color: "
-            />
-          </a>
-          <a
-            href="https://moderndenken.sachsen-anhalt.de/moderne-denker"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="mx-5"
-          >
-            <img
-              src="../assets/moderndenken_logo_weiss.png"
-              style="max-height: 50px"
-            />
-          </a>
-          <a
-            href="https://www.ferropolis.de/de/cms/_redaktionell/28/Industriekultur.html"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="mt-5"
-          >
-            <img src="../assets/nik_logo_weiss.png" style="max-height: 28px" />
-          </a>
-        </div>
         <div class="max-w-[300px] text-center sm:text-left">
           <div>
             <div class="mb-8 skew-x-[-10deg] bg-white inline-block h-[27px]">
@@ -79,17 +81,17 @@
           <img src="../assets/Tik_logo_v2.png" />
         </div>
       </div>
-      <div class="w-[calc(100%-2rem)] absolute bottom-4 flex justify-center">
+      <div
+        class="w-[calc(100%-2rem)] absolute bottom-6 sm:bottom-4 flex justify-center"
+      >
         <div class="w-10 cursor-pointer">
           <DownArrowIcon @click="scrollToProgramm"></DownArrowIcon>
         </div>
       </div>
     </div>
 
-    <div ref="programm" class="h-screen min-h-[800px] flex flex-row">
-      <div
-        class="container mt-auto sm:my-auto mx-auto h-screen items-center justify-center flex relative"
-      >
+    <div ref="programm" class="h-screen min-h-[650px]">
+      <div class="container mx-auto h-screen sm:justify-center flex relative">
         <div
           v-if="!isModalOpen"
           class="absolute top-0 right-0 pl-4 pr-4 md:pr-0 md:ml-0 text-center md:text-left md:max-w-[350px] mt-4 sm:mt-8 md:mt-14"
