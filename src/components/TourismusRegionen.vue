@@ -1,299 +1,297 @@
 <template>
-  <div class="container h-screen flex my-auto mx-auto px-4 relative">
+  <div class="relative">
     <div
-      class="basis-full sm:basis-1/2 flex justify-center flex-col inline-block items-center"
-    >
-      <div class="flex flex-row mb-20 md:hidden">
-        <a
-          href="https://kultur.sachsen-anhalt.de/kultur-entdecken/kulturland-entdecken/industriekultur#"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <img
-            src="../assets/lsa_logo_farbig.png"
-            style="max-height: 50px; background-color: "
-          />
-        </a>
-        <a
-          href="https://moderndenken.sachsen-anhalt.de/moderne-denker"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="mx-5"
-        >
-          <img
-            src="../assets/moderndenken_logo_weiss.png"
-            style="max-height: 50px"
-          />
-        </a>
-        <a
-          href="https://www.ferropolis.de/de/cms/_redaktionell/28/Industriekultur.html"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="mt-5"
-        >
-          <img src="../assets/nik_logo_weiss.png" style="max-height: 28px" />
-        </a>
-      </div>
-      <div class="max-w-[300px] text-center sm:text-left">
-        <div>
-          <div class="mb-8 skew-x-[-10deg] bg-white inline-block h-[27px]">
-            <div class="skew-x-[10deg]">
-              <span
-                class="text-t-green px-2 text-2xl italic text-t-grey font-bold"
-              >
-                SONNTAG 21.04.2024
-              </span>
-            </div>
-          </div>
-        </div>
-        <h1 class="text-t-green text-3xl sm:text-5xl italic font-bold">
-          14. TAG DER INDUSTRIE- KULTUR
-          <span class="text-white">SACHSEN- ANHALT</span>
-        </h1>
-        <div class="flex justify-center sm:justify-start">
-          <hr class="h-[1px] w-44 bg-t-green my-3 border-0 my-8" />
-        </div>
-        <div class="text-white">
-          <p class="mb-8">
-            Zum Aktionstag ist das industriekulturelle Erbe Sachsen-Anhalts
-            landesweit erlebbar. Kommen und staunen Sie wie vielfältig und
-            lebendig sich Orte, Personen und Ereignisse am Tag der
-            Industriekultur (TIK) präsentieren und verbinden.
-          </p>
-        </div>
-        <div class="flex justify-center sm:justify-start">
-          <div
-            class="w-[176px] text-center p-5 text-white bg-t-grey border border-solid border-t-green hover:bg-t-green hover:text-t-grey cursor-pointer"
-            @click="scrollToProgramm"
-          >
-            ZUM PROGRAMM
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="hidden sm:basis-1/2 sm:flex justify-start items-center">
-      <div class="max-w-[575px] relative z-[-1] ml-[-60px] xl:ml-0">
-        <img src="../assets/Tik_logo_v2.png" />
-      </div>
-    </div>
-    <div class="w-[calc(100%-2rem)] absolute bottom-4 flex justify-center">
-      <div class="w-10 cursor-pointer">
-        <DownArrowIcon @click="scrollToProgramm"></DownArrowIcon>
-      </div>
-    </div>
-  </div>
-
-  <div ref="programm" class="h-screen flex flex-row">
-    <div
-      class="container mt-auto sm:my-auto mx-auto h-screen items-center justify-center flex relative"
+      class="container h-screen flex my-auto min-h-[800px] mx-auto px-4 relative"
     >
       <div
-        v-if="!isModalOpen"
-        class="absolute top-0 right-0 pl-4 pr-4 md:pr-0 md:ml-0 text-center md:text-left md:max-w-[350px] mt-4 sm:mt-8 md:mt-14"
+        class="basis-full sm:basis-1/2 flex justify-center flex-col inline-block items-center"
       >
-        <h2 class="text-t-green text-3xl lg:text-5xl italic font-bold">
-          Das regionale Programm <br />
-          <span class="text-white">70 kuratierte Standorte</span>
-        </h2>
-        <p class="inline text-white max-w-[250px] mt-4 w-full">
-          Nähere Informationen zu einzelnen Standorten der Industriekultur
-          Sachsen-Anhalts finden Sie auf
+        <div class="flex flex-row mb-6 md:hidden">
           <a
-            href="https://industrietourismus.de/"
-            class="cursor-pointer text-t-green hover:underline"
+            href="https://kultur.sachsen-anhalt.de/kultur-entdecken/kulturland-entdecken/industriekultur#"
             target="_blank"
             rel="noopener noreferrer"
-            >industrietourismus.de</a
-          >.
-        </p>
-      </div>
-      <TikMap @some-event="setRegion" :is-modal-open="isModalOpen"></TikMap>
-    </div>
-    <div
-      ref="programmDrawer"
-      class="h-screen bg-t-grey overflow-y-scroll hidden sm:block relative t-scroll-bar"
-      :class="[isModalOpen ? 'w-full change' : 'w-0 outline-0']"
-    >
-      <button
-        class="h-11 w-11 mt-4 mr-4 cursor-pointer self-end t-modal-close-button fix right-4 top-0 hidden sm:flex"
-        :class="[isModalOpen ? 'opacity-1' : ' opacity-0']"
-        @click="closeModalOverlay"
-      >
-        <span class="t-modal-close-icon">
-          <svg
-            class="h-5 w-5"
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 20 20"
           >
-            <path
-              d="M12.12,10l4.07-4.06a1.5,1.5,0,1,0-2.11-2.12L10,7.88,5.94,3.81A1.5,1.5,0,1,0,3.82,5.93L7.88,10,3.81,14.06a1.5,1.5,0,0,0,0,2.12,1.51,1.51,0,0,0,2.13,0L10,12.12l4.06,4.07a1.45,1.45,0,0,0,1.06.44,1.5,1.5,0,0,0,1.06-2.56Z"
-            ></path>
-          </svg>
-        </span>
-      </button>
-      <div class="p-4 h-full">
-        <div class="py-16 text-t-green text-4xl italic font-bold">
-          {{ aktuelleRegion }}
+            <img
+              src="../assets/lsa_logo_farbig.png"
+              style="max-height: 50px; background-color: "
+            />
+          </a>
+          <a
+            href="https://moderndenken.sachsen-anhalt.de/moderne-denker"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="mx-5"
+          >
+            <img
+              src="../assets/moderndenken_logo_weiss.png"
+              style="max-height: 50px"
+            />
+          </a>
+          <a
+            href="https://www.ferropolis.de/de/cms/_redaktionell/28/Industriekultur.html"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="mt-5"
+          >
+            <img src="../assets/nik_logo_weiss.png" style="max-height: 28px" />
+          </a>
         </div>
-        <div
-          v-for="(ort, i) in getOrte(aktuelleRegion)"
-          :key="ort + i"
-          class="pb-10"
-        >
-          <hr class="h-[1px] w-24 bg-t-green my-3 border-0" />
-          <span class="text-white text-2xl italic font-bold"
-            >{{ ort.Institution }} <br />
-          </span>
-          <span class="text-white text-2xl italic font-light">
-            {{ ort.AktionsortStraße }}, {{ ort.PLZ }}, {{ ort.Ortsname }}
-          </span>
-          <div class="max-w-[800px]">
-            <span class="text-t-green italic text-xl font-light">
-              Öffnungszeiten: {{ ort.Oeffnungszeit }}
-              <br />
-              <br />
-            </span>
-            <span
-              class="text-white italic text-xl font-light whitespace-pre-wrap"
-            >
-              {{ ort.AktivitätTIK_2024 }}
-            </span>
-            <div v-if="ort.Infos !== ''">
-              <span class="italic font-bold text-t-green">
-                <br />
-                Infos zum Standort: <br />
-              </span>
-              <a
-                :href="createLink(ort.Infos)"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
+        <div class="max-w-[300px] text-center sm:text-left">
+          <div>
+            <div class="mb-8 skew-x-[-10deg] bg-white inline-block h-[27px]">
+              <div class="skew-x-[10deg]">
                 <span
-                  class="italic text-white font-bold cursor-pointer hover:underline"
+                  class="text-t-green px-2 text-2xl italic text-t-grey font-bold"
                 >
-                  {{ ort.Infos }}
+                  SONNTAG 21.04.2024
                 </span>
-              </a>
-            </div>
-            <div v-if="ort.Webseite !== ''">
-              <hr class="h-[1px] w-24 bg-t-green my-3 border-0" />
-              <span class="italic font-bold text-t-green"> KONTAKT: </span>
-              <a
-                :href="createLink(ort.Webseite)"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <span
-                  class="italic font-bold text-t-green cursor-pointer hover:underline"
-                >
-                  {{ ort.Webseite }}
-                </span>
-              </a>
+              </div>
             </div>
           </div>
-          <hr class="h-[1px] w-24 bg-t-green my-3 border-0" />
+          <h1 class="text-t-green text-3xl sm:text-5xl italic font-bold">
+            14. TAG DER INDUSTRIE- KULTUR
+            <span class="text-white">SACHSEN- ANHALT</span>
+          </h1>
+          <div class="flex justify-center sm:justify-start">
+            <hr class="h-[1px] w-44 bg-t-green my-3 border-0 my-8" />
+          </div>
+          <div class="text-white">
+            <p class="mb-8">
+              Zum Aktionstag ist das industriekulturelle Erbe Sachsen-Anhalts
+              landesweit erlebbar. Kommen und staunen Sie wie vielfältig und
+              lebendig sich Orte, Personen und Ereignisse am Tag der
+              Industriekultur (TIK) präsentieren und verbinden.
+            </p>
+          </div>
+          <div class="flex justify-center sm:justify-start">
+            <div
+              class="w-[176px] text-center p-5 text-white bg-t-grey border border-solid border-t-green hover:bg-t-green hover:text-t-grey cursor-pointer"
+              @click="scrollToProgramm"
+            >
+              ZUM PROGRAMM
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="hidden sm:basis-1/2 sm:flex justify-start items-center">
+        <div class="max-w-[575px] relative z-[-1] ml-[-60px] xl:ml-0">
+          <img src="../assets/Tik_logo_v2.png" />
+        </div>
+      </div>
+      <div class="w-[calc(100%-2rem)] absolute bottom-4 flex justify-center">
+        <div class="w-10 cursor-pointer">
+          <DownArrowIcon @click="scrollToProgramm"></DownArrowIcon>
         </div>
       </div>
     </div>
-    <div
-      ref="programmModal"
-      :class="[isModalOpen ? 'z-[1] block sm:hidden' : 'z-[-1] hidden']"
-      class="fixed bottom-0 left-0 right-0 top-0 bg-t-grey t-modal-overlay t-scroll-bar"
-    >
-      <div class="t-modal-overlay-container">
-        <div class="t-modal-overlay">
-          <div class="t-modal-content-container text-white max-w-full p-4">
-            <div>
-              <div class="py-16 text-t-green text-4xl italic font-bold">
-                {{ aktuelleRegion }}
-              </div>
-              <div
-                v-for="(ort, i) in getOrte(aktuelleRegion)"
-                :key="ort + i"
-                class="pb-10"
-              >
-                <hr class="h-[1px] w-24 bg-t-green my-3 border-0" />
-                <span class="text-white text-2xl italic font-bold"
-                  >{{ ort.Institution }} <br />
-                </span>
-                <span class="text-white text-2xl italic font-light">
-                  {{ ort.AktionsortStraße }},
-                  {{ ort.PLZ.replace(/['"]+/g, "") }}, {{ ort.Ortsname }}
-                </span>
-                <div class="max-w-[800px]">
-                  <p class="text-t-green italic text-xl font-light">
-                    Öffnungszeiten: {{ ort.Oeffnungszeit }}
-                    <br />
-                    <br />
-                  </p>
 
+    <div ref="programm" class="h-screen min-h-[800px] flex flex-row">
+      <div
+        class="container mt-auto sm:my-auto mx-auto h-screen items-center justify-center flex relative"
+      >
+        <div
+          v-if="!isModalOpen"
+          class="absolute top-0 right-0 pl-4 pr-4 md:pr-0 md:ml-0 text-center md:text-left md:max-w-[350px] mt-4 sm:mt-8 md:mt-14"
+        >
+          <h2 class="text-t-green text-3xl lg:text-5xl italic font-bold">
+            Das regionale Programm <br />
+            <span class="text-white">70 kuratierte Standorte</span>
+          </h2>
+          <p class="inline text-white max-w-[250px] mt-4 w-full">
+            Nähere Informationen zu einzelnen Standorten der Industriekultur
+            Sachsen-Anhalts finden Sie auf
+            <a
+              href="https://industrietourismus.de/"
+              class="cursor-pointer text-t-green hover:underline"
+              target="_blank"
+              rel="noopener noreferrer"
+              >industrietourismus.de</a
+            >.
+          </p>
+        </div>
+        <TikMap @some-event="setRegion" :is-modal-open="isModalOpen"></TikMap>
+      </div>
+      <div
+        ref="programmDrawer"
+        class="h-screen bg-t-grey overflow-y-scroll hidden sm:block relative t-scroll-bar"
+        :class="[isModalOpen ? 'w-full change' : 'w-0 outline-0']"
+      >
+        <button
+          class="h-11 w-11 mt-4 mr-4 cursor-pointer self-end t-modal-close-button fix right-4 top-0 hidden sm:flex"
+          :class="[isModalOpen ? 'opacity-1' : ' opacity-0']"
+          @click="closeModalOverlay"
+        >
+          <span class="t-modal-close-icon">
+            <svg
+              class="h-5 w-5"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 20 20"
+            >
+              <path
+                d="M12.12,10l4.07-4.06a1.5,1.5,0,1,0-2.11-2.12L10,7.88,5.94,3.81A1.5,1.5,0,1,0,3.82,5.93L7.88,10,3.81,14.06a1.5,1.5,0,0,0,0,2.12,1.51,1.51,0,0,0,2.13,0L10,12.12l4.06,4.07a1.45,1.45,0,0,0,1.06.44,1.5,1.5,0,0,0,1.06-2.56Z"
+              ></path>
+            </svg>
+          </span>
+        </button>
+        <div class="p-4 h-full">
+          <div class="py-16 text-t-green text-4xl italic font-bold">
+            {{ aktuelleRegion }}
+          </div>
+          <div
+            v-for="(ort, i) in getOrte(aktuelleRegion)"
+            :key="ort + i"
+            class="pb-10"
+          >
+            <hr class="h-[1px] w-24 bg-t-green my-3 border-0" />
+            <span class="text-white text-2xl italic font-bold"
+              >{{ ort.Institution }} <br />
+            </span>
+            <span class="text-white text-2xl italic font-light">
+              {{ ort.AktionsortStraße }}, {{ ort.PLZ }}, {{ ort.Ortsname }}
+            </span>
+            <div class="max-w-[800px]">
+              <span class="text-t-green italic text-xl font-light">
+                Öffnungszeiten: {{ ort.Oeffnungszeit }}
+                <br />
+                <br />
+              </span>
+              <span
+                class="text-white italic text-xl font-light whitespace-pre-wrap"
+              >
+                {{ ort.AktivitätTIK_2024 }}
+              </span>
+              <div v-if="ort.Infos !== ''">
+                <span class="italic font-bold text-t-green">
+                  <br />
+                  Infos zum Standort: <br />
+                </span>
+                <a
+                  :href="createLink(ort.Infos)"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   <span
-                    class="text-white italic text-xl font-light whitespace-pre-wrap"
+                    class="italic text-white font-bold cursor-pointer hover:underline"
                   >
-                    {{ ort.AktivitätTIK_2024 }}
+                    {{ ort.Infos }}
                   </span>
-                  <div v-if="ort.Infos !== ''">
-                    <span class="italic font-bold text-t-green">
+                </a>
+              </div>
+              <div v-if="ort.Webseite !== ''">
+                <hr class="h-[1px] w-24 bg-t-green my-3 border-0" />
+                <span class="italic font-bold text-t-green"> KONTAKT: </span>
+                <a
+                  :href="createLink(ort.Webseite)"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <span
+                    class="italic font-bold text-t-green cursor-pointer hover:underline"
+                  >
+                    {{ ort.Webseite }}
+                  </span>
+                </a>
+              </div>
+            </div>
+            <hr class="h-[1px] w-24 bg-t-green my-3 border-0" />
+          </div>
+        </div>
+      </div>
+      <div
+        ref="programmModal"
+        :class="[isModalOpen ? 'z-[1] block sm:hidden' : 'z-[-1] hidden']"
+        class="fixed bottom-0 left-0 right-0 top-0 bg-t-grey t-modal-overlay t-scroll-bar"
+      >
+        <div class="t-modal-overlay-container">
+          <div class="t-modal-overlay">
+            <div class="t-modal-content-container text-white max-w-full p-4">
+              <div>
+                <div class="py-16 text-t-green text-4xl italic font-bold">
+                  {{ aktuelleRegion }}
+                </div>
+                <div
+                  v-for="(ort, i) in getOrte(aktuelleRegion)"
+                  :key="ort + i"
+                  class="pb-10"
+                >
+                  <hr class="h-[1px] w-24 bg-t-green my-3 border-0" />
+                  <span class="text-white text-2xl italic font-bold"
+                    >{{ ort.Institution }} <br />
+                  </span>
+                  <span class="text-white text-2xl italic font-light">
+                    {{ ort.AktionsortStraße }},
+                    {{ ort.PLZ.replace(/['"]+/g, "") }}, {{ ort.Ortsname }}
+                  </span>
+                  <div class="max-w-[800px]">
+                    <p class="text-t-green italic text-xl font-light">
+                      Öffnungszeiten: {{ ort.Oeffnungszeit }}
                       <br />
-                      Infos zum Standort: <br />
+                      <br />
+                    </p>
+
+                    <span
+                      class="text-white italic text-xl font-light whitespace-pre-wrap"
+                    >
+                      {{ ort.AktivitätTIK_2024 }}
+                    </span>
+                    <div v-if="ort.Infos !== ''">
+                      <span class="italic font-bold text-t-green">
+                        <br />
+                        Infos zum Standort: <br />
+                      </span>
+                      <a
+                        :href="createLink(ort.Infos)"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <span
+                          class="italic font-bold cursor-pointer hover:underline"
+                        >
+                          {{ ort.Infos }}
+                        </span>
+                      </a>
+                    </div>
+                    <hr class="h-[1px] w-24 bg-t-green my-3 border-0" />
+                    <span class="italic font-bold text-t-green">
+                      KONTAKT:
                     </span>
                     <a
-                      :href="createLink(ort.Infos)"
+                      :href="ort.Webseite"
                       target="_blank"
                       rel="noopener noreferrer"
                     >
                       <span
-                        class="italic font-bold cursor-pointer hover:underline"
+                        class="italic font-bold text-t-green cursor-pointer hover:underline"
                       >
-                        {{ ort.Infos }}
+                        {{ ort.Webseite }}
                       </span>
                     </a>
                   </div>
                   <hr class="h-[1px] w-24 bg-t-green my-3 border-0" />
-                  <span class="italic font-bold text-t-green"> KONTAKT: </span>
-                  <a
-                    :href="ort.Webseite"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <span
-                      class="italic font-bold text-t-green cursor-pointer hover:underline"
-                    >
-                      {{ ort.Webseite }}
-                    </span>
-                  </a>
                 </div>
-                <hr class="h-[1px] w-24 bg-t-green my-3 border-0" />
               </div>
             </div>
+            <button
+              class="h-11 w-11 mt-4 mr-4 cursor-pointer flex self-end t-modal-close-button"
+              @click="closeModalOverlay"
+            >
+              <span class="t-modal-close-icon">
+                <svg
+                  class="h-5 w-5"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 20 20"
+                >
+                  <path
+                    d="M12.12,10l4.07-4.06a1.5,1.5,0,1,0-2.11-2.12L10,7.88,5.94,3.81A1.5,1.5,0,1,0,3.82,5.93L7.88,10,3.81,14.06a1.5,1.5,0,0,0,0,2.12,1.51,1.51,0,0,0,2.13,0L10,12.12l4.06,4.07a1.45,1.45,0,0,0,1.06.44,1.5,1.5,0,0,0,1.06-2.56Z"
+                  ></path>
+                </svg>
+              </span>
+            </button>
           </div>
-          <button
-            class="h-11 w-11 mt-4 mr-4 cursor-pointer flex self-end t-modal-close-button"
-            @click="closeModalOverlay"
-          >
-            <span class="t-modal-close-icon">
-              <svg
-                class="h-5 w-5"
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 20 20"
-              >
-                <path
-                  d="M12.12,10l4.07-4.06a1.5,1.5,0,1,0-2.11-2.12L10,7.88,5.94,3.81A1.5,1.5,0,1,0,3.82,5.93L7.88,10,3.81,14.06a1.5,1.5,0,0,0,0,2.12,1.51,1.51,0,0,0,2.13,0L10,12.12l4.06,4.07a1.45,1.45,0,0,0,1.06.44,1.5,1.5,0,0,0,1.06-2.56Z"
-                ></path>
-              </svg>
-            </span>
-          </button>
         </div>
       </div>
     </div>
-  </div>
-  <div class="pb-6 pl-8 text-white">
-    <a href="" class="cursor-pointer hover:text-t-green">
-      <span> Impressum </span>
-    </a>
-    <a href="" class="ml-4 cursor-pointer hover:text-t-green">
-      <span> Datenschutz </span>
-    </a>
   </div>
 </template>
 
