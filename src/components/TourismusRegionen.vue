@@ -90,7 +90,7 @@
       </div>
     </div>
 
-    <div ref="programm" class="h-screen min-h-[650px]">
+    <div ref="programm" class="h-screen min-h-[650px] flex flex-row">
       <div class="container mx-auto h-screen sm:justify-center flex relative">
         <div
           v-if="!isModalOpen"
