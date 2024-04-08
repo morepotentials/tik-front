@@ -7,15 +7,21 @@
         <a href="https://industriekultur-sachsen-anhalt.de">
           <TikLogoN class="mb-5 h-[75px] mb-5 lg:h-[150px]"></TikLogoN>
         </a>
+      </div>
+    </div>
+  </div>
+  <div class="relative">
+    <TourismusRegionen @click-on-region="hideFooter" />
+    <div class="hidden md:flex absolute bottom-20">
+      <div
+        class="hidden md:flex mt-5 ml-5 justify-center flex-col items-center cursor-pointer"
+      >
         <a
           href="https://kultur.sachsen-anhalt.de/kultur-entdecken/kulturland-entdecken/industriekultur#"
           target="_blank"
           rel="noopener noreferrer"
         >
-          <img
-            src="../assets/lsa_logo_farbig.png"
-            class="max-h-[25px] lg:max-h-[50px]"
-          />
+          <img src="../assets/lsa_logo_farbig.png" class="max-h-[50px]" />
         </a>
         <a
           href="https://moderndenken.sachsen-anhalt.de/moderne-denker"
@@ -24,7 +30,7 @@
         >
           <img
             src="../assets/moderndenken_logo_weiss.png"
-            class="max-h-[25px] lg:max-h-[50px]"
+            class="max-h-[50px]"
           />
         </a>
         <a
@@ -33,16 +39,10 @@
           rel="noopener noreferrer"
           class="mt-5"
         >
-          <img
-            src="../assets/nik_logo_weiss.png"
-            class="max-h-[15px] lg:max-h-[28px]"
-          />
+          <img src="../assets/nik_logo_weiss.png" class="max-h-[28px]" />
         </a>
       </div>
     </div>
-  </div>
-  <div class="relative">
-    <TourismusRegionen @click-on-region="hideFooter" />
     <div
       v-if="!isProgramOpen"
       id="footer"

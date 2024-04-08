@@ -113,7 +113,10 @@
             Das regionale Programm <br />
             <span class="text-white">70 kuratierte Standorte</span>
           </h2>
-          <p class="inline text-white max-w-[250px] mt-4 w-full">
+          <div class="md:flex hidden sm:justify-center md:justify-start">
+            <hr class="h-[1px] w-44 bg-t-green my-3 border-0 my-8" />
+          </div>
+          <p class="hidden md:inline text-white max-w-[250px] mt-4 w-full">
             Nähere Informationen zu einzelnen Standorten der Industriekultur
             Sachsen-Anhalts finden Sie auf
             <a
