@@ -74,7 +74,6 @@ export default {
   setup() {
     const isProgramOpen = ref(false);
     const hideFooter = (programOpen) => {
-      console.log("hello");
       isProgramOpen.value = programOpen;
     };
     return {

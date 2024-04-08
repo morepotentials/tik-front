@@ -59,12 +59,12 @@
       </p>
       <p>
         <span style="font-size: 16px"
-          >Beim Aufrufen unserer Website www.ferropolis.de werden durch den auf
-          Ihrem Endger&auml;t zum Einsatz kommenden Browser automatisch
-          Informationen an den Server unserer Website gesendet. Diese
-          Informationen werden tempor&auml;r in einem sog. Logfile gespeichert.
-          Folgende Informationen werden dabei ohne Ihr Zutun erfasst und bis zur
-          automatisierten L&ouml;schung gespeichert:</span
+          >Beim Aufrufen unserer Website www.industriekultur-sachsen-anhalt.de
+          werden durch den auf Ihrem Endger&auml;t zum Einsatz kommenden Browser
+          automatisch Informationen an den Server unserer Website gesendet.
+          Diese Informationen werden tempor&auml;r in einem sog. Logfile
+          gespeichert. Folgende Informationen werden dabei ohne Ihr Zutun
+          erfasst und bis zur automatisierten L&ouml;schung gespeichert:</span
         >
       </p>
       <p>
@@ -887,8 +887,8 @@
           beh&ouml;rdlicher Vorgaben kann es notwendig werden, diese
           Datenschutzerkl&auml;rung zu &auml;ndern. Die jeweils aktuelle
           Datenschutzerkl&auml;rung kann jederzeit auf der Website unter
-          https://www.ferropolis.de/datenschutz von Ihnen abgerufen und
-          ausgedruckt werden.</span
+          https://www.industriekultur-sachsen-anhalt.de/datenschutz von Ihnen
+          abgerufen und ausgedruckt werden.</span
         >
       </p>
     </div>

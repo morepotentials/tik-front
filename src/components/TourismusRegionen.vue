@@ -33,7 +33,9 @@
         <img src="../assets/nik_logo_weiss.png" style="max-height: 28px" />
       </a>
     </div>
+
     <div
+      ref="hero"
       class="container h-screen flex my-auto min-h-[700px] mx-auto px-4 relative"
     >
       <div
@@ -88,6 +90,17 @@
           <DownArrowIcon @click="scrollToProgramm"></DownArrowIcon>
         </div>
       </div>
+      <div
+        @click.prevent="makeSound"
+        class="absolute top-5 right-5 hidden md:flex justify-center items-center"
+      >
+        <div class="text-white p-0 text-center">Das Echolot</div>
+        <div
+          class="rounded-full bg-t-green w-6 h-6 hover:bg-white flex justify-center items-center ml-2 cursor-pointer"
+        >
+          <MakeSoundIcon></MakeSoundIcon>
+        </div>
+      </div>
     </div>
 
     <div ref="programm" class="h-screen min-h-[650px] flex flex-row">
@@ -117,7 +130,9 @@
           :is-modal-open="isProgramOpen"
         ></TikMap>
       </div>
+
       <div
+        v-show="isProgramOpen"
         ref="programDrawer"
         class="h-screen bg-t-grey overflow-y-scroll hidden sm:block relative t-scroll-bar"
         :class="[isProgramOpen ? 'w-full change' : 'w-0 outline-0']"
@@ -203,7 +218,9 @@
           </div>
         </div>
       </div>
+
       <div
+        v-show="isProgramOpen"
         ref="programModal"
         :class="[isProgramOpen ? 'z-[1] block sm:hidden' : 'z-[-1] hidden']"
         class="fixed bottom-0 left-0 right-0 top-0 bg-t-grey t-modal-overlay t-scroll-bar"
@@ -304,9 +321,11 @@
 import { ref } from "vue";
 import TikMap from "@/components/TikMap.vue";
 import DownArrowIcon from "@/components/DownArrowIcon.vue";
+import MakeSoundIcon from "@/components/MakeSoundIcon.vue";
+
 export default {
   name: "TourismusRegionen",
-  components: { TikMap, DownArrowIcon },
+  components: { TikMap, DownArrowIcon, MakeSoundIcon },
 
   setup(props, { emit }) {
     const tourismusRegionen = [
@@ -548,9 +567,9 @@ export default {
         AktionsortStraße: "Kalimandscharo, Teichstraße 1",
         Oeffnungszeit: "10-16.00 Uhr",
         AktivitätTIK_2024:
-          'Bergmannsverein Zielitz e.V. \n"Scholle von Calvörde" Bergtouren\n\n10.30 Uhr und 14.00 Uhr mit den Kameraden Matthias Schlesiger und Manfred Witzel\n\nTreffpunkt: Infopoint Halde II ca. 2 h über eine Gesamtstrecke von ca. 6,5 km davon ca. 3 km Anmarsch auf das 120 m Haldenplateau mit einem imposanten Blick auf  das Kaliwerk, die umliegenden Ortschaften, das Wasserstraßen-kreuz u.v.m. \n\nBitte mit festem Schuhwerk!\n\nEintritt gegen Spende',
+          'Bergmannsverein Zielitz e.V. \n"Scholle von Calvörde" Bergtouren\n\n10.30 Uhr und 14.00 Uhr mit den Kameraden Matthias Schlesiger und Manfred Witzel\n\nTreffpunkt: \nInfopoint Halde II ca. 2 h über eine Gesamtstrecke von ca. 6,5 km davon ca. 3 km Anmarsch auf das 120 m Haldenplateau mit einem imposanten Blick auf  das Kaliwerk, die umliegenden Ortschaften, das Wasserstraßenkreuz u.v.m. \n\nBitte mit festem Schuhwerk!\n\nEintritt gegen Spende',
         Webseite: "https://www.kalimandscharo.com/de/home/",
-        Infos: "",
+        Infos: "www.bergmannsverein-zielitz.de ",
         TeilnahmeBestätigt: "07.03.2024",
       },
       {
@@ -575,7 +594,8 @@ export default {
         Oeffnungszeit: "10-17.00 Uhr",
         AktivitätTIK_2024:
           'Folgende im Gebiet von Sachsen-Anhalt liegende Stationen der historischen\n"Optischen Telegraphenlinie Berlin-Koblenz" sind an diesem Tag geöffnet:\n\nStation Nr. 11 - Ziegelsdorf, Telegraphenberg\nvoll funktionsfähiger Signalmast\nOT Ziegelsdorf \nTelegrafenstraße \n39291 Möckern\nFührungen und Besichtigung: 14.00 – 17.00 Uhr\nAnsprechpartner für Rückfragen: Torsten Wambach (Tel.: 01 60 / 8 10 17 07)\n\nStation Nr. 16 - Ampfurth, Schlossturm\nSchloss- und Telegraphenturm\nOT Ampfurth \nAlte Schermcker Str. 14 c\n39387 Oschersleben (Bode) \nFührungen und Besichtigung: 14.00 – 17.00 Uhr\nAnsprechpartner für Rückfragen: Achim Röttger (Tel.: 03 94 07 / 57 47)\n\nStation Nr. 18 - Neuwegersleben\nStationsgebäude mit funktionsfähiger Telegraphenanlage, \nMuseum zur Geschichte und Technik der optischen Telegraphie \nHornhäuser Straße, Telegrafenberg\t\nOT Neuwegersleben 39396 Am Großen Bruch\n\nFührungen und Besichtigung:\n14.00 – 17.00 Uhr\nAnsprechpartner für Rückfragen:\nHenning Fuchs Tel.: 0152/01690041\n\nStation Nr. 19 - Pabstorf\nSommeringberg\nDauerausstellung im Heimatmuseum Dedeleben \nErnst-Thälmann-Str.64b\nOT Dedeleben\n38836 Huy\n\nFührungen und Besichtigung:\n14.00 – 17.00 Uhr\n\nAnsprechpartner für Rückfragen:\nUwe Krebs Tel.: 03 94 22 /6 12 18\n',
-        Webseite: "http://www.telegraphenradweg.de/startseite.html",
+        Webseite:
+          "http://www.telegraphenradweg.de/startseite.html\n\nhttps://www.optische-telegrafie.de/\n\nhttps://www.museum-dedeleben.de/",
         Infos: "https://industrietourismus.de/optische-telegraphenlinie/",
         TeilnahmeBestätigt: "28.03.2024",
       },
@@ -1871,6 +1891,12 @@ export default {
       }
     };
 
+    const makeSound = () => {
+      console.log("sound");
+      var audio = new Audio(require("../assets/Echolot_V2_compressed.wav"));
+      audio.play();
+    };
+
     const programm = ref(null);
 
     const scrollToProgramm = () => {
@@ -1900,6 +1926,7 @@ export default {
       programm,
       programDrawer,
       programModal,
+      makeSound,
     };
   },
 };
