@@ -41,7 +41,7 @@
       <div
         class="basis-full sm:basis-1/2 flex justify-center flex-col inline-block items-center"
       >
-        <div class="max-w-[300px] text-center sm:text-left">
+        <div class="max-w-[314px] text-center sm:text-left">
           <div>
             <div class="mb-8 skew-x-[-10deg] bg-white inline-block h-[27px]">
               <div class="skew-x-[10deg]">
@@ -75,6 +75,17 @@
             >
               ZUM PROGRAMM
             </div>
+            <div
+              @click.prevent="makeSound"
+              class="flex justify-center items-center ml-5"
+            >
+              <div class="text-white p-0 text-center">Echolot</div>
+              <div
+                class="rounded-full bg-t-green w-6 h-6 hover:bg-white flex justify-center items-center ml-2 cursor-pointer"
+              >
+                <MakeSoundIcon></MakeSoundIcon>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -90,7 +101,7 @@
           <DownArrowIcon @click="scrollToProgramm"></DownArrowIcon>
         </div>
       </div>
-      <div
+      <!-- <div
         @click.prevent="makeSound"
         class="absolute top-5 right-5 hidden md:flex justify-center items-center"
       >
@@ -100,7 +111,7 @@
         >
           <MakeSoundIcon></MakeSoundIcon>
         </div>
-      </div>
+      </div> -->
     </div>
 
     <div ref="programm" class="h-screen min-h-[650px] flex flex-row">
