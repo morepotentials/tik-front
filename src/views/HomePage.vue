@@ -42,8 +42,12 @@
     </div>
   </div>
   <div class="relative">
-    <TourismusRegionen />
-    <div id="footer" class="absolute bottom-5 left-5 text-white">
+    <TourismusRegionen @click-on-region="hideFooter" />
+    <div
+      v-if="!isProgramOpen"
+      id="footer"
+      class="absolute bottom-5 left-5 text-white"
+    >
       <router-link to="/datenschutz" class="text-white hover:text-t-green"
         >Datenschutz</router-link
       >
@@ -58,12 +62,25 @@
 <script>
 import TourismusRegionen from "../components/TourismusRegionen.vue";
 import TikLogoN from "../components/TikLogoN.vue";
+import { ref } from "vue";
 
 export default {
   name: "HomePage",
   components: {
     TourismusRegionen,
     TikLogoN,
+  },
+
+  setup() {
+    const isProgramOpen = ref(false);
+    const hideFooter = (programOpen) => {
+      console.log("hello");
+      isProgramOpen.value = programOpen;
+    };
+    return {
+      hideFooter,
+      isProgramOpen,
+    };
   },
 };
 </script>

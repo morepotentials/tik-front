@@ -93,7 +93,7 @@
     <div ref="programm" class="h-screen min-h-[650px] flex flex-row">
       <div class="container mx-auto h-screen sm:justify-center flex relative">
         <div
-          v-if="!isModalOpen"
+          v-if="!isProgramOpen"
           class="absolute top-0 right-0 pl-4 pr-4 md:pr-0 md:ml-0 text-center md:text-left md:max-w-[350px] mt-4 sm:mt-8 md:mt-14"
         >
           <h2 class="text-t-green text-3xl lg:text-5xl italic font-bold">
@@ -112,17 +112,20 @@
             >.
           </p>
         </div>
-        <TikMap @some-event="setRegion" :is-modal-open="isModalOpen"></TikMap>
+        <TikMap
+          @click-on-region="setRegion"
+          :is-modal-open="isProgramOpen"
+        ></TikMap>
       </div>
       <div
-        ref="programmDrawer"
+        ref="programDrawer"
         class="h-screen bg-t-grey overflow-y-scroll hidden sm:block relative t-scroll-bar"
-        :class="[isModalOpen ? 'w-full change' : 'w-0 outline-0']"
+        :class="[isProgramOpen ? 'w-full change' : 'w-0 outline-0']"
       >
         <button
           class="h-11 w-11 mt-4 mr-4 cursor-pointer self-end t-modal-close-button fix right-4 top-0 hidden sm:flex"
-          :class="[isModalOpen ? 'opacity-1' : ' opacity-0']"
-          @click="closeModalOverlay"
+          :class="[isProgramOpen ? 'opacity-1' : ' opacity-0']"
+          @click="closeProgram"
         >
           <span class="t-modal-close-icon">
             <svg
@@ -201,8 +204,8 @@
         </div>
       </div>
       <div
-        ref="programmModal"
-        :class="[isModalOpen ? 'z-[1] block sm:hidden' : 'z-[-1] hidden']"
+        ref="programModal"
+        :class="[isProgramOpen ? 'z-[1] block sm:hidden' : 'z-[-1] hidden']"
         class="fixed bottom-0 left-0 right-0 top-0 bg-t-grey t-modal-overlay t-scroll-bar"
       >
         <div class="t-modal-overlay-container">
@@ -240,7 +243,7 @@
                     <div v-if="ort.Infos !== ''">
                       <span class="italic font-bold text-t-green">
                         <br />
-                        Infos zum Standort: <br />
+                        Infos zum Standort:
                       </span>
                       <a
                         :href="createLink(ort.Infos)"
@@ -250,7 +253,7 @@
                         <span
                           class="italic font-bold cursor-pointer hover:underline"
                         >
-                          {{ ort.Infos }}
+                          hier klicken
                         </span>
                       </a>
                     </div>
@@ -266,7 +269,7 @@
                       <span
                         class="italic font-bold text-t-green cursor-pointer hover:underline"
                       >
-                        {{ ort.Webseite }}
+                        hier klicken
                       </span>
                     </a>
                   </div>
@@ -276,7 +279,7 @@
             </div>
             <button
               class="h-11 w-11 mt-4 mr-4 cursor-pointer flex self-end t-modal-close-button"
-              @click="closeModalOverlay"
+              @click="closeProgram"
             >
               <span class="t-modal-close-icon">
                 <svg
@@ -305,7 +308,7 @@ export default {
   name: "TourismusRegionen",
   components: { TikMap, DownArrowIcon },
 
-  setup() {
+  setup(props, { emit }) {
     const tourismusRegionen = [
       {
         Region: "",
@@ -1839,12 +1842,13 @@ export default {
         TeilnahmeBestätigt: "",
       },
     ];
-    const programmModal = ref();
-    const programmDrawer = ref();
-    const isModalOpen = ref(false);
-    const closeModalOverlay = () => {
-      isModalOpen.value = false;
+    const programModal = ref();
+    const programDrawer = ref();
+    const isProgramOpen = ref(false);
+    const closeProgram = () => {
+      isProgramOpen.value = false;
       document.body.style.overflow = "visible";
+      emit("clickOnRegion", isProgramOpen.value);
     };
 
     const aktuelleRegion = ref("");
@@ -1852,9 +1856,10 @@ export default {
       programm.value.scrollIntoView();
       document.body.style.overflow = "hidden";
       aktuelleRegion.value = region;
-      isModalOpen.value = true;
-      programmDrawer.value.scrollTop = 0;
-      programmModal.value.scrollTop = 0;
+      isProgramOpen.value = true;
+      programDrawer.value.scrollTop = 0;
+      programModal.value.scrollTop = 0;
+      emit("clickOnRegion", isProgramOpen.value);
     };
 
     const getOrte = (region) => {
@@ -1886,15 +1891,15 @@ export default {
     return {
       createLink,
       tourismusRegionen,
-      isModalOpen,
-      closeModalOverlay,
+      isProgramOpen,
+      closeProgram,
       aktuelleRegion,
       setRegion,
       getOrte,
       scrollToProgramm,
       programm,
-      programmDrawer,
-      programmModal,
+      programDrawer,
+      programModal,
     };
   },
 };
