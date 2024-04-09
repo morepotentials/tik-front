@@ -1918,6 +1918,7 @@ export default {
 
     const scrollToProgramm = () => {
       programm.value.scrollIntoView({ behavior: "smooth" });
+      makeSound();
     };
 
     const createLink = (link) => {
