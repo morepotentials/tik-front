@@ -101,17 +101,6 @@
           <DownArrowIcon @click="scrollToProgramm"></DownArrowIcon>
         </div>
       </div>
-      <!-- <div
-        @click.prevent="makeSound"
-        class="absolute top-5 right-5 hidden md:flex justify-center items-center"
-      >
-        <div class="text-white p-0 text-center">Das Echolot</div>
-        <div
-          class="rounded-full bg-t-green w-6 h-6 hover:bg-white flex justify-center items-center ml-2 cursor-pointer"
-        >
-          <MakeSoundIcon></MakeSoundIcon>
-        </div>
-      </div> -->
     </div>
 
     <div ref="programm" class="h-screen min-h-[650px] flex flex-row">
@@ -535,6 +524,19 @@ export default {
       },
       {
         Region: "Magdeburg-Elbe-Börde-Heide",
+        Institution: "Friseurmuseum Magdeburg",
+        PLZ: "39110",
+        Ortsname: "Magdeburg",
+        AktionsortStraße: "Walbecker Straße 1",
+        Oeffnungszeit: "10-12.00 Uhr",
+        AktivitätTIK_2024:
+          "Erleben Sie  die Historie der Bader, Barbiere, Perückenmacher, Maskenbildner, Kosmetiker und Friseure in einem einzigartigen Kleinod bewahrter Handwerksgeschichte.\n\nWir zeigen Ihnen unter anderem Geräte der Barbiere und Perückenmacher sowie Haarmode aus verschiedenen Zeitepochen, alte Brennscheren, Perücken, historische Rasiermesser, Postkarten, Wetzsteine und vieles mehr. \n\nUnser ganzer Stolz ist ein Frisiersalon aus dem Jahr 1929, der Entstehungszeit der Beimssiedlung, indem sich unser Museum befindet.\n\nSie erleben die Entstehung und die Entwicklung dieses Berufes sowie die verschiedenen Friseurtechniken.\nSo möchten wir die Tradition für dieses Handwerk bewahren.\n\nIm Museum und auch in unserer Bibliothek ist alles zum Thema Haar, Haarmode, Haut und Kosmetik zu sehen und zu lesen.\n\nMit dem Inklusionsprojekt \n„Mit den Augen hören“ haben gehörlose Besucher und Besucherinnen an 21 Stationen die Möglichkeit, mit dem Mobiltelefon\nQR-Codes zu scannen und Erläuterungen in Gebärdensprache zu sehen. \n\nUnser Museum hat einen Rollstuhlfahrer- und\nkinderwagengerechten Aufgang. ",
+        Webseite: "https://www.friseurmuseum-md.de/",
+        Infos: "",
+        TeilnahmeBestätigt: "09.04.2024",
+      },
+      {
+        Region: "Magdeburg-Elbe-Börde-Heide",
         Institution: "Gröninger Bad Salbke",
         PLZ: "39122",
         Ortsname: "Magdeburg",
@@ -557,7 +559,7 @@ export default {
           "Lesung Herbert Beesten & Gundula Ihlefeldt \nFörderverein der Schriftsteller e.V. ",
         Webseite: "www.heimatverein-burg.com\n\n",
         Infos: "https://industrietourismus.de/historische-gerberei-burg/",
-        TeilnahmeBestätigt: "",
+        TeilnahmeBestätigt: "Absage 07.04.2024",
       },
       {
         Region: "Magdeburg-Elbe-Börde-Heide",
@@ -1500,7 +1502,7 @@ export default {
         Institution: "Drahtseilbahn Zeitz",
         PLZ: "06712",
         Ortsname: "Zeitz",
-        AktionsortStraße: "Kalkstrasse 25",
+        AktionsortStraße: "Thomas-Mann-Str. 13/14",
         Oeffnungszeit: "10-17.00 Uhr",
         AktivitätTIK_2024:
           "10-16.00 Uhr Sonderführungen durch die Sicherungsbaustelle der Bergstation - \nmit Einblicken in die Beschererfabrik, das Maschinen- und Kesselhaus der Drahtseilbahn anhand von Plänen und Bildern durch den Verein.\n\nKooperation zwischen dem Verein Historische Drahtseilbahn Zeitz und den Zeitzer Oldtimerfreunde.\n\nPräsentation der Industriekulturstandorte beim Zeitzer  Oldtimertreffen von 9.00Uhr bis 16.00Uhr durch den Moderator Thomas Vogel.\n\nUm 14.00Uhr beginnt die geführte Ausfahrt der Oldtimer im Raum Zeitz. \n\nDer Zifft e.V  (www.zifft.de) wird während des Sonntags ein Feuerwehrfahrzeug vor der Drahtseilbahn positionieren und auch an der Ausfahrt teilnehmen.\n\nOldtimer, wie LKW und  Traktoren werden Sonderfahrten zwischen Altstadt,  Drahtseilbahn und Hermannschacht unternehmen.",
@@ -1876,6 +1878,7 @@ export default {
         TeilnahmeBestätigt: "",
       },
     ];
+
     const programModal = ref();
     const programDrawer = ref();
     const isProgramOpen = ref(false);
@@ -1907,7 +1910,7 @@ export default {
 
     const makeSound = () => {
       console.log("sound");
-      var audio = new Audio(require("../assets/Echolot_V2_compressed.wav"));
+      var audio = new Audio(require("../assets/Echolot_V2_compressed.mp3"));
       audio.play();
     };
 
