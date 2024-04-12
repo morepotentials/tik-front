@@ -1081,13 +1081,13 @@ export default {
       },
       {
         Region: "Anhalt-Dessau-Wittenberg",
-        Institution: "Darre Samentrocknung Annaburg",
+        Institution: "Landesdarre Samentrocknung Annaburg",
         PLZ: "06925",
         Ortsname: "Annaburg",
         AktionsortStraße: "Lebiener Weg 6",
         Oeffnungszeit: "10-17.00 Uhr",
         AktivitätTIK_2024:
-          "Sonderführungen durch die Landesdarre für max. 20 Personen\n10.00 Uhr/12.00 Uhr/ 14.00 Uhr/16.00 Uhr\nUm Voranmeldungen wird gebeten. Tel. +49 35385 31370 ",
+          "Die Landesdarre Sachsen-Anhalt in Annaburg gehört als einzige namhafte Einrichtung ihrer Art im mitteldeutschen Raum zu den ältesten und traditionsreichsten Klengen Deutschlands.\n\nAuch nach über 100 Jahren erfüllt die Landesdarre Annaburg, zuverlässig die Aufgabe der Bereitstellung an hochwertigem und identitätsgesichertem Forstsaatgut.\n \nSonderführungen durch die beeindruckende Industriearchitektur der Landesdarre \nfür max. 20 Personen\n10.00 Uhr/ 12.00 Uhr/ 14.00 Uhr\nUm Voranmeldungen wird gebeten. \nTel. +49 35385 31370 ",
         Webseite:
           "https://landeszentrumwald.sachsen-anhalt.de/ueber-uns/landesdarre",
         Infos: "",
@@ -1141,7 +1141,7 @@ export default {
         AktionsortStraße: "Ferropolistraße 1",
         Oeffnungszeit: "10-17.00 Uhr",
         AktivitätTIK_2024:
-          "Ankerpunkt ERIH\n- Action mit Real Life Guys\n- Barfußpfad & Kinderspiel",
+          'Endlich ist es so weit, wir präsentieren: \n„Bagger im Licht“!\n\nWenn der Abend seine dunklen Schatten wirft, wird es Zeit zu einem Stadtspaziergang der besonderen Art. Mit Geschichten rund um den Bagger "Medusa", seinen Freunden und die Arbeit im Bergbau, begeben Sie sich auf eine abenteuerliche Reise.\n\nDie Sonderführung "Bagger im Licht":\n\nWährend der Begehung des Geländes, mit ihrem Gästeführer, lernen Sie die vielseitigen Geschichten rund um die Bergbaugeschichte der „Stadt aus Eisen“ kennen. \n\nVom ehemaligen Golpa Nord, zum heute weltbekannten Veranstaltungsort, zeigt sich Ferropolis in seinen unterschiedlichsten Facetten.\nDiese werden untermalt durch das faszinierende Farbspiel der beleuchteten Bagger.\nIm hohlen Bauch und in luftiger Höhe über der Arena von FERROPOLIS, den Blick über den See schweifen lassend, lassen wir den Abend fast schon romantisch gegen 21:00 Uhr ausklingen. \n\nSie können sich einfach von uns überraschen und mitreißen lassen.\n\nDatum:    20.04.2024 (Vorabend TIK)\nBeginn:   19:00 Uhr\nEnde:      21:00 Uhr\nPreis:      15,50 € p. P.\n\nWenn Sie an diesem unvergesslichen Abend teilnehmen möchten, kontaktieren Sie uns unter:\n\ninfo@ferropolis.de oder 034953/ 35120\n\n\nAnkerpunkt ERIH am 21.04.2024\n\n- Action mit Real Life Guys\n- Barfußpfad & Kinderspiel',
         Webseite: "https://www.ferropolis.de/de/cms/\n\n",
         Infos: "https://industrietourismus.de/ferropolis/",
         TeilnahmeBestätigt: "28.03.2024",
@@ -1276,14 +1276,15 @@ export default {
         Region: "Anhalt-Dessau-Wittenberg",
         Institution: "Rundfunk- und Fernsehtechnik Stassfurt",
         PLZ: "39418",
-        Ortsname: "",
+        Ortsname: "Stassfurt",
         AktionsortStraße: "Löderburger Strasse 73",
-        Oeffnungszeit: "",
-        AktivitätTIK_2024: "2025",
-        Webseite:
-          "www.rft-verein-stassfurt.de\n\nhttps://industrietourismus.de/rundfunk-und-fernsehtechnik-stassfurt/",
-        Infos: "",
-        TeilnahmeBestätigt: "",
+        Oeffnungszeit: "10-13.00 Uhr",
+        AktivitätTIK_2024:
+          "Wir präsentieren in unserer Erlebnissaustellung die Zeitzeugen einer stürmischen Entwicklung:\n- von der Dachbodenwerkstatt in den Licht- und Kraft Werken zur bedeutenden Radiofabrik der Marke „Staßfurter Imperial“ in den 1930er Jahren\n\n- dem Niedergang des Werkes durch den Zweiten Weltkrieg, \n- dem Aufbau zum großen Radio-Produzenten als „Stern-Radio Staßfurt“ in den 1950er Jahren \n- der Weiterentwicklung zum größten Fernsehgeräte-Hersteller der DDR in den 1950er bis 1980er Jahren als\n„VEB Fernsehgerätewerke Staßfurt“.\n\n\n\nDer Besuch unserer Ausstellung ist grundsätzlich nur mit abgestimmten Terminen möglich.\n\nE-Mail: info@rft-verein-stassfurt.de\nTelefon: 03925 289280\n\nWir freuen uns auf Ihren Besuch!",
+        Webseite: "www.rft-verein-stassfurt.de",
+        Infos:
+          "\nhttps://industrietourismus.de/rundfunk-und-fernsehtechnik-stassfurt/",
+        TeilnahmeBestätigt: "10.04.2024",
       },
       {
         Region: "Anhalt-Dessau-Wittenberg",
@@ -1552,9 +1553,9 @@ export default {
         PLZ: "06237",
         Ortsname: "Leuna / OT Kötzschau",
         AktionsortStraße: "Am Bahnhof 27",
-        Oeffnungszeit: "10-17.00 Uhr",
+        Oeffnungszeit: "14-18.00 Uhr",
         AktivitätTIK_2024:
-          "Ausstellung im historischen Bahnhofsgebäude in Verbindung mit Angeboten der Landesgartenschau 2024 in Bad Dürrenberg.",
+          "Ausstellung im historischen Bahnhofsgebäude\nErleben Sie bei uns Eisenbahngeschichte an einem authentischem Ort aus der Gründungszeit der Eisenbahnstrecke \nLeipzig - Großkorbetha und lassen sich in der großen Ausstellungsfläche mit unzähligen Exponaten begeistern!\n\n\nZugleich in Verbindung mit dem Angebot im Ausstellungspavillon zum Thema Eisenbahnen der Saline Bad Dürrenberg zu finden. \nDirekt am historischen Kohlenbahntunnel aus dem Jahr 1836 im Laga-Gelände, in der Nähe des Haupteingangs.  der Landesgartenschau 2024 in Bad Dürrenberg",
         Webseite: "www.eisenbahnfreunde-koetzschau.com\n\n",
         Infos: "https://industrietourismus.de/eisenbahnmuseum-koetzschau/",
         TeilnahmeBestätigt: "14.02.2024",
@@ -1667,13 +1668,14 @@ export default {
       },
       {
         Region: "Halle-Saale-Unstrut",
-        Institution: "Schuhmuseum Weißenfels",
+        Institution:
+          "Museum Weißenfels \nSchloss Neu-Augustusburg\nSchuhsammlung",
         PLZ: "06667",
         Ortsname: "Weißenfels",
         AktionsortStraße: "Zeitzer Strasse 4",
         Oeffnungszeit: "10-17.00 Uhr",
         AktivitätTIK_2024:
-          "Sonderführungen durch die Ausstellungen der  fast vollständigen Dokumentation der DDR-Schuhherstellung.\n\nMit Ergänzungen, besonders auch im Hinblick auf Schuhgestaltung und Design des 21. Jahrhunderts.\n\nBesonderes Augenmerk wir zum TIK auf die Exponate der technischen Anlagen, Maschinen, Konstruktionszeichnungen und Entwürfe aus der Schuhindustrie gelegt von denen in den vergangenen Jahren konnten  einige Objekte restauriert werden konnten.",
+          "Zum TIK wird um 14 Uhr eine Sonderführung durch das Schuhmuseum mit Schwerpunkt zeitgenössisches Design angeboten.\n\nSchuhe spielten für die Stadt Weißenfels eine bedeutende Rolle. In der DDR befand sich hier mit rund 30.000 Beschäftigten die größte Schuhproduktion Europas. \n\nDie umfangreiche Schuhsammlung ist eine fast vollständige Dokumentation der Schuhproduktion der DDR, darunter befinden sich auch Maschinen, Konstruktionszeichnungen und Entwürfe. \n\nIn der Schuhausstellung sind darüber hinaus Exponate des 19. Jahrhunderts, der Ethnologie sowie Promi- und Designerschuhe zu sehen. ",
         Webseite:
           "https://weissenfels-erlebnis.de/Entdecken-/Museum-Wei%C3%9Fenfels-im-Schloss-Neu-Augustusburg/",
         Infos: "",
@@ -1812,10 +1814,11 @@ export default {
         Ortsname: "An der Schmücke / OT Oldisleben",
         AktionsortStraße: "Esperstedter Straße 9 ",
         Oeffnungszeit: "10-17.00 Uhr",
-        AktivitätTIK_2024: "Standort in Thüringen",
-        Webseite: "",
+        AktivitätTIK_2024:
+          "Korrespondenzstandort in Thüringen\n\nAuch 10 km südlich der Landesgrenze von Sachsen-Anhalt in Thüringen gibt es sehenswerte Industriekultur!\n\nHaben Sie Interesse? \nBitte melden Sie sich an \nTel.: 034673 78592\nEmail: info@zuckerfabrik-oldisleben.de\n\nSonderführungen mit Filmvorführung ca. 1 h\num 10.00 / 11.30 / 13.00 / und 14.30 Uhr\n\n- Industriearchitektur von 1872\n- Balancierdampfmaschine von 1882\n\n- 5 horizontale Dampfmaschinen mit Transmissionen und direkt angetriebenen Kolbenpumpen\n\n- historische Technik der Verarbeitung von Zuckerrüben zu Zucker.\n\nzu familienfreundlichen Preisen ;)\n7 € pro Person\nPro Elternteil freier Eintritt für 1 Kind\nzwischen 6 und 14 Jahren",
+        Webseite: "https://zuckerfabrik-oldisleben.de/",
         Infos: "",
-        TeilnahmeBestätigt: "",
+        TeilnahmeBestätigt: "11.04.2024",
       },
       {
         Region: "",
