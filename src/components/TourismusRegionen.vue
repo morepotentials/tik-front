@@ -3,16 +3,21 @@
     <div
       class="flex flex-row mb-6 md:hidden absolute w-full flex justify-center pt-5"
     >
-      <a
-        href="https://kultur.sachsen-anhalt.de/kultur-entdecken/kulturland-entdecken/industriekultur#"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        <img
-          src="../assets/lsa_logo_farbig.png"
-          style="max-height: 50px; background-color: "
-        />
-      </a>
+      <div class="flex justify-center relative pt-1 px-1">
+        <a
+          href="https://kultur.sachsen-anhalt.de/kultur-entdecken/kulturland-entdecken/industriekultur#"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <img
+            src="../assets/lsa_logo_farbig.png"
+            style="max-height: 50px; background-color: "
+          />
+        </a>
+        <div
+          class="absolute right-0 left-0 bottom-0 top-0 bg-white z-[-1]"
+        ></div>
+      </div>
       <a
         href="https://moderndenken.sachsen-anhalt.de/moderne-denker"
         target="_blank"
