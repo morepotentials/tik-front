@@ -634,10 +634,11 @@ export default {
         Ortsname: "Magdeburg",
         AktionsortStraße: "",
         Oeffnungszeit: "",
-        AktivitätTIK_2024: "Führungen",
+        AktivitätTIK_2024:
+          "Info & Modell \nzur Entwicklungsmaßnahme RAW-Gelände\nam Salbker Wasserturm",
         Webseite: "",
         Infos: "",
-        TeilnahmeBestätigt: "",
+        TeilnahmeBestätigt: "16.04.2024",
       },
       {
         Region: "Magdeburg-Elbe-Börde-Heide",
@@ -701,7 +702,7 @@ export default {
         AktionsortStraße: "Elbe-Silo B, Werner-Heisenberg-Straße 19-25",
         Oeffnungszeit: "10-13.00 Uhr",
         AktivitätTIK_2024:
-          '10-13.00 Uhr \nBaustellenführungen durch die "Reichseinheitsspiecher" und deren Umnutzung mit Bauleiter Herrn Paulus & Architekt Uwe Thal ',
+          '10-13.00 Uhr\n \nBaustellenführungen durch die "Reichseinheitsspiecher" und deren Umnutzung mit Bauleiter Herrn Paulus & Architekt Uwe Thal\n\n\n15:00-16:30 Uhr\n\nTour durch den Wissenschaftshafen\nVom einst modernsten Binnenhafen, \nder 1893 eröffnet wurde, entwickelte sich das Magdeburger Hafengelände zu einem der bedeutendsten Forschungsstandpunkte.\n\nDoch nicht nur in der Forschung hat der Hafen einiges zu bieten, sondern auch für Erholungsuchende gibt es dort vieles zu entdecken.\n\nStart: Parkplatz Denkfabrik \n(Werner-Heisenberg-Straße 1)\n\nEnde: Café Treibgut\n\nPreis: 10,50 Euro bzw. 7,50 Euro ermäßigt\nAngebot der Gruppentouristik Visit Magdeburg ',
         Webseite: "https://www.architekturbüro-thal.de/",
         Infos: "",
         TeilnahmeBestätigt: "28.02.2024",
@@ -848,7 +849,7 @@ export default {
         AktionsortStraße: "Bahnhofsstraße 21",
         Oeffnungszeit: "10-17.00 Uhr",
         AktivitätTIK_2024:
-          'Erstmals ist das Eiserne Band aus beiden Richtungen als historische industrielle Verbindung erlebbar!\n\n\n- 10.00 bis 12.00 Uhr \ngeführte Radtour durch Halle (Saale) \nauf der Hafenbahntrasse zwischen dem ehem. Thüringer Bahnhof und dem ehem. Sophien-hafen, dabei wird insbesondere auf die ehem. ca. 30 Gleisanschlüsse Bezug genommen\n\n- 10.00 bis 16.00 Uhr\nVorstellung des künftigen Netzwerkes "Am Eisernen Band" im Bahnhof "Drei Annen Hohne" der Harzer Schmalspurbahnen\n\n- 10.00 bis 17.00 Uhr \nBahnhof Gerbstedt - Öffnung der Interims-Ausstellung zur Geschichte der Halle-Hettstedter Eisenbahn auf dem Güterboden\n\n\nSternfahrt mit zwei historischen Bussen der Marke Saurer von Halle und Wernigerode nach Harzgerode und zurück mit vielfältigem "Unterwegs-Programm".\n\nHalle-Beesenstedt-Gerbstedt-Hettstedt-Harzgerode-Halle\n \n- 9:30 Uhr Abfahrt am Busbahnhof des Hbf. Halle (Saale)\n\n- Besichtigung des historischen Straßenbahn-depots in Halle, Seebener Straße\n\n- Führung am ehemaligen Wasserturm der Halle-Hettstedter Eisenbahn in Beesenstedt\n\n- Imbiss im Bahnhof Gerbstedt mit Besichtigung der Ausstellung zur HHE\n\n- Fahrt mit der Mansfelder Bergwerksbahn vom Bf Siersleben bis Bf Kupferkammerhütte in Hettstedt und Besichtigung der neuen Ausstellung im Lokschuppen sowie der  Fahrzeugausstellung auf dem Freigelände\n\n- Besichtigung der Ausstellung Harz-Kugeleum zu Bergbau und Regionalgeschichte im Schloss Harzgerode\n\nRückankunft am Busbahnhof des Hbf. Halle (Saale) gegen 19:00 Uhr.\n\nDer Preis pro Teilnehmer mit Busfahrt und Eintrittsgeldern in die Museen einschließlich Kaffee & Kuchen in Harzgerode beträgt 65 Euro für Erwachsene und 39 Euro für Kinder (bis 14 Jahre).\n\nDen Mittagsimbiss im Bahnhof Gerbstedt trägt jeder Teilnehmer bitte selbst.\n\n\n\nWernigerode-Todtenrode-Strassberg-Harzgerode-Wernigerode\n- 9:45 Uhr Abfahrt am Hbf. Wernigerode\n\n- Besichtigung des Luftfahrtmuseums in Wernigerode\n\n- Mittagessen im Restaurant „Zum alten Forsthaus“ in Todtenrode\n\n- Über- und unter-Tage-Führung durch das Besucher-Bergwerk "Grube Glasebach" in Straßberg\n \n- Befahrung eines Teils des Glasebacher Stollens mit der Grubenbahn\n\n- Besichtigung der Ausstellung Harz-Kugeleum zu Bergbau und Regionalgeschichte im Schloss Harzgerode\n\nRückankunft am Hbf. Wernigerode gegen\n19:00 Uhr\n\nDer Preis pro Teilnehmer mit Busfahrt und Eintrittsgeldern in die Museen einschließlich Kaffee und Kuchen in Harzgerode beträgt 65 Euro für Erwachsene und 39 Euro für Kinder (bis 14 Jahre).\n\nDas Mittagessen im Forsthaus Todtenrode trägt jeder Teilnehmer bitte selbst.\n\nBitte melden Sie sich bei Interesse für die geführte Fahrradtour auf der Hafenbahn sowie beide Busfahrten via Mail bis zum 12. April 2024 unter info@halle-hettstedter-eisenbahn.de an.',
+          'Erstmals ist das Eiserne Band aus beiden Richtungen als historische industrielle Verbindung erlebbar!\n\n\n- 10.00 bis 12.00 Uhr \ngeführte Radtour durch Halle (Saale) \nauf der Hafenbahntrasse zwischen dem ehem. Thüringer Bahnhof und dem ehem. Sophien-hafen, dabei wird insbesondere auf die ehem. ca. 30 Gleisanschlüsse Bezug genommen\n\n- 10.00 bis 16.00 Uhr\nVorstellung des künftigen Netzwerkes "Am Eisernen Band" im Bahnhof "Drei Annen Hohne" der Harzer Schmalspurbahnen\n\n- 10.00 bis 17.00 Uhr \nBahnhof Gerbstedt - Öffnung der Interims-Ausstellung zur Geschichte der Halle-Hettstedter Eisenbahn auf dem Güterboden\n\n\nSternfahrt mit zwei historischen Bussen der Marke Saurer von Halle und Wernigerode nach Harzgerode und zurück mit vielfältigem "Unterwegs-Programm".\n\nHalle-Beesenstedt-Gerbstedt-Hettstedt-Harzgerode-Halle\n \n- 9:30 Uhr Abfahrt am Busbahnhof des Hbf. Halle (Saale)\n\n- Besichtigung des historischen Straßenbahndepots in Halle, Seebener Straße\n\n- Führung am ehemaligen Wasserturm der Halle-Hettstedter Eisenbahn in Beesenstedt\n\n- Imbiss im Bahnhof Gerbstedt mit Besichtigung der Ausstellung zur HHE\n\n- Fahrt mit der Mansfelder Bergwerksbahn vom Bf Siersleben bis Bf Kupferkammerhütte in Hettstedt und Besichtigung der neuen Ausstellung im Lokschuppen sowie der  Fahrzeugausstellung auf dem Freigelände\n\n- Besichtigung der Ausstellung Harz-Kugeleum zu Bergbau und Regionalgeschichte im Schloss Harzgerode\n\nRückankunft am Busbahnhof des Hbf. Halle (Saale) gegen 19:00 Uhr.\n\nDer Preis pro Teilnehmer mit Busfahrt und Eintrittsgeldern in die Museen einschließlich Kaffee & Kuchen in Harzgerode beträgt 65 Euro für Erwachsene und 39 Euro für Kinder (bis 14 Jahre).\n\nDen Mittagsimbiss im Bahnhof Gerbstedt trägt jeder Teilnehmer bitte selbst.\n\n\n\nWernigerode-Todtenrode-Strassberg-Harzgerode-Wernigerode\n- 9:45 Uhr Abfahrt am Hbf. Wernigerode\n\n- Besichtigung des Luftfahrtmuseums in Wernigerode\n\n- Mittagessen im Restaurant „Zum alten Forsthaus“ in Todtenrode\n\n- Über- und unter-Tage-Führung durch das Besucher-Bergwerk "Grube Glasebach" in Straßberg\n \n- Befahrung eines Teils des Glasebacher Stollens mit der Grubenbahn\n\n- Besichtigung der Ausstellung Harz-Kugeleum zu Bergbau und Regionalgeschichte im Schloss Harzgerode\n\nRückankunft am Hbf. Wernigerode gegen\n19:00 Uhr\n\nDer Preis pro Teilnehmer mit Busfahrt und Eintrittsgeldern in die Museen einschließlich Kaffee und Kuchen in Harzgerode beträgt 65 Euro für Erwachsene und 39 Euro für Kinder (bis 14 Jahre).\n\nDas Mittagessen im Forsthaus Todtenrode trägt jeder Teilnehmer bitte selbst.\n\nBitte melden Sie sich bei Interesse für die geführte Fahrradtour auf der Hafenbahn sowie beide Busfahrten via Mail bis zum 12. April 2024 unter info@halle-hettstedter-eisenbahn.de an.',
         Webseite: "https://hhe.de/",
         Infos: "",
         TeilnahmeBestätigt: "28.03.2024",
@@ -1007,7 +1008,7 @@ export default {
         TeilnahmeBestätigt: "",
       },
       {
-        Region: "Halle-Saale-Unstrut",
+        Region: "Harz",
         Institution: "Zuckerfabrik Oldisleben in Thüringen",
         PLZ: "06577 ",
         Ortsname: "An der Schmücke / OT Oldisleben",
@@ -1345,7 +1346,7 @@ export default {
         AktionsortStraße: "Kühnauer Straße 161a",
         Oeffnungszeit: "10-17.00 Uhr",
         AktivitätTIK_2024:
-          "Ankerpunkt ERIH Region Dessau mit  Verbindung zum Welterbe Bauhaus Dessau\n\n20.04.2024 Illumination des Museums mit Abendführungen ab 18.00-22.00 Uhr (Vorabend)\n\n21.04.2024 Vorführung des Windkanals\n- Vorträge & Sonderführungen zur Technikgeschichte\n\n\n„Von der Conti-Gas und Fine bis Junkers“ \nStation 7 \nKühnauer Straße - Technikmuseum Hugo Junkers der Bustour der Nahverkehrsfreunde Dessau e.V. (Infos siehe dort).",
+          "Ankerpunkt ERIH Region Dessau mit  Verbindung zum Welterbe Bauhaus Dessau\n\n20.04.2024 Illumination des Museums mit Abendführungen  \nab 18.00-22.00 Uhr (Vorabend)\n\n21.04.2024 Vorführung des Windkanals\n- Vorträge & Sonderführungen zur Technikgeschichte\n\n\n„Von der Conti-Gas und Fine bis Junkers“ \nStation 7 \nKühnauer Straße - Technikmuseum Hugo Junkers der Bustour der Nahverkehrsfreunde Dessau e.V. (Infos siehe dort).",
         Webseite: "https://technikmuseum-dessau.org/\n\n",
         Infos: "https://industrietourismus.de/technikmuseum-hugo-junkers/",
         TeilnahmeBestätigt: "07.03.2024",
@@ -1728,7 +1729,7 @@ export default {
         Oeffnungszeit: "10-16.00 Uhr",
         AktivitätTIK_2024:
           '10.00 Uhr bis 12.00 Uhr &\n14.00 Uhr bis 16.00 Uhr\n\nSonderführung durch die aktuelle Baustellen des Salinemuseums Halle unter dem Motto:\n\n"Ein museales Großprojekt zwischen Industriegeschichte und gelebter Industriekultur" \ndurch den Aufbaustab Salinemuseum Halle und Erik Neumann\n\nDer spannende Rundgang durch das bedeutende Industriedenkmal mit den beiden Großsiedehallen Süd und Nord bietet einen exklusiven Einblick in die Arbeit an der zukünftigen Ausstellung und in die geplante Etablierung des Saline-Ensembles als industriekulturellen Leuchtturm Sachsen-Anhalts.\n\nIm zweiten Teil der Führung wird der Industriegeschichtsexperte Erik Neumann bei einem Rundgang über die Saline-Insel zeigen, welche Bedeutung der Standort in der Industriegeschichte der Stadt Halle (Saale) einnahm. Es wird erfahrbar werden wie die Saline, welche von 1721 bis 1964 Salz produzierte, ihr Umfeld prägte.  \n\nTreffpunkt:\nEingang Uhrenhaus auf dem Salinen-Gelände Salinemuseum Halle, Mansfelder Straße 52, 06108 Halle (Saale)\n\nBitte beachten Sie, dass die Zahl der Teilnehmenden der beiden Führungen auf 20 Personen je Führung begrenzt ist.\n\nAnmeldungen sind nur unter Telefon: \n0345 221-3089/ 3087 bzw. per Mail an info@salinemuseumhalle.de möglich.',
-        Webseite: "https://www.salinemuseum.de/\n\n",
+        Webseite: "https://salinemuseumhalle.de/\n\n",
         Infos:
           "https://industrietourismus.de/technisches-halloren-und-salinemuseum/",
         TeilnahmeBestätigt: "12.02.2024",
