@@ -408,7 +408,7 @@ export default {
         AktionsortStraße: "Molmker Str. 23",
         Oeffnungszeit: "10-17.00 Uhr",
         AktivitätTIK_2024:
-          "TIK im Rahmen des landwirtschaftlichen Aktionstages 2024\nu.a. mit  Schmiedevorführungen und Mühlenbesichtigungen dazu  Kindermitmachaktionen & Musik mit Drehorgelorchester Hitzacker",
+          "TIK im Rahmen des landwirtschaftlichen Aktionstages 2024\n\nAn diesem Aktionstag zeigt das Freilichtmuseum Diesdorf typische Frühjahrarbeiten, wie Flechtzäune setzen oder Obstbäume veredeln. Kindermitmachaktionen (z.B. Saatkugeln formen), Fahrten mit der Ponykutsche, Gartenführungen, Mühlenbesichtigungen Schmiedevorführungen runden den Familientag ab. \n\nDazu schmecken süße und herzhafte Speisen. \n\nFür fröhliche Klänge sorgt das Drehorgelorchester Hitzacker. ",
         Webseite:
           "https://www.museen-altmarkkreis.de/Freilichtmuseum-Diesdorf.html",
         Infos: "",
@@ -680,7 +680,7 @@ export default {
         AktionsortStraße: "Altes Badehaus Ziegeleistraße 56",
         Oeffnungszeit: "14-17.00 Uhr",
         AktivitätTIK_2024:
-          "15:00 Uhr Erzählcafé \nmit Genthiner Waschfrauen \n\nDie Koordinatorin der FrauenOrte Sachsen-Anhalt wird mit den Zeitzeuginnen über ihre Arbeitsbiografien sprechen und warum sie seit\nJahren ehrenamtlich den Fortbestand dieses einzigartigen Waschmittelmuseums Deutschlands absichern.\n\nWichtiger Hinweis: \nDer Zugang zum Museumsgelände ist sowohl von der Ziegeleistraße als auch direkt vom Genthiner Stadtzentrum über die Fußgängerbrücke ins Gewerbegebiet am Elbe-Havel-Kanal möglich. \n\nDer Eintritt ist frei, um Spende für den Erhalt wird gebeten. \n\nKontakt:\nAnke Triller \n(Koordinatorin der FrauenOrte Sachsen-Anhalt) \ninfo@frauenorte.net",
+          "15.00 Uhr Erzählcafé \nmit Genthiner Waschfrauen \n\nDie Koordinatorin der FrauenOrte Sachsen-Anhalt wird mit den Zeitzeuginnen über ihre Arbeitsbiografien sprechen und warum sie seit\nJahren ehrenamtlich den Fortbestand dieses einzigartigen Waschmittelmuseums Deutschlands absichern.\n\nWichtiger Hinweis: \nDer Zugang zum Museumsgelände ist sowohl von der Ziegeleistraße als auch direkt vom Genthiner Stadtzentrum über die Fußgängerbrücke ins Gewerbegebiet am Elbe-Havel-Kanal möglich. \n\nDer Eintritt ist frei, um Spende für den Erhalt wird gebeten. \n\nKontakt:\nAnke Triller \n(Koordinatorin der FrauenOrte Sachsen-Anhalt) \ninfo@frauenorte.net",
         Webseite:
           "https://henkel-pensionaere.de/mediathek/aktuelles/1619-das-henkel-waschmittel-museum-in-genthin",
         Infos: "",
@@ -707,7 +707,7 @@ export default {
         AktionsortStraße: "Elbe-Silo B, Werner-Heisenberg-Straße 19-25",
         Oeffnungszeit: "10-13.00 Uhr",
         AktivitätTIK_2024:
-          '10-13.00 Uhr\n \nBaustellenführungen durch die "Reichseinheitsspiecher" und deren Umnutzung mit Bauleiter Herrn Paulus & Architekt Uwe Thal\n\n\n15:00-16:30 Uhr\n\nTour durch den Wissenschaftshafen\nVom einst modernsten Binnenhafen, \nder 1893 eröffnet wurde, entwickelte sich das Magdeburger Hafengelände zu einem der bedeutendsten Forschungsstandpunkte.\n\nDoch nicht nur in der Forschung hat der Hafen einiges zu bieten, sondern auch für Erholungsuchende gibt es dort vieles zu entdecken.\n\nStart: Parkplatz Denkfabrik \n(Werner-Heisenberg-Straße 1)\n\nEnde: Café Treibgut\n\nPreis: 10,50 Euro bzw. 7,50 Euro ermäßigt\nAngebot der Gruppentouristik Visit Magdeburg ',
+          '10-13.00 Uhr\n \nBaustellenführungen durch die "Reichseinheitsspiecher" und deren Umnutzung mit Bauleiter Herrn Paulus & Architekt Uwe Thal\n\n\n15.00-16.30 Uhr\n\nTour durch den Wissenschaftshafen\nVom einst modernsten Binnenhafen, \nder 1893 eröffnet wurde, entwickelte sich das Magdeburger Hafengelände zu einem der bedeutendsten Forschungsstandpunkte.\n\nDoch nicht nur in der Forschung hat der Hafen einiges zu bieten, sondern auch für Erholungsuchende gibt es dort vieles zu entdecken.\n\nStart: Parkplatz Denkfabrik \n(Werner-Heisenberg-Straße 1)\n\nEnde: Café Treibgut\n\nPreis: 10,50 Euro bzw. 7,50 Euro ermäßigt\nAngebot der Gruppentouristik Visit Magdeburg ',
         Webseite: "https://www.architekturbüro-thal.de/",
         Infos: "",
         TeilnahmeBestätigt: "28.02.2024",
@@ -854,7 +854,7 @@ export default {
         AktionsortStraße: "Bahnhofsstraße 21",
         Oeffnungszeit: "10-17.00 Uhr",
         AktivitätTIK_2024:
-          'Erstmals ist das Eiserne Band aus beiden Richtungen als historische industrielle Verbindung erlebbar!\n\n\n- 10.00 bis 12.00 Uhr \ngeführte Radtour durch Halle (Saale) \nauf der Hafenbahntrasse zwischen dem ehem. Thüringer Bahnhof und dem ehem. Sophien-hafen, dabei wird insbesondere auf die ehem. ca. 30 Gleisanschlüsse Bezug genommen\n\n- 10.00 bis 16.00 Uhr\nVorstellung des künftigen Netzwerkes "Am Eisernen Band" im Bahnhof "Drei Annen Hohne" der Harzer Schmalspurbahnen\n\n- 10.00 bis 17.00 Uhr \nBahnhof Gerbstedt - Öffnung der Interims-Ausstellung zur Geschichte der Halle-Hettstedter Eisenbahn auf dem Güterboden\n\n\nSternfahrt mit zwei historischen Bussen der Marke Saurer von Halle und Wernigerode nach Harzgerode und zurück mit vielfältigem "Unterwegs-Programm".\n\nHalle-Beesenstedt-Gerbstedt-Hettstedt-Harzgerode-Halle\n \n- 9:30 Uhr Abfahrt am Busbahnhof des Hbf. Halle (Saale)\n\n- Besichtigung des historischen Straßenbahndepots in Halle, Seebener Straße\n\n- Führung am ehemaligen Wasserturm der Halle-Hettstedter Eisenbahn in Beesenstedt\n\n- Imbiss im Bahnhof Gerbstedt mit Besichtigung der Ausstellung zur HHE\n\n- Fahrt mit der Mansfelder Bergwerksbahn vom Bf Siersleben bis Bf Kupferkammerhütte in Hettstedt und Besichtigung der neuen Ausstellung im Lokschuppen sowie der  Fahrzeugausstellung auf dem Freigelände\n\n- Besichtigung der Ausstellung Harz-Kugeleum zu Bergbau und Regionalgeschichte im Schloss Harzgerode\n\nRückankunft am Busbahnhof des Hbf. Halle (Saale) gegen 19:00 Uhr.\n\nDer Preis pro Teilnehmer mit Busfahrt und Eintrittsgeldern in die Museen einschließlich Kaffee & Kuchen in Harzgerode beträgt 65 Euro für Erwachsene und 39 Euro für Kinder (bis 14 Jahre).\n\nDen Mittagsimbiss im Bahnhof Gerbstedt trägt jeder Teilnehmer bitte selbst.\n\n\n\nWernigerode-Todtenrode-Strassberg-Harzgerode-Wernigerode\n- 9:45 Uhr Abfahrt am Hbf. Wernigerode\n\n- Besichtigung des Luftfahrtmuseums in Wernigerode\n\n- Mittagessen im Restaurant „Zum alten Forsthaus“ in Todtenrode\n\n- Über- und unter-Tage-Führung durch das Besucher-Bergwerk "Grube Glasebach" in Straßberg\n \n- Befahrung eines Teils des Glasebacher Stollens mit der Grubenbahn\n\n- Besichtigung der Ausstellung Harz-Kugeleum zu Bergbau und Regionalgeschichte im Schloss Harzgerode\n\nRückankunft am Hbf. Wernigerode gegen\n19:00 Uhr\n\nDer Preis pro Teilnehmer mit Busfahrt und Eintrittsgeldern in die Museen einschließlich Kaffee und Kuchen in Harzgerode beträgt 65 Euro für Erwachsene und 39 Euro für Kinder (bis 14 Jahre).\n\nDas Mittagessen im Forsthaus Todtenrode trägt jeder Teilnehmer bitte selbst.\n\nBitte melden Sie sich bei Interesse für die geführte Fahrradtour auf der Hafenbahn sowie beide Busfahrten via Mail bis zum 12. April 2024 unter info@halle-hettstedter-eisenbahn.de an.',
+          'Erstmals ist das Eiserne Band aus beiden Richtungen als historische industrielle Verbindung erlebbar!\n\n\n- 10.00 bis 12.00 Uhr \ngeführte Radtour durch Halle (Saale) \nauf der Hafenbahntrasse zwischen dem ehem. Thüringer Bahnhof und dem ehem. Sophien-hafen, dabei wird insbesondere auf die ehem. ca. 30 Gleisanschlüsse Bezug genommen\n\n- 10.00 bis 16.00 Uhr\nVorstellung des künftigen Netzwerkes "Am Eisernen Band" im Bahnhof "Drei Annen Hohne" der Harzer Schmalspurbahnen\n\n- 10.00 bis 17.00 Uhr \nBahnhof Gerbstedt - Öffnung der Interims-Ausstellung zur Geschichte der Halle-Hettstedter Eisenbahn auf dem Güterboden\n\n\nSternfahrt mit zwei historischen Bussen der Marke Saurer von Halle und Wernigerode nach Harzgerode und zurück mit vielfältigem "Unterwegs-Programm".\n\nHalle-Beesenstedt-Gerbstedt-Hettstedt-Harzgerode-Halle\n \n- 9.30 Uhr Abfahrt am Busbahnhof des Hbf. Halle (Saale)\n\n- Besichtigung des historischen Straßenbahndepots in Halle, Seebener Straße\n\n- Führung am ehemaligen Wasserturm der Halle-Hettstedter Eisenbahn in Beesenstedt\n\n- Imbiss im Bahnhof Gerbstedt mit Besichtigung der Ausstellung zur HHE\n\n- Fahrt mit der Mansfelder Bergwerksbahn vom Bf Siersleben bis Bf Kupferkammerhütte in Hettstedt und Besichtigung der neuen Ausstellung im Lokschuppen sowie der  Fahrzeugausstellung auf dem Freigelände\n\n- Besichtigung der Ausstellung Harz-Kugeleum zu Bergbau und Regionalgeschichte im Schloss Harzgerode\n\nRückankunft am Busbahnhof des Hbf. Halle (Saale) gegen 19.00 Uhr.\n\nDer Preis pro Teilnehmer mit Busfahrt und Eintrittsgeldern in die Museen einschließlich Kaffee & Kuchen in Harzgerode beträgt 65 Euro für Erwachsene und 39 Euro für Kinder (bis 14 Jahre).\n\nDen Mittagsimbiss im Bahnhof Gerbstedt trägt jeder Teilnehmer bitte selbst.\n\n\n\nWernigerode-Todtenrode-Strassberg-Harzgerode-Wernigerode\n- 9.45 Uhr Abfahrt am Hbf. Wernigerode\n\n- Besichtigung des Luftfahrtmuseums in Wernigerode\n\n- Mittagessen im Restaurant „Zum alten Forsthaus“ in Todtenrode\n\n- Über- und unter-Tage-Führung durch das Besucher-Bergwerk "Grube Glasebach" in Straßberg\n \n- Befahrung eines Teils des Glasebacher Stollens mit der Grubenbahn\n\n- Besichtigung der Ausstellung Harz-Kugeleum zu Bergbau und Regionalgeschichte im Schloss Harzgerode\n\nRückankunft am Hbf. Wernigerode gegen\n19.00 Uhr\n\nDer Preis pro Teilnehmer mit Busfahrt und Eintrittsgeldern in die Museen einschließlich Kaffee und Kuchen in Harzgerode beträgt 65 Euro für Erwachsene und 39 Euro für Kinder (bis 14 Jahre).\n\nDas Mittagessen im Forsthaus Todtenrode trägt jeder Teilnehmer bitte selbst.\n\nBitte melden Sie sich bei Interesse für die geführte Fahrradtour auf der Hafenbahn sowie beide Busfahrten via Mail bis zum 12. April 2024 unter info@halle-hettstedter-eisenbahn.de an.',
         Webseite: "https://hhe.de/",
         Infos: "",
         TeilnahmeBestätigt: "28.03.2024",
@@ -930,7 +930,7 @@ export default {
         AktionsortStraße: "Walther-Rathenau-Straße 1",
         Oeffnungszeit: "10-17.00 Uhr",
         AktivitätTIK_2024:
-          'Ankerpunkt Harz\n\n11:00 Uhr\nim Dampfmaschinengebäude auf dem Großparkplatz „An der Hütte“ in 06502 Thale\nVortrag von Heiko Golla\n\nDer Vortrag beweist die Bedeutung der Eisenbahn für die Entwicklung des Eisenhüttenwerkes Thale. Heiko Golla, Kenner der Eisenbahngeschichte von Thale, wird die Geschichte des Transports von Rohstoffen und Waren einschließlich der Werksanschlüsse und der Entwicklung des Fuhrparks ab 1862 über einen Zeitraum von 130 Jahren sichtbar machen.\n\nca. 12:15 Uhr\nFührung an der Dampfmaschine Nr. 7\n\n\n15.00 Uhr \nLesung Bettina Fügemann vom Förderverein der Schriftsteller e.V „Finkenmanöver“ \n\nDie Geschichte der Autorin Bettina Fügemann erzählt vom Finkenmanöver im Harz, das jedes Jahr zu Pfingsten stattfindet. Durch die Geschichte schwirren Buchfinken, die uns zu Marie führen. Der Vogelfänger Karl liebt Marie, muss jedoch Soldat werden und in die Gräben Frankreichs ziehen.\n\nIn Koopertaion mit dem Landesliteraturprojekt „Industriekultur und die Rolle der Frauen" des Förderverein der Schriftsteller e.V..\n\nDer Eintritt ist frei. \nUm eine Spende wird gebeten.',
+          'Ankerpunkt Harz\n\n11.00 Uhr\nim Dampfmaschinengebäude auf dem Großparkplatz „An der Hütte“ in 06502 Thale\nVortrag von Heiko Golla\n\nDer Vortrag beweist die Bedeutung der Eisenbahn für die Entwicklung des Eisenhüttenwerkes Thale. Heiko Golla, Kenner der Eisenbahngeschichte von Thale, wird die Geschichte des Transports von Rohstoffen und Waren einschließlich der Werksanschlüsse und der Entwicklung des Fuhrparks ab 1862 über einen Zeitraum von 130 Jahren sichtbar machen.\n\nca. 12.15 Uhr\nFührung an der Dampfmaschine Nr. 7\n\n\n15.00 Uhr \nLesung Bettina Fügemann vom Förderverein der Schriftsteller e.V „Finkenmanöver“ \n\nDie Geschichte der Autorin Bettina Fügemann erzählt vom Finkenmanöver im Harz, das jedes Jahr zu Pfingsten stattfindet. Durch die Geschichte schwirren Buchfinken, die uns zu Marie führen. Der Vogelfänger Karl liebt Marie, muss jedoch Soldat werden und in die Gräben Frankreichs ziehen.\n\nIn Koopertaion mit dem Landesliteraturprojekt „Industriekultur und die Rolle der Frauen" des Förderverein der Schriftsteller e.V..\n\nDer Eintritt ist frei. \nUm eine Spende wird gebeten.',
         Webseite: "https://hüttenmuseum-thale.de\n\n",
         Infos: "https://industrietourismus.de/huettenmuseum-thale/",
         TeilnahmeBestätigt: "12.03.2024",
@@ -956,7 +956,7 @@ export default {
         AktionsortStraße: "Hauptstraße 15",
         Oeffnungszeit: "10-17.00 Uhr",
         AktivitätTIK_2024:
-          'Sonderfahrten – diverse Aktionen - siehe auch Programm "Am Eisernen Band"\n\n- Personenzug ab Benndorf \n9:40 Uhr, 11:40 Uhr, 13:40 Uhr, 15:40 Uhr\n\n- Führungen Kupferkammerhütte \n10:30 Uhr, 12:30 Uhr, 14:30 Uhr / nach Bedarf\n\n- Treffpunkt zur Führung am Uhrenturm Kupferkammerhütte\n\n- Dauer einer Führung etwa 1 Stunde\n\n- Führung durch das ehemalige Stellwerk mit Uhrenturm\n\n- Führung durch den historischen Lokschuppen inkl. neuer Ausstellung\n\n- Führung über das Freigelände\n\n- Fahrzeugausstellung historischer Schienenfahrzeuge\n\n- Souvenirverkauf, kleine Imbissversorgung\n\n- Temporäre Stempelstelle „Sonderstempel Zirkelschacht und Lok 11 der MBB“\n\n- Bus-Shuttle zum Mansfeld Museum im Humboldt-Schloss\n\n- Sonderausstellung Eisenbahnen im Mansfelder Land im Mansfeld-Museum\n\n- Vorträge im Mansfeld-Museum, Dampfmaschinenführungen auf Bedarf',
+          'Sonderfahrten – diverse Aktionen - siehe auch Programm "Am Eisernen Band"\n\n- Personenzug ab Benndorf \n9.40 Uhr, 11.40 Uhr, 13.40 Uhr, 15.40 Uhr\n\n- Führungen Kupferkammerhütte \n10.30 Uhr, 12.30 Uhr, 14.30 Uhr /\nnach Bedarf\n\n- Treffpunkt zur Führung am Uhrenturm Kupferkammerhütte\n\n- Dauer einer Führung etwa 1 Stunde\n\n- Führung durch das ehemalige Stellwerk mit Uhrenturm\n\n- Führung durch den historischen Lokschuppen inkl. neuer Ausstellung\n\n- Führung über das Freigelände\n\n- Fahrzeugausstellung historischer Schienenfahrzeuge\n\n- Souvenirverkauf, kleine Imbissversorgung\n\n- Temporäre Stempelstelle „Sonderstempel Zirkelschacht und Lok 11 der MBB“\n\n- Bus-Shuttle zum Mansfeld Museum im Humboldt-Schloss\n\n- Sonderausstellung Eisenbahnen im Mansfelder Land im Mansfeld-Museum\n\n- Vorträge im Mansfeld-Museum, Dampfmaschinenführungen auf Bedarf',
         Webseite: "https://www.mansfelder-bergwerksbahn.de/\n",
         Infos: "\nhttps://industrietourismus.de/mansfelder-bergwerksbahn/",
         TeilnahmeBestätigt: "12.03.2024",
@@ -1649,6 +1649,19 @@ export default {
       },
       {
         Region: "Halle-Saale-Unstrut",
+        Institution: "Nudelfabrik Zeitz",
+        PLZ: "06712",
+        Ortsname: "Zeitz",
+        AktionsortStraße: "Alte Werkstraße 4",
+        Oeffnungszeit: "",
+        AktivitätTIK_2024:
+          "Sonderführungen für maximal 20 Personen\n14.00 Uhr & 16.00 Uhr\n\nWir bitten um eine Anmeldung unter: \nneumannmaria945@gmail.com\n01522 9239875\n",
+        Webseite: "https://nudelfabrik.eu/",
+        Infos: "",
+        TeilnahmeBestätigt: "16.04.2024",
+      },
+      {
+        Region: "Halle-Saale-Unstrut",
         Institution: "Saline Bad Dürrenberg LAGA2024",
         PLZ: "06231",
         Ortsname: "Bad Dürrenberg",
@@ -1676,7 +1689,7 @@ export default {
       {
         Region: "Halle-Saale-Unstrut",
         Institution:
-          "Museum Weißenfels \nSchloss Neu-Augustusburg\nSchuhsammlung",
+          "Schuhsammlung\nMuseum Weißenfels \nSchloss Neu-Augustusburg\n",
         PLZ: "06667",
         Ortsname: "Weißenfels",
         AktionsortStraße: "Zeitzer Strasse 4",
