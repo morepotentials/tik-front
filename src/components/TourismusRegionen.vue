@@ -622,7 +622,7 @@ export default {
       },
       {
         Region: "Magdeburg-Elbe-Börde-Heide",
-        Institution: "Pretziner Wehr",
+        Institution: "Pretziener Wehr",
         PLZ: "39217",
         Ortsname: "\nSchönebeck, OT Pretzin",
         AktionsortStraße: "Am Weinberg",
@@ -1351,7 +1351,7 @@ export default {
         AktionsortStraße: "Kühnauer Straße 161a",
         Oeffnungszeit: "10-17.00 Uhr",
         AktivitätTIK_2024:
-          "Ankerpunkt ERIH Region Dessau mit  Verbindung zum Welterbe Bauhaus Dessau\n\n20.04.2024 Illumination des Museums mit Abendführungen  \nab 18.00-22.00 Uhr (Vorabend)\n\n21.04.2024 Vorführung des Windkanals\n- Vorträge & Sonderführungen zur Technikgeschichte\n\n\n„Von der Conti-Gas und Fine bis Junkers“ \nStation 7 \nKühnauer Straße - Technikmuseum Hugo Junkers der Bustour der Nahverkehrsfreunde Dessau e.V. (Infos siehe dort).",
+          "Ankerpunkt ERIH Region Dessau mit  Verbindung zum Welterbe Bauhaus Dessau\n\n20.04.2024 Illumination des Museums mit Abendführungen  \nab 20.00-22.00 Uhr (Vorabend)\n\n21.04.2024 Vorführung des Windkanals\n- Vorträge & Sonderführungen zur Technikgeschichte\n\n\n„Von der Conti-Gas und Fine bis Junkers“ \nStation 7 \nKühnauer Straße - Technikmuseum Hugo Junkers der Bustour der Nahverkehrsfreunde Dessau e.V. (Infos siehe dort).",
         Webseite: "https://technikmuseum-dessau.org/\n\n",
         Infos: "https://industrietourismus.de/technikmuseum-hugo-junkers/",
         TeilnahmeBestätigt: "07.03.2024",
@@ -1709,7 +1709,7 @@ export default {
         AktionsortStraße: "Bahnhofstraße 33",
         Oeffnungszeit: "10-17.00 Uhr",
         AktivitätTIK_2024:
-          "Sonderschau von zwei Vitrienen zur regionalen Industriegeschichte.",
+          "In der Dauerausstellung des Spengler-Museums zur Geschichte von Sangerhausen wird auch die Industrialisierung der Stadt  thematisiert.\n\n1866 bekam die Stadt Bahnanschluss, markante Industriebetriebe waren eine große Maschinenfabrik und Eisengießerei (1865) sowie die Mitteldeutschen Fahrradwerke (1907). \n\nNach dem zweiten Weltkrieg wurde mit dem Thomas-Münzer-Schacht der Kupferbergbau in großem Stil wieder aufgenommen. \n",
         Webseite: "https://www.spenglermuseum.de/de/",
         Infos: "",
         TeilnahmeBestätigt: "04.04.2024",
